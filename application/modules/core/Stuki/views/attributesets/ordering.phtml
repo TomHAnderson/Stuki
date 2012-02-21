@@ -1,0 +1,87 @@
+<a href="/attributesets/view?attribute_set_key/<?php $attributeSet->getKey(); ?>/">
+    Back to Attribute Set
+</a>
+
+<table width="100%">
+    <caption>
+        Reorder Attributes
+    </caption>
+    <tr><td>
+        <form id="attributes">
+            <table>
+                <thead>
+                    <tr>
+                        <th valign="bottom">Tab Label</th>
+
+                        <?php
+                        $titles = $attributeSet->getTabTitles();
+
+                        for ($tab = 1; $tab <= $attributeSet->getTabs(); $tab++) {
+                            ?>
+                            <th>
+                                Tab <?php echo $tab; ?><br>
+                                <input type="text" size="10"
+                                    name="tab_titles[<?php echo $tab; ?>]"
+                                    value="<? echo (isset($titles[$tab])) ? $titles[$tab]: ''; ?>">
+                            </th>
+                        <?php
+                        }
+                        ?>
+                </thead>
+
+                <tbody id="reorder">
+                    <?php
+                    foreach ($attributeSet->getAttributes() as $attribute) {
+                    ?>
+                    <tr id="reorder_<?php echo $attribute->getKey(); ?>">
+                        <td>
+                            <img src="/images/icons/arrow_switch.png" class="icon">
+                            <?php echo $attribute->getLabel(); ?>
+                            (<?php echo $attribute->getCode(); ?>)
+                        </td>
+
+                        <?php
+                        for ($tab = 1; $tab <= $attributeSet->getTabs(); $tab++) {
+                        ?>
+                            <td align="center">
+                            <input type="radio"
+                                name="tabs[<?php echo $attribute->getKey(); ?>]"
+                                value="<?php echo $tab; ?>"
+                                <?php
+                                if ($attribute->getTab() == $tab) {
+                                ?>
+                                    CHECKED
+                                <?php
+                                }
+                                ?>
+                            >
+                            </td>
+                        <?php
+                        }
+                        ?>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </form>
+    </td></tr>
+</table>
+<BR>
+<button onClick="saveSortable(); return false;">Save Order</button>
+<BR>
+<BR>
+Drag and drop <img src="/images/icons/arrow_switch.png" class="icon"> to reorder
+
+<script>
+
+$("#reorder").sortable();
+
+function saveSortable() {
+    window.location = '/attributesets/ordering?attribute_set_key=<?php echo $attributeSet->getKey(); ?>&' +
+        $("#reorder").sortable('serialize') + '&' +
+        $('#attributes').serialize();
+}
+
+</script>

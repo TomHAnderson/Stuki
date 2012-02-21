@@ -1,0 +1,24 @@
+<h4>
+    Favorites
+</h4>
+
+<?php
+if ($favorite) {
+?>
+This entity is a favorite
+<a href="/favorites/delete?entity_key=<?php echo $entity->getKey(); ?>">
+    Remove Favorite
+</a>
+
+<?php
+} else {
+?>
+Not a favorite
+
+<a href="/favorites/insert?entity_key=<?php echo $entity->getKey(); ?>">
+    Add to favorites
+</a>
+
+<?php
+}
+?>

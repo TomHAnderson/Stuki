@@ -1,0 +1,55 @@
+<h2>Attribute Sets</h2>
+
+
+<table>
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Title</th>
+        <th>Tabs</th>
+        <th>Created By</th>
+        <th></th>
+    </tr>
+
+<?php
+
+// View people: that means Jan & Jessie,
+// Be sure all php values are being escaped when that value is untrusted such
+// as any user input
+
+foreach ($attributeSets as $set) {
+?>
+
+        <tr>
+            <td>
+                <a href="/attributesets/update?attribute_set_key=<?php echo $set->getKey(); ?>">
+                    <img src="/images/icons/application_edit.png">
+                </a>
+            <td>
+                <?php echo $set->getName(); ?>
+            </td>
+            <td>
+                <?php echo $set->getDescription(); ?>
+            </td>
+            <td>
+                <?php echo $set->getTitle(); ?>
+            </td>
+            <td>
+                <?php echo $set->getTabs(); ?>
+            </td>
+            <td>
+                <?php echo $set->getUser()->getName(); ?>
+            </td>
+            <td>
+                <a href="/attributesets/delete?attribute_set_key=<?php echo $set->getKey(); ?>">
+                    <img src="/images/icons/delete.png">
+                </a>
+            <td>
+        </tr>
+<?php
+}
+?>
+</table>
+
+<a href="/attributesets/insert">Insert Attribute Set</a>

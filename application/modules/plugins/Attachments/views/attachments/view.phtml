@@ -1,0 +1,126 @@
+<link rel="stylesheet" href="/assets/attachments/css/upload.css" media="screen">
+
+
+<table>
+    <caption>Attachments <a href="#" id="attachment-edit">Edit</a></caption>
+    <thead>
+        <tr>
+            <th>File Name</th>
+            <th>Description</th>
+            <th>Date Uploaded</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($attachments as $attachment) {
+        ?>
+            <tr>
+                <td>
+                    <a href="/attachments/download?attachment_key=<?php echo $attachment->getKey(); ?>">
+                        <?php echo $attachment->getFileName(); ?>
+                    </a>
+                </td>
+
+                <td><?php echo $attachment->getDescription(); ?></td>
+                <td><?php echo $attachment->getUploadedAt()->format('Y-m-d'); ?></td>
+                <td>
+                    <a class="attachment-delete" href="/attachments/delete?attachment_key=<?php echo $attachment->getKey(); ?>">
+                        <img src="/images/icons/delete.png">
+                    </a>
+                </td>
+            </tr>
+        <?php
+        }
+        ?>
+        <tfoot>
+            <tr>
+                <th colspan="4">
+                    <span id="upload-supported">Drag & Drop or</span>
+                    <a href="/attachments/insert?entity_key=<?php echo $entity->getKey(); ?>">
+                        <img src="/images/icons/add.png"> Upload File
+                    </a>
+                </th>
+            </tr>
+        </tfoot>
+    </tbody>
+</table>
+
+<div id="root-container">
+
+    <div id="body-container">
+        <noscript>
+            <form id="noscript-upload" action="/upload" enctype="multipart/form-data" method="post">
+                <?php # FIXME: add this to attachments; ?>
+                (*JS Disabled) Manual Upload&nbsp;&nbsp;<input id="files" name="files" type="file" multiple onchange="document.getElementById('uploadform').submit();" />
+            </form>
+        </noscript>
+    </div>
+    <div id="upload-thumbnail-list">
+
+    </div>
+</div>
+<div id="drop-box-overlay">
+    <div id="browser-warning">
+        <img align="left" src="/images/icons/exclaimation.png" />
+        Chrome 8 or Firefox 3.6.8 are Required
+    </div>
+    <div id="drop-box-ok">
+        <h1>Drop files anywhere to upload...</h1>
+    </div>
+</div>
+
+<?php
+
+    # UI TEAM:  we need cancel buttons on the overlay divs because browsers
+    # don't fire an event when a file is dragged out.
+
+?>
+
+
+<div id="queue-container">
+    <div id="queue-overlay">
+        <h1>Ready to upload</h1>
+        <ul id="queue"></ul>
+        <button id="queue-upload">Upload Files</button>
+        <button id="queue-cancel">Cancel</button>
+
+        <p id="upload-status-text">
+        </p>
+    </div>
+</div>
+
+<style>
+    .attachment-delete {
+        display:none;
+    }
+</style>
+
+<script>
+    $('#attachment-edit').click(function(event) {
+        $('.attachment-delete').toggle();
+        return false;
+    });
+
+    $('.attachment-delete').click(function(event) {
+        return confirm('Are you sure you want to remove this attachment?  Attachment files are not audited.');
+    });
+
+    /**
+     * This function is here so the entity can be set dynamically
+     * moved from upload.js
+     */
+    function queueFile(file, totalFiles) {
+        descriptionId = Math.random().toString(36).substring(7);
+        li = $('<li>' + file.name + ' <img class="queue-remove" src="/images/icons/delete.png">' +
+            '<br>Description<br><textarea class="upload-description" cols="32" rows="3" id="' + descriptionId + '"></textarea></li>');
+        $(li).data('file', file);
+        $(li).data('entity_key', <?php echo $entity->getKey(); ?>);
+        $(li).data('descriptionId', descriptionId);
+
+        $('#queue').append(li);
+        $('#queue-container').show();
+    }
+
+</script>
+<script src="/assets/attachments/js/upload.js"></script>

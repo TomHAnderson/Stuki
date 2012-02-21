@@ -1,0 +1,38 @@
+<h2>Attribute Set Plugins</h2>
+
+<h3><?php echo $attributeSet->getName(); ?></h3>
+
+<form method="post">
+    <?php
+
+    $plugins = $attributeSet->getPlugins();
+
+    foreach ($allPlugins as $plugin) {
+    ?>
+        <input name="plugins[]"
+               type="checkbox"
+               value="<?php echo (int)$plugin->getKey(); ?>"
+               <?php
+               foreach ($plugins as $p) {
+                   // Find relations for the current attribute set
+                   if ($p->getPlugin() == $plugin) {
+                   ?>
+                       CHECKED
+                   <?php
+                        break;
+                    }
+                   ?>
+                <?php
+                }
+                ?>
+        >
+        <?php echo $plugin->getAlias(); ?>
+        <br>
+    <?php
+    }
+    ?>
+
+<br>
+<input type="submit" value="Save Plugins">
+</form>
+

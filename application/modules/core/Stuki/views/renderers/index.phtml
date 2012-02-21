@@ -1,0 +1,42 @@
+<h2>Renderers</h2>
+
+<?php
+foreach ($renderers as $renderer) {
+?>
+    <a class="icon" href="/renderers/test?renderer_key=<?php echo $renderer->getKey();?>">
+        <img src="/images/icons/database_gear.png" class="icon">
+    </a>
+    <?php
+        // Build the renderer
+        $class = $renderer->getClass();
+
+        // Quick renderer test
+        $s = new $class('testing');
+
+        // Echo the renderer class
+        ?>
+        <b>
+        <?php
+            echo $renderer->getAlias();
+        ?>
+        </b>
+        <?php
+        echo $class;
+
+        // Allow deletion if not used
+        if (!count($renderer->getAttributes())) {
+        ?>
+            <a class="icon" href="/renderers/delete?renderer_key=<?php echo $renderer->getKey();?>">
+                <img src="/images/icons/delete.png" class="icon">
+            </a>
+        <?php
+        }
+        ?>
+
+    <br>
+    <br>
+<?php
+}
+?>
+
+<a href="/renderers/insert">Insert Renderer</a>

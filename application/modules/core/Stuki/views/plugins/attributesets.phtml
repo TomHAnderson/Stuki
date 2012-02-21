@@ -1,0 +1,30 @@
+<h2>Plugins</h2>
+
+<?php
+foreach ($allPlugins as $plugin) {
+?>
+        <b>
+        <?php
+            echo $plugin->getAlias();
+        ?>
+        </b>
+        <?php
+        echo $plugin->getClass();
+
+        // Allow deletion if not used
+        if (!count($plugin->getAttributeSets())) {
+        ?>
+            <a class="icon" href="/plugins/delete?plugin_key=<?php echo $plugin->getKey();?>">
+                <img src="/images/icons/delete.png" class="icon">
+            </a>
+        <?php
+        }
+        ?>
+
+    <br>
+    <br>
+<?php
+}
+?>
+
+<a href="/plugins/insert">Insert Plugin</a>

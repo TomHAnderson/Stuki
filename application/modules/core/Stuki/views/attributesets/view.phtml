@@ -1,0 +1,108 @@
+<h2>View Attribute Set</h2>
+
+<a href="/attributesets/update?attribute_set_key=<?php echo $attributeSet->getKey(); ?>">
+    Edit Attribute Set
+</a>
+<br>
+<a href="/attributesets/relations?attribute_set_key=<?php echo $attributeSet->getKey(); ?>">
+    Edit Relations
+</a>
+<br>
+<a href="/attributesets/plugins?attribute_set_key=<?php echo $attributeSet->getKey(); ?>">
+    Edit Plugins
+</a>
+<br>
+<a href="/attributesets/ordering?attribute_set_key=<?php echo $attributeSet->getKey(); ?>">
+    Edit Tabs and Ordering
+</a>
+
+<br>
+<br>
+
+Name: <?php echo $attributeSet->getName(); ?><br>
+Description: <?php echo $attributeSet->getDescription(); ?><br>
+Title: <?php echo $attributeSet->getTitle(); ?><br>
+Theme: <?php echo $attributeSet->getTheme()->getAlias(); ?><br>
+Tabs: <?php echo $attributeSet->getTabs(); ?><br>
+
+<h3>Attributes</h3>
+
+<a href="/attributes/insert?attribute_set_key=<?php echo $attributeSet->getKey(); ?>">
+    <img class="icon" src="/images/icons/application_form_add.png"> Add Attribute
+</a>
+
+<table border="1">
+    <tr>
+        <th>&nbsp;</th>
+        <th>Name</th>
+        <th>Code</th>
+    </tr>
+
+    <?php
+    foreach($attributeSet->getAttributes() as $att) {
+    ?>
+        <tr>
+            <td>
+
+                <a href="/attributes/update?attribute_key=<?php echo $att->getKey(); ?>">
+                    <img src="/images/icons/application_form_edit.png"> Edit
+                </a>
+
+                <a href="/attributes/delete?attribute_key=<?php echo $att->getKey(); ?>">
+                    <img src="/images/icons/application_form_delete.png"> Delete
+                </a>
+
+                <?php
+                if ($att->getRenderer()->getClassObject('view') instanceof \Stuki\Renderer\Parameters) {
+                ?>
+                    <a href="/attributes/parameters?attribute_key=<?php echo $att->getKey(); ?>">
+                        <img src="/images/icons/script_gear.png"> Edit Parameters
+                    </a>
+                <?php
+                }
+                ?>
+
+            </td>
+            <td><?php echo $att->getLabel(); ?></td>
+            <td><?php echo $att->getCode(); ?></td>
+            <td><?php echo $att->getDescription(); ?></td>
+        </tr>
+    <?php
+    }
+    ?>
+</table>
+
+<h3>Deleted Attributes</h3>
+<table border="1">
+    <tr>
+        <th>&nbsp;</th>
+        <th>Name</th>
+        <th>Code</th>
+    </tr>
+
+    <?php
+    foreach($attributeSet->getOriginalAttributes() as $att) {
+        // Skip those still attached
+        if ($att->getAttributeSet() == $attributeSet) continue;
+    ?>
+        <tr>
+            <td>
+
+                <a href="/attributes/undelete?attribute_key=<?php echo $att->getKey(); ?>">
+                    <img src="/images/icons/application_form.png"> Undelete
+                </a>
+
+            </td>
+            <td><?php echo $att->getLabel(); ?></td>
+            <td><?php echo $att->getCode(); ?></td>
+            <td><?php echo $att->getDescription(); ?></td>
+        </tr>
+    <?php
+    }
+    ?>
+</table>
+
+<br>
+<br>
+
+<a href="/attributesets">Return to Attribute Sets</a>

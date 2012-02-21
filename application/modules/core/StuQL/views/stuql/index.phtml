@@ -1,0 +1,41 @@
+<h2>StuQL: Stuki Query Language</h2>
+
+All columns must be fully qualified such as root.*, contact., contact.lastname or aliased such as select r.* from root as r.
+<br><br>
+Supported syntax: SELECT, UPDATE, DELETE, FROM, WHERE, and LIMIT<br>
+WHERE support is limited to = &gt; &lt; IN LIKE NOTLIKE and must be in the form alias.column = value.<br>
+You may use the special field <i>entity_key</i> in your where to specify a specific entity.<br>
+Only AND is supported.  For not like conditions use the operator NOTLIKE without a space.<br>
+For best performance organize the WHERE statement with least likely to match critera first.<br>
+
+<form method="get">
+    <textarea name="statement" rows="5" cols="80"><?php echo $statement; ?></textarea>
+    <input type="submit" value="Run StuQL">
+</form>
+
+<?php
+
+echo $error;
+
+?>
+<h3>Attribute Sets</h3>
+<ul>
+<?php
+foreach ($attributeSets as $att) {
+?>
+    <li><?php echo $att->getName(); ?></li>
+<?php
+}
+?>
+</ul>
+
+<br>
+<br>
+
+<pre>
+<?php
+
+print_r($result);
+
+?>
+</pre>

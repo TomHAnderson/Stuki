@@ -1,0 +1,49 @@
+<h2>Attribute Set Themes</h2>
+
+<?php
+foreach ($allThemes as $theme) {
+?>
+        <b>
+        <?php
+            echo $theme->getAlias();
+        ?>
+        </b>
+        <?php
+        echo $theme->getTemplate();
+
+        // Allow deletion if not used
+        if (!count($theme->getAttributeSets())) {
+        ?>
+            <a class="icon" href="/themes/delete?theme_key=<?php echo $theme->getKey();?>">
+                <img src="/images/icons/delete.png" class="icon">
+            </a>
+        <?php
+        } else {
+            ?>
+            <ul>
+            <?php
+            foreach ($theme->getAttributeSets() as $set) {
+            ?>
+                <li>
+                <a href="/attributesets/view?attribute_set_key=<?php echo $set->getAttributeSet()->getKey(); ?>">
+                    <img src="/images/icons/application_edit.png">
+                    <?php echo $set->getAttributeSet()->getName(); ?>
+                </a>
+                </li>
+
+            <?php
+            }
+            ?>
+            </ul>
+
+        <?php
+        }
+        ?>
+
+    <br>
+    <br>
+<?php
+}
+?>
+
+<a href="/themes/insert">Insert Theme</a>

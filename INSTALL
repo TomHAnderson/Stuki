@@ -1,0 +1,15 @@
+INSTALL
+
+Unarchive distribution into new directory.
+
+Add virtual host to web server using ~/public as the document root.
+
+Rename ~/public/.htaccess.base to ~/public/.htaccess
+
+Edit 
+~/application/configs/autoload/production/module.doctrine_orm.config.php
+and add your database connection information.
+
+Create your database.
+
+Open a web browser to the Stuki virtual host and follow instructions.

@@ -1,0 +1,40 @@
+<h2>Attribute Set Relations</h2>
+
+<h3><?php echo $attributeSet->getName(); ?></h3>
+
+<form method="post">
+    <?php
+
+    $children = $attributeSet->getRelations();
+
+    foreach ($allSets as $att) {
+        // Attribute sets must be allowed to reference themselves0
+        /* if ($att == $attributeSet) continue; */
+    ?>
+        <input name="children[]"
+               type="checkbox"
+               value="<?php echo (int)$att->getKey(); ?>"
+               <?php
+               foreach ($children as $rel) {
+                   // Find relations for the current attribute set
+                   if ($rel->getChild() == $att) {
+                   ?>
+                       CHECKED
+                   <?php
+                        break;
+                    }
+                   ?>
+                <?php
+                }
+                ?>
+        >
+        <?php echo $att->getName(); ?>
+        <br>
+    <?php
+    }
+    ?>
+
+<br>
+<input type="submit" value="Save Relations">
+</form>
+

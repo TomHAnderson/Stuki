@@ -1,0 +1,25 @@
+<h2>Test Renderer</h2>
+
+<?php
+
+if ($element instanceof \Stuki\Renderer\Parameters) {
+?>
+This entity has parameters defined on the attribute
+level and may not render properly in this context.
+
+<?php
+}
+
+echo $form->render();
+
+if ($isFormOk) {
+?>
+
+<div>Renderer validation is successful</div>
+
+<?php
+}
+
+?>
+
+<a href="/renderers">Return to renderer list</a>

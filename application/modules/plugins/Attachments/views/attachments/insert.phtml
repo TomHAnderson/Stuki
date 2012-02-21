@@ -1,0 +1,15 @@
+<h2>Attachments</h2>
+
+<?php
+    if ($attachment instanceof \Entities\Attachments) {
+        echo "<h3>";
+        echo "Last file uploaded successfully: " . $attachment->getFilename();
+        echo "</h3>";
+    }
+?>
+
+<?php echo $form->render(); ?>
+
+<a href="/entities/view?entity_key=<?php echo $entity->getKey(); ?>">
+    Return to entity
+</a>

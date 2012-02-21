@@ -1,0 +1,24 @@
+<h2>Search Entities</h2>
+
+<form>
+    <input type="text" name="terms" value="<?php echo $terms; ?>">
+    <input type="submit" value="Search">
+</form>
+<a href="http://lucene.apache.org/java/3_4_0/queryparsersyntax.html">
+    Search Syntax
+</a>
+
+<ul>
+<?php
+foreach ($entities as $e) {
+?>
+<li>
+    <a href="/entities/view?entity_key=<?php echo $e->getKey(); ?>">
+        <?php echo ($e->getTitle()) ?: 'Title Placeholder'; ?>
+    </a>
+</li>
+
+<?php
+}
+?>
+</ul>

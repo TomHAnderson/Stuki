@@ -1,0 +1,243 @@
+ <h2>Entity</h2>
+
+Location Tree:<br>
+<?
+$parentList[] = $entity;
+
+$last = $entity;
+while ($parent = $last->getParent()) {
+    if ($parent == $last) break;
+    $parentList[] = $parent;
+    $last = $parent;
+}
+
+$parentList = array_reverse($parentList);
+
+$count = 0;
+foreach ($parentList as $p) {
+    echo '<a href="/entities/view?entity_key=' . $p->getKey() . '">' . $p->getTitle() . '</a>';
+    if (sizeof($parentList) != ++$count)
+        echo " >> ";
+}
+
+?>
+<br><br>
+
+<script>
+$(function() {
+    $('div#tabs').tabs();
+});
+</script>
+
+<style>
+
+form.addAttributeSet {
+    border: solid;
+    width: 30%;
+}
+
+</style>
+
+<?php
+if (sizeof($entity->getAttributeSet()->getRelations())) {
+?>
+    <form class="addAttributeSet" action="/entities/insert">
+        <input type="hidden" name="parent_key" value="<?php echo $entity->getKey(); ?>">
+        Add New
+        <select name="attribute_set_key">
+            <?php
+            foreach ($entity->getAttributeSet()->getRelations() as $att) {
+            ?>
+            <option value="<?php echo $att->getChild()->getKey(); ?>">
+                <?php echo $att->getChild()->getName(); ?>
+            </option>
+            <?php
+            }
+            ?>
+        </select>
+        <input type="submit" value="Insert Entity">
+    </form>
+<?php
+}
+?>
+<br>
+
+<a href="/entities/update?entity_key=<?php echo $entity->getKey(); ?>">
+    Edit
+</a>
+&nbsp;&nbsp;
+<?php
+if (!sizeof($entity->getChildren())) {
+?>
+    <a href="/entities/delete?entity_key=<?php echo $entity->getKey(); ?>">
+        Delete
+    </a>
+<?php
+}
+?>
+
+<h1 style="text-align: center;" >
+    <?php $entity->getTitle(); ?>
+</h1>
+
+
+<?php
+
+echo "Attribute Set: " . $entity->getAttributeSet()->getName();
+
+?>
+
+<hr>
+
+<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="tabs">
+    <?php
+    if ($entity->getAttributeSet()->getTabs() > 1)  {
+    ?>
+        <ul id="item_tabs" class="subsection_tabs">
+        <?php
+        foreach ($entity->getAttributeSet()->getTabTitles() as $tab => $label) {
+        ?>
+            <li class="tab"><a href="#tab<?php echo $tab; ?>"><?php echo $label; ?></a></li>
+        <?php
+        }
+        ?>
+        </ul>
+    <?php
+    }
+
+    for ($tab = 1; $tab <= $entity->getAttributeSet()->getTabs(); $tab ++) {
+    ?>
+        <dl class="entity_view" id="tab<?php echo $tab; ?>">
+        <?php
+        /**
+         * This DL section of code should be in it's own file
+         */
+
+
+        foreach ($entity->getValues() as $value) {
+            if ($value->getAttribute()->getTab() != $tab) continue;
+        ?>
+
+            <dt id="eav_<?php echo $value->getAttribute()->getKey(); ?>-label">
+                <? echo $value->getAttribute()->getLabel(); ?>
+            </dt>
+            <dd width="85%" valign="top" id="eav_<?php $value->getKey(); ?>" valign="top" width="100%">
+                <?php
+                    $renderer = $value->getAttribute()->getRenderer()->getClassObject('view');
+                    if ($renderer instanceof \Stuki\Renderer\Parameters)
+                        $renderer->setParameters($value->getAttribute()->getParameters());
+
+                    echo $renderer->formatValue($value->getValue());
+                ?>
+            </dd>
+        <?php
+        }
+        ?>
+        </dl>
+    <?php
+    }
+    ?>
+</div>
+
+<hr>
+
+<?php
+    // This section would be well served as it's own phtml file and included from this one
+?>
+
+<div>
+    <h3>References</h3>
+
+    <?php
+    /*
+    if ($entity != $entity->getParent()) {
+    ?>
+    <a href="/entities/view?entity_key=<?php echo $entity->getParent()->getKey(); ?>">Parent</a>
+    <?php
+    }
+    */
+    # parent is not needed with >> list above
+    ?>
+
+    <?php
+
+    // Gather a unique list of attribute sets
+    $groupedChildren = array();
+    foreach ($entity->getChildren() as $child) {
+        if ($child == $entity) continue; # don't show root on root
+        $groupedChildren[$child->getAttributeSet()->getKey()][] = $child;
+    }
+
+    foreach ($groupedChildren as $children) {
+        $first = true;
+        $children = array_slice($children, 0, 25);
+        foreach ($children as $child) {
+            if ($first) {
+            ?>
+                <table border="3">
+                <caption><?php echo $child->getAttributeSet()->getName(); ?></caption>
+                <tr>
+                    <th>Title</th>
+                <?php
+                foreach ($child->getValues() as $value) {
+                    if ($value->getAttribute()->getIsIncludedInSummary()) {
+                    ?>
+                        <th><?php echo $value->getAttribute()->getLabel(); ?></th>
+                    <?php
+                    }
+                }
+                ?>
+                </tr>
+                <?php
+                $first = false;
+            }
+
+            ?>
+            <tr>
+
+            <?php
+            // Always add title
+            ?>
+            <td>
+                <a href="/entities/view?entity_key=<?php echo $child->getKey(); ?>">
+                    <?php echo $child->getTitle(); ?>
+                </a>
+            </td>
+            <?php
+
+            foreach ($child->getValues() as $value) {
+                ?>
+                <?php
+                if ($value->getAttribute()->getIsIncludedInSummary()) {
+                    // Build renderer
+                    $renderer = $value->getAttribute()->getRenderer()->getClassObject('view');
+                    if ($renderer instanceof \Stuki\Renderer\Parameters)
+                        $renderer->setParameters($value->getAttribute()->getParameters());
+                ?>
+                    <td><?php echo $renderer->formatValue($value->getValue()); ?></td>
+                <?php
+                }
+                ?>
+                <?php
+            }
+
+            ?>
+            </tr>
+            <?php
+
+        }
+        ?>
+        </table>
+        <?php
+    }
+    ?>
+</div>
+
+<h3>Plugins</h3>
+
+<?php
+foreach ($entity->getAttributeSet()->getPlugins() as $pluginRef) {
+    echo $pluginRef->getPlugin()->getClassObject()->run($entity);
+}
+
+?>

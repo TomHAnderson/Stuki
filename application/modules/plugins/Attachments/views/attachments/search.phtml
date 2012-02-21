@@ -1,0 +1,36 @@
+<h2>Search Attachments</h2>
+
+<form>
+    <input type="text" name="terms" value="<?php echo $terms; ?>">
+    <input type="submit" value="Search">
+</form>
+<a href="http://lucene.apache.org/java/3_4_0/queryparsersyntax.html">
+    Search Syntax
+</a>
+
+<ul>
+<?php
+foreach ($attachments as $attachment) {
+?>
+<li>
+    <a href="/entities/view?entity_key=<?php echo $attachment->getEntity()->getKey(); ?>">
+        <?php echo ($attachment->getEntity()->getTitle()) ?: 'Title Placeholder'; ?>
+    </a>
+    <br>
+    Uploaded At: <?php echo $attachment->getUploadedAt()->format('Y-m-d'); ?>
+    <br>
+        File Name: <strong>
+        <a href="/attachments/download?attachment_key=<?php echo $attachment->getKey(); ?>">
+            <?php echo $attachment->getFileName(); ?>
+        </a>
+        </strong>
+    <br>
+    Path: <?php echo $attachment->getPath(); ?>
+    <br>
+    Description: <?php echo $attachment->getDescription(); ?>
+</li>
+<br>
+<?php
+}
+?>
+</ul>
