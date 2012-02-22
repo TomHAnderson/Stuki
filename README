@@ -5,6 +5,16 @@ stores and often referred to as an antipattern.  For that reason included with
 this distribution is StuQL 0.2, a sql query engine for the dynamic attribute 
 sets (tables/entity) and attributes (table columns) you create with Stuki using
 it's renderers to format any kind of text data.  Binary data is handled with 
-plugins.  See Attachments/Attachments.  For instance, I created a GoogleDocs 
+plugins.  See Attachments\Attachments.  For instance, I created a GoogleDocs 
 renderer to store the doc id in an EAV field on the form then when the value is 
 rendered it replaces the data with an iframe.
+
+Stuki can be used to catalog anything.  It's sparse data matrix makes it ultra-
+light weight and ease of creating attribute sets, attributes, and setting thier
+relations couldn't be easier.
+
+Plugins enhance the data with features like favorite lists and attachments.  
+(Favorites\Favorites and Attachments\Attachments).
+
+Everything is modular Zend Framework 2 with Doctrine ORM for very easy database
+management and flexibility.  The application is 100% OO in PHP 5.3.
