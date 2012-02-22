@@ -1,7 +1,8 @@
-Welcome to Stuki.  
+Welcome to Stuki,  
+A ZF2 EAV sparse data matrix engine
 
-Stuki is a ZF2 EAV engine.  Entity, Attribute, Value data stores are key - value
-stores and often referred to as an antipattern.  For that reason included with 
+Entity, Attribute, Value data stores are key - value stores and often referred 
+to as an antipattern.  For that reason included with 
 this distribution is StuQL 0.2, a sql query engine for the dynamic attribute 
 sets (tables/entity) and attributes (table columns) you create with Stuki using
 it's renderers to format any kind of text data.  Binary data is handled with 
