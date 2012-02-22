@@ -5,7 +5,8 @@ namespace Stuki\Controller;
 
 use Zend\Mvc\Controller\ActionController,
     Stuki\Form\Entities\Insert as InsertForm,
-    Stuki\Form\Entities\Update as UpdateForm
+    Stuki\Form\Entities\Update as UpdateForm,
+    Zend\View\Model\ViewModel
     ;
 
 class EntitiesController extends ActionController
@@ -14,6 +15,12 @@ class EntitiesController extends ActionController
         $request = $this->getRequest();
 
         $modelEntities = $this->getLocator()->get('modelEntities');
+
+        // Set view theme
+#       FIXME: themes
+#        $viewModel = new ViewModel();
+#        $viewModel->setTemplate('view/arbitrary.phtml');
+#        return $viewModel;
 
         return array(
             'entity' => $modelEntities->find($request->query()->get('entity_key'))
