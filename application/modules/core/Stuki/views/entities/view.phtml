@@ -236,7 +236,7 @@ echo "Attribute Set: " . $entity->getAttributeSet()->getName();
 <h3>Plugins</h3>
 
 <?php
-foreach ($entity->getAttributeSet()->getPlugins() as $pluginRef) {
+foreach ((array)$entity->getAttributeSet()->getPlugins() as $pluginRef) {
     echo $pluginRef->getPlugin()->getClassObject()->run($entity);
 }
 
