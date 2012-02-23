@@ -1,0 +1,15 @@
+<h2>Update Attachments</h2>
+
+<strong>You are updating an attachment.  This means the original file will be kept but will no longer
+be linked from the entity.  The new file you upload will replace this file.</strong>
+
+Current Filename:
+<a href="/attachments/download?attachment_key=<?php echo $attachment->getKey(); ?>">
+    <?php echo $attachment->getFileName(); ?>
+</a>
+
+<?php echo $form->render(); ?>
+
+<a href="/entities/view?entity_key=<?php echo $entity->getKey(); ?>">
+    Return to entity
+</a>

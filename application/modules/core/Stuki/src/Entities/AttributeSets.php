@@ -88,7 +88,7 @@ class AttributeSets extends Entity
         return $this->entities;
     }
 
-    /*
+    /**
      * @ORM\OneToMany(targetEntity="AttributeSetPlugins", mappedBy="attributeSet")
      */
     protected $plugins;
