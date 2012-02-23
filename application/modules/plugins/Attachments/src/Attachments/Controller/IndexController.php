@@ -3,7 +3,8 @@
 namespace Attachments\Controller;
 
 use Zend\Mvc\Controller\ActionController,
-    Attachments\Form\Insert as InsertForm
+    Attachments\Form\Insert as InsertForm,
+    Attachments\Form\Update as UpdateForm
     ;
 
 class IndexController extends ActionController
@@ -130,6 +131,56 @@ class IndexController extends ActionController
             'form' => $form,
             'entity' => $entity,
             'attachment' => (isset($attachment)) ? $attachment: ''
+        );
+    }
+
+    /**
+     * Update an attachment to create an audit log for this file
+     */
+    public function updateAction() {
+
+        $modelAttachments = $this->getLocator()->get('modelAttachments');
+
+        // Get current entity
+        if (!$attachment_key = $this->request->query()->get('attachment_key'))
+            throw new \Stuki\Exception('An attachment key is required');
+        if (!$attachment = $modelAttachments->find((int)$attachment_key))
+            throw new \Stuki\Exception('Attachment not found');
+
+        $form = new UpdateForm();
+
+        if ($this->getRequest()->isPost()
+            AND $form->isValid($this->getRequest()->post()->toArray())
+            AND $file = $_FILES['file1']
+            AND $file['tmp_name']) {
+
+            $filename = $file['name'];
+
+            // Set save path on form file element
+            $path = $modelAttachments->generateFilePath($filename, realpath(APPLICATION_PATH . '/data/Attachments'));
+            $form->getElement('file1')->setDestination($path);
+
+            // This triggers file saving
+            $values = $form->getValues(); # trigger
+
+            // Add the file to the database
+            $attachment = $modelAttachments->update($attachment, array(
+                'filename' => $filename,
+                'path' => $path . '/' . $filename,
+                'description' => $values['description']
+            ));
+
+            return $this->plugin('redirect')->toUrl('/entities/view?entity_key=' .
+                $attachment->getEntity()->getKey());
+        } elseif (!$this->getRequest()->isPost()) {
+            $form->setDefaults(array(
+                'description' => $attachment->getDescription()
+            ));
+        }
+
+        return array(
+            'form' => $form,
+            'attachment' => $attachment
         );
     }
 

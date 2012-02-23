@@ -25,6 +25,10 @@
                 <td><?php echo $attachment->getDescription(); ?></td>
                 <td><?php echo $attachment->getUploadedAt()->format('Y-m-d'); ?></td>
                 <td>
+                    <a class="attachment-update" href="/attachments/update?attachment_key=<?php echo $attachment->getKey(); ?>">
+                        <img src="/images/icons/folder_edit.png">
+                    </a>
+
                     <a class="attachment-delete" href="/attachments/delete?attachment_key=<?php echo $attachment->getKey(); ?>">
                         <img src="/images/icons/delete.png">
                     </a>
@@ -94,11 +98,16 @@
     .attachment-delete {
         display:none;
     }
+
+    .attachment-update {
+        display:none;
+    }
 </style>
 
 <script>
     $('#attachment-edit').click(function(event) {
         $('.attachment-delete').toggle();
+        $('.attachment-update').toggle();
         return false;
     });
 

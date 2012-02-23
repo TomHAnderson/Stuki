@@ -1,0 +1,22 @@
+<?php
+if (sizeof($entity->getAttributeSet()->getRelations())) {
+?>
+    <form class="addAttributeSet" action="/entities/insert">
+        <input type="hidden" name="parent_key" value="<?php echo $entity->getKey(); ?>">
+        Add New
+        <select name="attribute_set_key">
+            <?php
+            foreach ($entity->getAttributeSet()->getRelations() as $att) {
+            ?>
+            <option value="<?php echo $att->getChild()->getKey(); ?>">
+                <?php echo $att->getChild()->getName(); ?>
+            </option>
+            <?php
+            }
+            ?>
+        </select>
+        <input type="submit" value="Insert Entity">
+    </form>
+<?php
+}
+?>

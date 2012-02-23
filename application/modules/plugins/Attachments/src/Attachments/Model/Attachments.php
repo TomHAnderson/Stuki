@@ -79,8 +79,24 @@ class Attachments extends Model {
         return $attachment;
     }
 
+    // #FIXME
+    public function update(\Entities\Attachments $attachment, $values) {
+        $attachment->setPath($values['path']);
+        $attachment->setDescription($values['description']);
+        $attachment->setFileName($values['filename']);
+
+        $this->getEm()->flush();
+
+        $this->events()->trigger('update', $this, array('attachment' => $attachment));
+
+        return $attachment;
+    }
+
     public function delete(\Entities\Attachments $attachment) {
-        @unlink($attachment->getPath());
+
+        ## DO NOT UNLINK FILE - by keeping the original file we keep an audit
+        ## trail for the attachment record thereby allowing file versioning
+        #@unlink($attachment->getPath());
 
         // Run events
         $this->events()->trigger('delete', $this, array('attachment' => $attachment));
