@@ -28,6 +28,7 @@ class Module implements AutoloaderProvider
 
         // Add search listeners
         $events->attach('Attachments\Model\Attachments', 'insert', array($this, 'indexSearch'));
+        $events->attach('Attachments\Model\Attachments', 'update', array($this, 'indexSearch'));
         $events->attach('Attachments\Model\Attachments', 'delete', array($this, 'deleteSearch'));
     }
 

@@ -15,41 +15,41 @@
  * then the files appended in this file are added
  * this is why I am prepending the js includes here
  */
-#$this->plugin('headScript')->prependFile('/assets/AteLayout/js/ui/jquery.ui.core.min.js');
-#$this->plugin('headScript')->prependFile('/assets/AteLayout/js/ui/jquery.ui.widget.min.js');
-#$this->plugin('headScript')->prependFile('/assets/AteLayout/js/ui/jquery.ui.button.min.js');
-#$this->plugin('headScript')->prependFile('/assets/AteLayout/js/ui/jquery.ui.datepicker.min.js');
-#$this->plugin('headScript')->prependFile('/assets/AteLayout/js/ui/jquery.ui.autocomplete.min.js');
-#$this->plugin('headScript')->prependFile('/assets/AteLayout/js/jquery-ui.min.js');
-#$this->plugin('headScript')->prependFile('/assets/AteLayout/js/jquery.min.js');
+#$this->plugin('headScript')->prependFile('/assets/DefaultLayout/js/ui/jquery.ui.core.min.js');
+#$this->plugin('headScript')->prependFile('/assets/DefaultLayout/js/ui/jquery.ui.widget.min.js');
+#$this->plugin('headScript')->prependFile('/assets/DefaultLayout/js/ui/jquery.ui.button.min.js');
+#$this->plugin('headScript')->prependFile('/assets/DefaultLayout/js/ui/jquery.ui.datepicker.min.js');
+#$this->plugin('headScript')->prependFile('/assets/DefaultLayout/js/ui/jquery.ui.autocomplete.min.js');
+$this->plugin('headScript')->prependFile('/assets/defaultlayout/js/jquery-ui.min.js');
+$this->plugin('headScript')->prependFile('/assets/defaultlayout/js/jquery.min.js');
 
 
-#$this->plugin('headScript')->appendFile('/assets/AteLayout/js/testing.js');
-#$this->plugin('headLink')->appendStylesheet('/assets/AteLayout/css/testing.css');
+#$this->plugin('headScript')->appendFile('/assets/DefaultLayout/js/testing.js');
+#$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/testing.css');
 
 /*
  * add jQuery common css files
  * stock jquery-ui themes
 */
-#$this->plugin('headLink')->appendStylesheet('/assets/AteLayout/css/jquery-ui/themes/base/jquery.ui.all.css');
+$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/base/jquery.ui.all.css');
 
 /*
  * the following file is a file we created by copying the original jquery.ui.css file
  * and replacing the image path with a path that is located below the images folder
- * /assets/AteLayout/images/override.jquery-ui/themes/smoothness/images
+ * /assets/DefaultLayout/images/override.jquery-ui/themes/smoothness/images
  */
-// $this->plugin('headLink')->appendStylesheet('/assets/AteLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui.css');
-#$this->plugin('headLink')->appendStylesheet('/assets/AteLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui-repathed.css');
+// $this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui.css');
+#$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui-repathed.css');
 
 /*
  * add custom css files
 */
-#$this->plugin('headLink')->appendStylesheet('/assets/AteLayout/css/stuki/layout.css');
-#$this->plugin('headLink')->appendStylesheet('/assets/AteLayout/css/jquery-ui/themes/stuki/base/jquery.ui.override.css');
-#$this->plugin('headLink')->appendStylesheet('/assets/AteLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui.override.css');
+#$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/stuki/layout.css');
+#$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/stuki/base/jquery.ui.override.css');
+#$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui.override.css');
 
-// $this->plugin('headScript')->appendFile('/assets/AteLayout/droppy/src/javascripts/jquery.droppy.js');
-// $this->plugin('headLink')->appendStylesheet('/assets/AteLayout/droppy/src/stylesheets/droppy.css');
+// $this->plugin('headScript')->appendFile('/assets/DefaultLayout/droppy/src/javascripts/jquery.droppy.js');
+// $this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/droppy/src/stylesheets/droppy.css');
 
 echo $this->headLink()."\n";
 echo $this->headTitle();
@@ -58,7 +58,7 @@ echo $this->headScript()."\n";
 
 ?>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Xayona Website Template</title>
+    <title>Stuki</title>
     <link rel="stylesheet" href="/assets/defaultlayout/css/style.css" type="text/css" />
     <link rel="stylesheet" href="/assets/defaultlayout/css/stuki.css" type="text/css" />
     <!--[if IE 7]>
