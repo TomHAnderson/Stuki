@@ -146,8 +146,6 @@ class Module
 
         // Check directories
         $checkDirs = array(
-            'Session Save Path' => session_save_path(),
-            'Upload Temp' => ini_get('upload_tmp_dir'),
             'Search' => APPLICATION_PATH . '/data/Search/',
             'Cache' => APPLICATION_PATH . '/data/Cache/',
             'Doctrine Proxies' => APPLICATION_PATH . '/data/DoctrineORMModule/Proxy'
