@@ -43,6 +43,7 @@ return array(
 
         // Client Specific
         # e.g. overriding default layout
+        'DefaultLayout',
 
         // Vendors - load last
         'ZfcBase',
