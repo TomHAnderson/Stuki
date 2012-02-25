@@ -147,7 +147,7 @@ class Entities extends Entity
 
         foreach ($this->valueEntities as $repository) {
             switch ($repository) {
-                case 'Entities\ValuesDatetime':
+                case 'Entities\ValuesDatetime-remove':
                     // Only search datetimes if a datetime is specified for the value
                     if (isset($params['value']) AND $params['value'] instanceof \Datetime)
                         if ($entity = $this->getEm()->getRepository($repository)->findOneBy($params))

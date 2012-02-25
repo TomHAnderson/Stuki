@@ -146,8 +146,6 @@ class Module
 
         // Check directories
         $checkDirs = array(
-            'Session Save Path' => session_save_path(),
-            'Upload Temp' => ini_get('upload_tmp_dir'),
             'Search' => APPLICATION_PATH . '/data/Search/',
             'Cache' => APPLICATION_PATH . '/data/Cache/',
             'Doctrine Proxies' => APPLICATION_PATH . '/data/DoctrineORMModule/Proxy'
@@ -232,6 +230,7 @@ class Module
     public function setDefaults($e) {
         $renderers = $e->getTarget()->getLocator()->get('modelRenderers');
         $themes = $e->getTarget()->getLocator()->get('modelThemes');
+        $plugins = $e->getTarget()->getLocator()->get('modelPlugins');
 
         $renderers->insert('Date', 'DefaultRenderers\Date');
         $renderers->insert('Decimal', 'DefaultRenderers\Decimal');
@@ -240,8 +239,12 @@ class Module
         $renderers->insert('Text', 'DefaultRenderers\Text');
         $renderers->insert('Select', 'DefaultRenderers\Select');
         $renderers->insert('EntitySelectList', 'DefaultRenderers\EntitySelectList');
+        $renderers->insert('HTML', 'Html\Renderer');
 
         $themes->insert('Default', 'entities/view.phtml');
+
+        $plugins->insert('Attachments', 'Attachments\Attachments');
+        $plugins->insert('Favorites', 'Favorites\Favorites');
 
         $e->stopPropagation();
         return $e->getTarget()->getResponse();

@@ -1,0 +1,71 @@
+/* Zend Form Styling */
+.zend_form {  
+    background:#fff;  
+    width:840;  
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    margin:5px auto;  
+    padding:0;  
+    overflow:auto;  
+}  
+
+dl.zend_form {
+    width: 80%;
+    border: solid;
+    border-color: #aaaaaa;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+
+.zend_form dt{  
+    padding:0;  
+    clear:both;  
+    width:20%;  
+    float:left;  
+    text-align:right;  
+    margin:5px 12px 5px 0;  
+    font-weight: bold;
+}  
+
+.zend_form dd{  
+    padding:0;  
+    float:left;
+    text-align:left;
+    width:68%;  
+    margin:5px 2px 5px 0;  
+}  
+
+.zend_form ul.errors li {
+    margin: 0 0.15em;
+    color: #ff0000;
+    list-style-type:none; 
+}
+
+.zend_form p{  
+    padding:0;  
+    margin:0;  
+}  
+
+.zend_form p.description {
+    font-style:italic; 
+}
+
+.zend_form input, .zend_form textarea{  
+    margin:0 0 2px 0;  
+    padding:0;  
+}  
+
+/* Form Errors */
+ul.form-errors li {
+    list-style-type:none; 
+}
+
+ul.form-errors ul.errors li {
+    color: #ff0000;
+    list-style-type:none; 
+    font-size: 15pt;
+    text-align: center;
+}
+
+/* End Zend_Form */
+
