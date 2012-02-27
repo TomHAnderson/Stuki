@@ -10,7 +10,6 @@ use Stuki\Entity\Entity,
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="entities")
  */
 class Entities extends Entity
@@ -181,27 +180,5 @@ class Entities extends Entity
 
         if ($aSort == $bSort) return 0;
         return ($aSort < $bSort) ? -1: 1;
-    }
-
-
-    /**
-     * @ORM\PostPersist
-     */
-    function insert() {
-        $this->auditInsert();
-    }
-
-    /**
-     * @ORM\PostUpdate
-     */
-    function update() {
-        $this->auditUpdate();
-    }
-
-    /**
-     * @ORM\PreRemove
-     */
-    function delete() {
-        $this->auditDelete();
     }
 }

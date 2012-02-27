@@ -19,9 +19,7 @@ class PluginsController extends ActionController
     }
 
     /**
-     * Add a new renderer.  Since renderers must be tested for a valid
-     * class this is it's own action (instead of at the bottom of index)
-     * and it makes adding a new one more deliberate.
+     * Add a new plugin.
      */
     public function insertAction() {
         $form = new InsertForm();
@@ -30,11 +28,11 @@ class PluginsController extends ActionController
 
         if ($request->isPost() and $form->isValid($request->post()->toArray())) {
             try {
-                // Add renderer
+                // Add
                 $values = $form->getValues();
                 $modelPlugins->insert($values['alias'], $values['class']);
 
-                // Redirect to /renderers
+                // Redirect
                 $this->plugin('redirect')->toUrl('/plugins');
 
             } catch (Exception\InvalidArgumentException $e) {
@@ -50,12 +48,12 @@ class PluginsController extends ActionController
     }
 
     public function deleteAction() {
-        $renderers = $this->getLocator()->get('modelRenderers');
-        $renderer = $renderers->find((int)$this->getRequest()->query()->get('renderer_key'));
-        $renderers->delete($renderer);
+        $plugins = $this->getLocator()->get('modelPlugins');
+        $plugin = $plugins->find((int)$this->getRequest()->query()->get('plugin_key'));
+        $plugins->delete($plugin);
 
-        // Redirect to /renderers
-        $this->plugin('redirect')->toUrl('/renderers');
+        // Redirect
+        $this->plugin('redirect')->toUrl('/plugins');
     }
 
     public function attributesetsAction() {

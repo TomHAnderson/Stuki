@@ -6,7 +6,6 @@ use Stuki\Entity\Entity,
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="favorites")
  */
 class Favorites extends Entity
@@ -48,26 +47,5 @@ class Favorites extends Entity
 
     public function setUser(\Entities\Users $value) {
         $this->user = $value;
-    }
-
-    /**
-     * @ORM\PostPersist
-     */
-    function insert() {
-        $this->auditInsert();
-    }
-
-    /**
-     * @ORM\PostUpdate
-     */
-    function update() {
-        $this->auditUpdate();
-    }
-
-    /**
-     * @ORM\PreRemove
-     */
-    function delete() {
-        $this->auditDelete();
     }
 }

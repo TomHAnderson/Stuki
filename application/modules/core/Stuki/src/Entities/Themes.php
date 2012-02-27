@@ -8,7 +8,6 @@ use Stuki\Entity\Entity,
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="themes")
  */
 class Themes extends Entity
@@ -59,24 +58,4 @@ class Themes extends Entity
         return $this->attributeSets;
     }
 
-    /**
-     * @ORM\PostPersist
-     */
-    function insert() {
-        $this->auditInsert();
-    }
-
-    /**
-     * @ORM\PostUpdate
-     */
-    function update() {
-        $this->auditUpdate();
-    }
-
-    /**
-     * @ORM\PreRemove
-     */
-    function delete() {
-        $this->auditDelete();
-    }
 }

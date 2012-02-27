@@ -10,7 +10,6 @@ use Stuki\Entity\Entity,
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="attribute_set_plugins_xref")
  */
 class AttributeSetPlugins extends Entity
@@ -46,24 +45,4 @@ class AttributeSetPlugins extends Entity
         $this->plugin = $value;
     }
 
-    /**
-     * @ORM\PostPersist
-     */
-    function insert() {
-        $this->auditInsert();
-    }
-
-    /**
-     * @ORM\PostUpdate
-     */
-    function update() {
-        $this->auditUpdate();
-    }
-
-    /**
-     * @ORM\PreRemove
-     */
-    function delete() {
-        $this->auditDelete();
-    }
 }

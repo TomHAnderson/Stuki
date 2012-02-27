@@ -1,7 +1,5 @@
 <?
 /**
- * This entity manages plugin configurations
- * Plugins were used in Stuki 2.0 extensively.  They will probably be transformed with ZF2
  */
 namespace Entities;
 
@@ -11,15 +9,15 @@ use Stuki\Entity\Entity,
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="audit_plugins", indexes={@ORM\index(name="plugin_key_idx", columns={"plugin_key"})}))
+ * @ORM\Table(name="audit_themes", indexes={@ORM\index(name="theme_key_idx", columns={"theme_key"})}))
  */
-class AuditPlugins extends Entity implements Audit
+class AuditThemes extends Entity implements Audit
 {
     public function getGetterSetterMap() {
         return array (
             'getKey' => 'setKey',
             'getAlias' => 'setAlias',
-            'getClass' => 'setClass'
+            'getTemplate' => 'setTemplate'
         );
     }
 
@@ -60,14 +58,14 @@ class AuditPlugins extends Entity implements Audit
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
-    protected $plugin_key;
+    protected $theme_key;
 
     public function getKey() {
-        return $this->plugin_key;
+        return $this->theme_key;
     }
 
     public function setKey($value) {
-        $this->plugin_key = $value;
+        $this->theme_key = $value;
         return $this;
     }
 
@@ -87,25 +85,18 @@ class AuditPlugins extends Entity implements Audit
     /**
      * @ORM\Column(type="string")
      */
-    protected $class;
+    protected $template;
 
-    public function getClass() {
-        return $this->class;
+    public function getTemplate() {
+        return $this->template;
     }
 
-    public function setClass($value) {
-        $this->class = $value;
-    }
-
-    /**
-     * Return the plugin class
-     */
-    public function getClassObject() {
-        return new $this->class;
+    public function setTemplate($value) {
+        $this->template = $value;
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="AuditAttributeSetPlugins", mappedBy="plugin")
+     * @ORM\OneToMany(targetEntity="AuditAttributeSets", mappedBy="theme")
      */
     protected $attributeSets;
 
