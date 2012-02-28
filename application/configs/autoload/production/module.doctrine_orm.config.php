@@ -69,7 +69,7 @@ return array(
                     'opts' => array(
                         'entity_namespaces' => $settings['namespace_aliases'],
                         'auto_generate_proxies' => !$settings['production'],
-                        'proxy_dir' => APPLICATION_PATH . '/data/DoctrineORMModule/Proxy',
+                        'proxy_dir' => APPLICATION_PATH . '/data/DoctrineORMModule',
                     ),
                     'metadataCache' => $settings['cache'],
                     'queryCache'    => $settings['cache'],
