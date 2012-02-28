@@ -16,5 +16,5 @@ relations couldn't be easier.
 Plugins enhance the data with features like favorite lists and attachments.  
 (Favorites\Favorites and Attachments\Attachments).
 
-Everything is modular Zend Framework 2 with Doctrine ORM for very easy database
-management and flexibility.  The application is 100% OO in PHP 5.3.
+Everything is modular Zend Framework 2 with Doctrine ORM database portability.
+The application is 100% OO in PHP 5.3.
