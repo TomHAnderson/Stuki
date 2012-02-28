@@ -1,3 +1,6 @@
 [submodule "application/modules/core/Auditing/vendor/EntityAudit"]
 	path = application/modules/core/Auditing/vendor/EntityAudit
 	url = git://github.com/toma42/EntityAudit
+[submodule "library/Zend"]
+	path = library/Zend
+	url = git://github.com/toma42/zf2
