@@ -28,7 +28,7 @@ $settings = array(
         'port'     => '3306',
         'user'     => 'root',
         'password' => '',
-        'dbname'   => 'stuki',
+        'dbname'   => 'stuki2',
     ),
 
     'driver' => array(
@@ -63,11 +63,13 @@ return array(
             'doctrine_memcache' => array(
                 'parameters' => $settings['memcache']
             ),
+
             'orm_config' => array(
                 'parameters' => array(
                     'opts' => array(
                         'entity_namespaces' => $settings['namespace_aliases'],
-                        'auto_generate_proxies' => !$settings['production']
+                        'auto_generate_proxies' => !$settings['production'],
+                        'proxy_dir' => APPLICATION_PATH . '/data/DoctrineORMModule/Proxy',
                     ),
                     'metadataCache' => $settings['cache'],
                     'queryCache'    => $settings['cache'],
