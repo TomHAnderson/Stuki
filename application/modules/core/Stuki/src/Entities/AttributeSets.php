@@ -10,7 +10,6 @@ use Stuki\Entity\Entity,
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="attribute_sets")
  */
 class AttributeSets extends Entity
@@ -189,26 +188,5 @@ class AttributeSets extends Entity
 
     public function setTabTitles($value) {
         $this->tabTitles = $value;
-    }
-
-    /**
-     * @ORM\PostPersist
-     */
-    function insert() {
-        $this->auditInsert();
-    }
-
-    /**
-     * @ORM\PostUpdate
-     */
-    function update() {
-        $this->auditUpdate();
-    }
-
-    /**
-     * @ORM\PreRemove
-     */
-    function delete() {
-        $this->auditDelete();
     }
 }

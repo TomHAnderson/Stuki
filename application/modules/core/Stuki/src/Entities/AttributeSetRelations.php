@@ -10,7 +10,6 @@ use Stuki\Entity\Entity,
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="attribute_set_relations_xref")
  */
 class AttributeSetRelations extends Entity
@@ -45,24 +44,4 @@ class AttributeSetRelations extends Entity
         $this->child = $value;
     }
 
-    /**
-     * @ORM\PostPersist
-     */
-    function insert() {
-        $this->auditInsert();
-    }
-
-    /**
-     * @ORM\PostUpdate
-     */
-    function update() {
-        $this->auditUpdate();
-    }
-
-    /**
-     * @ORM\PreRemove
-     */
-    function delete() {
-        $this->auditDelete();
-    }
 }

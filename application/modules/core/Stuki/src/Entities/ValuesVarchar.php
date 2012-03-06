@@ -11,7 +11,6 @@ use Stuki\Entity\Entity,
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="values_varchar")
  */
 class ValuesVarchar extends Entity implements Value
@@ -67,26 +66,5 @@ class ValuesVarchar extends Entity implements Value
 
     public function setValue($value) {
         $this->value = $value;
-    }
-
-    /**
-     * @ORM\PostPersist
-     */
-    function insert() {
-        $this->auditInsert();
-    }
-
-    /**
-     * @ORM\PostUpdate
-     */
-    function update() {
-        $this->auditUpdate();
-    }
-
-    /**
-     * @ORM\PreRemove
-     */
-    function delete() {
-        $this->auditDelete();
     }
 }

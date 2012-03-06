@@ -113,7 +113,7 @@ class Entities extends StukiModel {
             }
             if (!$found) throw new \Stuki\Exception("
                 You cannot attach this attribute set to the parent entity's
-                attribute set.  See Attribute Set Relations to fix this.
+                attribute set.  See Relations to enable this.
             ");
         }
 

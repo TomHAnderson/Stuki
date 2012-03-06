@@ -6,7 +6,6 @@ use Stuki\Entity\Entity,
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="attachments")
  */
 class Attachments extends Entity
@@ -95,27 +94,5 @@ class Attachments extends Entity
 
     public function setDescription($value) {
         $this->description = $value;
-    }
-
-
-    /**
-     * @ORM\PostPersist
-     */
-    function insert() {
-        $this->auditInsert();
-    }
-
-    /**
-     * @ORM\PostUpdate
-     */
-    function update() {
-        $this->auditUpdate();
-    }
-
-    /**
-     * @ORM\PreRemove
-     */
-    function delete() {
-        $this->auditDelete();
     }
 }

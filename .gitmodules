@@ -1,0 +1,21 @@
+[submodule "application/modules/core/Auditing/vendor/EntityAudit"]
+	path = application/modules/core/Auditing/vendor/EntityAudit
+	url = git://github.com/toma42/EntityAudit
+[submodule "library/Zend"]
+	path = library/Zend
+	url = git://github.com/toma42/zf2
+[submodule "application/modules/vendor/ZfcBase"]
+	path = application/modules/vendor/ZfcBase
+	url = git://github.com/toma42/ZfcBase
+[submodule "application/modules/vendor/ZfcUser"]
+	path = application/modules/vendor/ZfcUser
+	url = git://github.com/toma42/ZfcUser
+[submodule "application/modules/vendor/ZfcUserDoctrineORM"]
+	path = application/modules/vendor/ZfcUserDoctrineORM
+	url = git://github.com/toma42/ZfcUserDoctrineORM
+[submodule "application/modules/vendor/DoctrineModule"]
+	path = application/modules/vendor/DoctrineModule
+	url = git://github.com/toma42/DoctrineModule
+[submodule "application/modules/vendor/DoctrineORMModule"]
+	path = application/modules/vendor/DoctrineORMModule
+	url = git://github.com/toma42/DoctrineORMModule

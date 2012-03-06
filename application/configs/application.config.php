@@ -31,6 +31,7 @@ return array(
         // Additional Core Stuki Modules
         'Install',  # Comment out after installation
         'Search',
+        'Auditing',
 
         // Renderers
         'DefaultRenderers',

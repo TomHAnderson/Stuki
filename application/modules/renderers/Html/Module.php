@@ -61,7 +61,7 @@ class Module implements AutoloaderProvider
 
         // Check directories
         $checkDirs = array(
-            'HTMLPurifier Definition Cache' => __DIR__ . '/vendor/htmlpurifier-4.4.0-lite/library/HTMLPurifier/DefinitionCache/Serializer/',
+            'HTMLPurifier Definition Cache' => APPLICATION_PATH . '/data/HTMLPurifier/',
         );
         $return .= '<style>span.fail {color: red;}</style>';
         $return .= "<h1>Stuki HTML Renderer Installation - Paths</h1><pre>";
