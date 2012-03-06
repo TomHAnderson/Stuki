@@ -19,6 +19,3 @@
 [submodule "application/modules/vendor/DoctrineORMModule"]
 	path = application/modules/vendor/DoctrineORMModule
 	url = git://github.com/toma42/DoctrineORMModule
-[submodule "application/modules/vendor/AssetsCompiler"]
-	path = application/modules/vendor/AssetsCompiler
-	url = git://github.com/toma42/AssetsCompiler
