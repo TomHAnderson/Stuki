@@ -3,6 +3,7 @@
 body{
     margin:0;
     background:url(../images/bg-body.jpg);
+    font-family: 'Doppio One', sans-serif;
 }
 .page{
     background:url(../images/bg-header.jpg) no-repeat center top;
@@ -43,7 +44,6 @@ body{
     font-size:16px;
     text-decoration:none;
     color:#5e5e5e;
-    font-family: 'Doppio One', sans-serif;
     outline:none;
 }
 
@@ -62,7 +62,6 @@ body{
 .body div#featured h3{
     color:#f78117;
     font-size:36px;
-    font-family: 'Doppio One', sans-serif;
     margin:0 0 30px;
     width:490px;
     padding:100px 0 0;
@@ -71,7 +70,6 @@ body{
 .body div#featured p{
     width:480px;
     color:#5d5d5d;
-    font-family: 'Doppio One', sans-serif;
     font-size:16px;
     line-height:25px;
     text-shadow: 0 1px 0 #fcfcfc;
@@ -83,7 +81,6 @@ body{
     border:0;
     height:48px;
     width:216px;
-    font-family: 'Doppio One', sans-serif;
     color:#fff;
     font-size:30px;
     margin:28px 0 0 125px;
@@ -128,7 +125,6 @@ body{
     width:258px;
     text-align:justify;
     color:#828081;
-    font-family: 'Doppio One', sans-serif;
     margin:17px 0 0 10px;
     line-height:20px;
     font-size:14px;
@@ -146,7 +142,6 @@ body{
 }
 .body ul.blog li div a{
     color:#606060;
-    font-family: 'Doppio One', sans-serif;
     font-style:italic;
     text-decoration:none;
     padding:98px 0 0;
@@ -160,7 +155,6 @@ body{
     text-shadow: 0 1px 0 #fcfcfc;
 }
 .body h3{
-    font-family: 'Doppio One', sans-serif;
     font-size:16px;
     font-weight:bold;
     color:#636363;
@@ -168,7 +162,6 @@ body{
     line-height:21px;
 }
 .body p{
-    font-family: 'Doppio One', sans-serif;
     font-size:16px;
     text-align:justify;
     color:#636363;
@@ -233,7 +226,6 @@ body{
     clear:both;
     display:block;
     font-size:13px;
-    font-family: 'Doppio One', sans-serif;
     text-decoration:none;
     color:#8a8889;
     font-weight:bold;
@@ -251,13 +243,11 @@ body{
     margin:0;
     font-size:20px;
     font-weight:bold;
-    font-family: 'Doppio One', sans-serif;
     color:#f28220;
     line-height:22px;
 }
 .body ul li div p{
     line-height:22px;
-    font-family: 'Doppio One', sans-serif;
     font-size:14px;
     color:#5D5D5D;
     padding:0 0 90px;
@@ -274,7 +264,6 @@ body{
 .body ul.paging li a{
     text-decoration:none;
     color:#ff7e0d;
-    font-family: arial;
     font-size:12px;
 }
 .body ul.paging li a:hover{
@@ -312,7 +301,6 @@ body{
     border-style: none none none solid;
     color:#5b5b5b;
     font-size:10px;
-    font-family: Trebuchet MS;
     text-decoration:none;
     font-weight:bold;
     padding:0 6px;
@@ -321,7 +309,6 @@ body{
 .footer p{
     color:#5b5b5b;
     font-size:10px;
-    font-family: Trebuchet MS;
     font-weight:bold;
     float:left;
     margin:6px 0 0 135px;
