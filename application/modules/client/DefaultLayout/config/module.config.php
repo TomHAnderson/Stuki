@@ -7,7 +7,7 @@ return array(
 
         'instance' => array(
             'alias' => array(
-                'view' => 'Zend\View\PhpRenderer',
+#                'view' => 'Zend\View\PhpRenderer',
             ),
             'Zend\View\HelperLoader' => array(
                 'parameters' => array(
@@ -21,12 +21,12 @@ return array(
                     'loader' => 'Zend\View\HelperLoader',
                 ),
             ),
-            'Zend\View\PhpRenderer' => array(
+            'Zend\View\Renderer\PhpRenderer' => array(
                 'parameters' => array(
-                    'resolver' => 'Zend\View\TemplatePathStack',
+                    'resolver' => 'Zend\View\Resolver\AggregateResolver',
                     'options' => array(
                         'script_paths' => array(
-                            'DefaultLayout' => __DIR__ . '/../views',
+                            'stuql' => __DIR__ . '/../views',
                         ),
                     ),
                     'broker' => 'Zend\View\HelperBroker',

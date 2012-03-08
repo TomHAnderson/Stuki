@@ -42,6 +42,7 @@ return array(
         // Entity Plugins
         'Attachments',
         'Favorites',
+        'FacebookComments',
 
         // Client Specific
         # e.g. overriding default layout

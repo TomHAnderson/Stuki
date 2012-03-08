@@ -10,7 +10,6 @@ return array(
 
                 'modelSearch' => 'Search\Model\Search',
                 'modelSearchIndex' => 'Search\Model\Index',
-                'view' => 'Zend\View\PhpRenderer',
             ),
 
             'Zend\View\HelperBroker' => array(
@@ -19,17 +18,18 @@ return array(
                 ),
             ),
 
-            'Zend\View\PhpRenderer' => array(
+            'Zend\View\Renderer\PhpRenderer' => array(
                 'parameters' => array(
-                    'resolver' => 'Zend\View\TemplatePathStack',
+                    'resolver' => 'Zend\View\Resolver\AggregateResolver',
                     'options' => array(
                         'script_paths' => array(
-                            'search' => __DIR__ . '/../views',
+                            'stuql' => __DIR__ . '/../views',
                         ),
                     ),
                     'broker' => 'Zend\View\HelperBroker',
                 ),
             ),
+
 
 
 

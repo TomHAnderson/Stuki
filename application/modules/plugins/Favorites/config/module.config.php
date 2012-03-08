@@ -12,17 +12,18 @@ return array(
                 'modelFavorites' => 'Favorites\Model\Favorites',
             ),
 
-            'Zend\View\PhpRenderer' => array(
+            'Zend\View\Renderer\PhpRenderer' => array(
                 'parameters' => array(
-                    'resolver' => 'Zend\View\TemplatePathStack',
+                    'resolver' => 'Zend\View\Resolver\AggregateResolver',
                     'options' => array(
                         'script_paths' => array(
-                            'favorites' => __DIR__ . '/../views',
+                            'stuql' => __DIR__ . '/../views',
                         ),
                     ),
                     'broker' => 'Zend\View\HelperBroker',
                 ),
             ),
+
 
 /**
  * FIXME: Need to find the right way to add entities

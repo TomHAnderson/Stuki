@@ -23,7 +23,7 @@ class Module implements AutoloaderProvider
     {
         // Add default Stuki listeners
         $events = StaticEventManager::getInstance();
-        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
+#        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
 
         // Add search listeners
         $events->attach('Stuki\Model\Entities', 'insert', array($this, 'indexSearch'));

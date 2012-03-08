@@ -30,7 +30,7 @@ class Module implements AutoloaderProvider
         $events = StaticEventManager::getInstance();
 
         // Bootstrap the app
-        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
+#        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
         $events->attach('bootstrap', 'bootstrap', array($this, 'initializeQueue'));
         $events->attach('bootstrap', 'bootstrap', array($this, 'initializeRegistry'));
 
@@ -112,18 +112,21 @@ class Module implements AutoloaderProvider
      * so the database can create itself.
      */
     public function initializeQueue($e) {
+        \Zend\Registry::set('queueOptions', array());
+        return;
+
         $application = $e->getParam('application');
         $config = $e->getParam('config');
         $params = $config->di->instance->orm_connection->parameters->params;
 
-        $options['driverOptions'] = array(
-            'host' => $params->host,
-            'username' => $params->user,
-            'password' => $params->password,
-            'dbname' => $params->dbname,
-            'type' => 'PdoMysql',
-            'port' => $params->port
-        );
+#        $options['driverOptions'] = array(
+#            'host' => $params->host,
+#            'username' => $params->user,
+#            'password' => $params->password,
+#            'dbname' => $params->dbname,
+#            'type' => 'PdoMysql',
+#            'port' => $params->port
+#        );
         $options['name'] = 'stuki';
 
         \Zend\Registry::set('queueOptions', $options);

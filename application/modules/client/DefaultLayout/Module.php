@@ -29,7 +29,7 @@ class Module implements AutoloaderProvider
         $events = StaticEventManager::getInstance();
 
         // Add view listener
-        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
+#        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
     }
 
     public static function getConfig()

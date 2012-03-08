@@ -20,7 +20,7 @@ body{
     padding:36px 10px 0;
 }
 .header a#logo{
-    display:block;
+    display:blcok;
     float:left;
     outline:none;
 }
