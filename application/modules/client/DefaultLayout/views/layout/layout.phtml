@@ -45,6 +45,8 @@ $this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui
  * add custom css files
 */
 #$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/stuki/layout.css');
+$this->plugin('headLink')->appendStylesheet('http://fonts.googleapis.com/css?family=Doppio+One');
+
 #$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/stuki/base/jquery.ui.override.css');
 #$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui.override.css');
 
@@ -57,6 +59,7 @@ echo $this->headStyle()."\n";
 echo $this->headScript()."\n";
 
 ?>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Stuki</title>
     <link rel="stylesheet" href="/assets/defaultlayout/css/style.css" type="text/css" />

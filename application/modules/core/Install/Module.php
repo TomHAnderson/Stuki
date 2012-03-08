@@ -148,7 +148,7 @@ class Module
         $checkDirs = array(
             'Search' => APPLICATION_PATH . '/data/Search/',
             'Cache' => APPLICATION_PATH . '/data/Cache/',
-            'Doctrine Proxies' => APPLICATION_PATH . '/data/DoctrineORMModule/Proxy'
+            'Doctrine Proxies' => APPLICATION_PATH . '/data/DoctrineORMModule/'
         );
         $return .= '<style>span.fail {color: red;}</style>';
         $return .= "<h1>Stuki Installation Step 1 - Paths</h1><pre>";

@@ -35,7 +35,7 @@ defined('APPLICATION_ENV')
 
 // Ensure library is on the include path
 set_include_path(implode(PATH_SEPARATOR, array(
-    realpath(APPLICATION_PATH . '/../library'),
+    realpath(APPLICATION_PATH . '/../library/Zend/library'),
     get_include_path(),
 )));
 

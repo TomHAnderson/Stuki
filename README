@@ -11,10 +11,11 @@ rendered it replaces the data with an iframe.
 
 Stuki can be used to catalog anything.  It's sparse data matrix makes it ultra-
 light weight and creating attribute sets, attributes, and setting thier
-relations couldn't be easier.  This can be thought of as a particular database written in php which is EAV, a proven pattern used in Magento.
+relations couldn't be easier.  This can be thought of as a particular database 
+written in php which is EAV, a proven pattern used in Magento.
 
-Plugins enhance the data with features like favorite lists and attachments.  
-(Favorites\Favorites and Attachments\Attachments).
+Plugins enhance the data with features like favorite lists and attachments.
+Each plugin is a ZF2 module.
 
 Everything is modular Zend Framework 2 with Doctrine ORM database portability.
 The application is 100% OO in PHP 5.3.
