@@ -62,8 +62,11 @@ class Module implements AutoloaderProvider
         $auth = $userService->getAuthService();
 
         // If we are not in the user module then check auth
+        return true;
         if (!$e->getTarget() instanceof \ZfcUser\Controller\UserController) {
             if (!$auth->hasIdentity()) {
+
+print_r($e->getTarget());die();
                 $e->getTarget()->plugin('redirect')->toUrl('/user');
                 $e->stopPropagation();
                 return $response;
@@ -80,7 +83,7 @@ class Module implements AutoloaderProvider
      */
     public function processQueue($e) {
         $modelQueue = $e->getTarget()->getLocator()->get('modelQueue');
-        $modelQueue->process(25);
+//        $modelQueue->process(25);
     }
 
     /**
@@ -112,8 +115,6 @@ class Module implements AutoloaderProvider
      * so the database can create itself.
      */
     public function initializeQueue($e) {
-        \Zend\Registry::set('queueOptions', array());
-        return;
 
         $application = $e->getParam('application');
         $config = $e->getParam('config');

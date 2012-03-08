@@ -7,7 +7,7 @@ return array(
 
         'instance' => array(
             'alias' => array(
-                'view' => 'Zend\View\PhpRenderer',
+                'view' => 'Zend\View\Renderer\PhpRenderer',
             ),
             'Zend\View\HelperLoader' => array(
                 'parameters' => array(
@@ -21,7 +21,8 @@ return array(
                     'loader' => 'Zend\View\HelperLoader',
                 ),
             ),
-            'Zend\View\PhpRenderer' => array(
+
+            'Zend\View\Renderer\PhpRenderer' => array(
                 'parameters' => array(
                     'resolver' => 'Zend\View\TemplatePathStack',
                     'options' => array(

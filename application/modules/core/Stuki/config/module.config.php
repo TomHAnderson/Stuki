@@ -74,7 +74,7 @@ return array(
                                     'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 ),
                                 'defaults' => array(
-                                    'controller' => 'Application\Controller\IndexController',
+                                    'controller' => 'Stuki\Controller\IndexController',
                                     'action' => 'index',
                                 ),
                             ),
@@ -84,7 +84,7 @@ return array(
                             'options' => array(
                                 'route' => '/',
                                 'defaults' => array(
-                                    'controller' => 'Application\Controller\IndexController',
+                                    'controller' => 'Stuki\Controller\IndexController',
                                     'action' => 'index',
                                 ),
                             ),
@@ -115,7 +115,7 @@ return array(
             'Zend\View\Resolver\TemplateMapResolver' => array(
                 'parameters' => array(
                     'map' => array(
-                        'layout/layout' => __DIR__ . '/../views/layout/layout.phtml',
+                        'layout/layout' => __DIR__ . '/../views/layouts/layout.phtml',
                     ),
                 ),
             ),

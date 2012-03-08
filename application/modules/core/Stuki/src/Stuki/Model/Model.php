@@ -29,7 +29,8 @@ abstract class Model {
     }
 
     public function getQueue() {
-        return new Queue('Db', \Zend\Registry::get('queueOptions'));
+        //return new Queue('Db', \Zend\Registry::get('queueOptions'));
+        return new Queue('Null');
     }
 
 
