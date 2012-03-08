@@ -22,7 +22,8 @@ return array(
         // Vendors - load first
         'DoctrineModule',
         'DoctrineORMModule',
-        'Assets',
+//        'Assets',
+        'AssetsCompiler',
 
         // Stuki core
         'Stuki',

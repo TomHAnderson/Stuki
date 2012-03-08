@@ -35,6 +35,10 @@ class AttributeSetsController extends ActionController
 
             // Redirect to /renderers
             return $this->plugin('redirect')->toUrl('/attributesets/view?attribute_set_key=' . $attributeSet->getKey());
+        } elseif (!$request->isPost()) {
+            $form->setDefaults(array(
+                'tabs' => 1
+            ));
         }
 
         return array(
