@@ -24,13 +24,11 @@ return array(
 
             'Zend\View\Renderer\PhpRenderer' => array(
                 'parameters' => array(
-                    'resolver' => 'Zend\View\TemplatePathStack',
                     'options' => array(
                         'script_paths' => array(
                             'DefaultLayout' => __DIR__ . '/../views',
                         ),
                     ),
-                    'broker' => 'Zend\View\HelperBroker',
                 ),
             ),
         ),

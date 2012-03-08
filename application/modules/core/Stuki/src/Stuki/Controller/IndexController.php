@@ -21,4 +21,9 @@ class IndexController extends ActionController
             'attributeSets' => $attributeSets
         );
     }
+
+    public function adminAction()
+    {
+        return array();
+    }
 }

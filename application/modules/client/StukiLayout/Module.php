@@ -62,24 +62,12 @@ class Module implements AutoloaderProvider
         $locator      = $app->getLocator();
         $config       = $e->getParam('config');
         $view         = $this->getView($app);
-        $viewListener = $this->getViewListener($view, $config);
-        $app->events()->attachAggregate($viewListener);
-        $events       = StaticEventManager::getInstance();
+//        $viewListener = $this->getViewListener($view, $config);
+//        $app->events()->attachAggregate($viewListener);
+//        $events       = StaticEventManager::getInstance();
 //      $viewListener->registerStaticListeners($events, $locator);
     }
 
-    protected function getViewListener($view, $config)
-    {
-        if ($this->viewListener instanceof \Stuki\View\Listener) {
-            return $this->viewListener;
-        }
-
-        $viewListener       = new \Stuki\View\Listener($view, $config->layout);
-        $viewListener->setDisplayExceptionsFlag($config->display_exceptions);
-
-        $this->viewListener = $viewListener;
-        return $viewListener;
-    }
 
     protected function getView($app)
     {

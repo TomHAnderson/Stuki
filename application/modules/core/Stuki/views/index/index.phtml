@@ -3,41 +3,10 @@
     <BR>
     <BR>
     <ul>
-        <li><a href="/renderers">Manage Renderers</a></li>
-        <li><a href="/plugins">Manage Plugins</a></li>
-        <li><a href="/themes">Manage Themes</a></li>
+        <li><a href="/entities/view?entity_key=<?php echo $rootEntity; ?>">Entities</a></li>
+        <br>
         <li><a href="/attributesets">Manage Attribute Sets</a></li>
-
-<?php if (!$rootEntity) {  ?>
-        <li>
-            <form action="/entities/insert">
-                <select name="attribute_set_key">
-                    <?php
-                    foreach ($attributeSets as $att) {
-                    ?>
-                        <option value="<?php echo $att->getKey(); ?>">
-                            <?php echo $att->getName(); ?>
-                        </option>
-
-                    <?php
-                    }
-                    ?>
-                </select>
-                <input type="hidden" value="1" name="parent_key">
-                <input type="submit" value="Create Root Entity">
-            </form>
-        </li>
-<?php
-} else {
-?>
-        <li><a href="/entities/view?entity_key=<?php echo $rootEntity; ?>">Proceed to Entities</a></li>
-        <li><a href="/search">Search Entities</a></li>
-        <li><a href="/attachments/search">Search Attachments</a></li>
-        <li><a href="/stuql">StuQL: Stuki Query Language</a></li>
-        <li><a href="/search/reindex">Rebuild Lucene Index</a> (manually delete files first ~/application/data/Search/)</li>
-        <li><a href="/search/optimize">Optimize Lucene Index</a></li>
-<?php
-}
-?>
+        <br>
+        <li><a href="/attributesets">Admin</a></li>
     </ul>
 </div>
