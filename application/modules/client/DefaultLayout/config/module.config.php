@@ -2,7 +2,6 @@
 
 return array(
 //     'bootstrap_class' => 'Stuki\Bootstrap',
-    'layout' => 'layout/layout.phtml',
     'di' => array(
 
         'instance' => array(
@@ -19,10 +18,6 @@ return array(
                 'parameters' => array(
                     'map'  => array(
                         'defaultlayout/layout' => __DIR__ . '/../view/layout/layout.phtml',
-                        'defaultlayout/ate' => __DIR__ . '/../view/layout/ate.phtml',
-                        'defaultlayout/different' => __DIR__ . '/../view/layout/different.phtml',
-                        'defaultlayout/footer_one' => __DIR__ . '/../view/layout/footer_one.phtml',
-                        'defaultlayout/another' => __DIR__ . '/../view/layouts/another.phtml',
                     ),
                 ),
             ),

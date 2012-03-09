@@ -19,10 +19,6 @@ return array(
                 'parameters' => array(
                     'map'  => array(
                         'stukilayout/layout' => __DIR__ . '/../view/layout/layout.phtml',
-                        'stukilayout/ate' => __DIR__ . '/../view/layout/ate.phtml',
-                        'stukilayout/different' => __DIR__ . '/../view/layout/different.phtml',
-                        'stukilayout/footer_one' => __DIR__ . '/../view/layout/footer_one.phtml',
-                        'stukilayout/another' => __DIR__ . '/../view/layouts/another.phtml',
                     ),
                 ),
             ),
