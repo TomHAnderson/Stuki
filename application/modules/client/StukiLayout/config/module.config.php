@@ -7,30 +7,46 @@ return array(
 
         'instance' => array(
             'alias' => array(
-                'view' => 'Zend\View\Renderer\PhpRenderer',
             ),
-            'Zend\View\HelperLoader' => array(
+
+            'Zend\View\Resolver\AggregateResolver' => array(
+                'injections' => array(
+                    'Zend\View\Resolver\TemplateMapResolver',
+                    'Zend\View\Resolver\TemplatePathStack',
+                ),
+            ),
+            'Zend\View\Resolver\TemplateMapResolver' => array(
                 'parameters' => array(
-                    'map' => array(
-#                       'splitbutton' => 'other\View\Helper\SplitButton',
+                    'map'  => array(
+                        'stukilayout/layout' => __DIR__ . '/../view/layout/layout.phtml',
+                        'stukilayout/ate' => __DIR__ . '/../view/layout/ate.phtml',
+                        'stukilayout/different' => __DIR__ . '/../view/layout/different.phtml',
+                        'stukilayout/footer_one' => __DIR__ . '/../view/layout/footer_one.phtml',
+                        'stukilayout/another' => __DIR__ . '/../view/layouts/another.phtml',
                     ),
                 ),
             ),
-            'Zend\View\HelperBroker' => array(
+            'Zend\View\Resolver\TemplatePathStack' => array(
                 'parameters' => array(
-                    'loader' => 'Zend\View\HelperLoader',
+                    'paths'  => array(
+                        'stukilayout' => __DIR__ . '/../view',
+                    ),
+                ),
+            ),
+            'Zend\View\Renderer\PhpRenderer' => array(
+                'parameters' => array(
+                    'resolver' => 'Zend\View\Resolver\AggregateResolver',
                 ),
             ),
 
-            'Zend\View\Renderer\PhpRenderer' => array(
-                'parameters' => array(
-                    'options' => array(
-                        'script_paths' => array(
-                            'DefaultLayout' => __DIR__ . '/../views',
-                        ),
-                    ),
-                ),
-            ),
+
+              // enabling the code below overrides the main application module default path
+             'Zend\Mvc\View\DefaultRenderingStrategy' => array(
+                 'parameters' => array(
+                     'layoutTemplate' => 'stukilayout/layout',
+                 ),
+             ),
+
         ),
     ),
 );
