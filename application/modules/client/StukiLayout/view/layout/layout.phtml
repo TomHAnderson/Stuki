@@ -15,41 +15,41 @@
  * then the files appended in this file are added
  * this is why I am prepending the js includes here
  */
-#$this->plugin('headScript')->prependFile('/assets/DefaultLayout/js/ui/jquery.ui.core.min.js');
-#$this->plugin('headScript')->prependFile('/assets/DefaultLayout/js/ui/jquery.ui.widget.min.js');
-#$this->plugin('headScript')->prependFile('/assets/DefaultLayout/js/ui/jquery.ui.button.min.js');
-#$this->plugin('headScript')->prependFile('/assets/DefaultLayout/js/ui/jquery.ui.datepicker.min.js');
-#$this->plugin('headScript')->prependFile('/assets/DefaultLayout/js/ui/jquery.ui.autocomplete.min.js');
-$this->plugin('headScript')->prependFile('/assets/defaultlayout/js/jquery-ui.min.js');
-$this->plugin('headScript')->prependFile('/assets/defaultlayout/js/jquery.min.js');
+#$this->plugin('headScript')->prependFile('/assets/StukiLayout/js/ui/jquery.ui.core.min.js');
+#$this->plugin('headScript')->prependFile('/assets/StukiLayout/js/ui/jquery.ui.widget.min.js');
+#$this->plugin('headScript')->prependFile('/assets/StukiLayout/js/ui/jquery.ui.button.min.js');
+#$this->plugin('headScript')->prependFile('/assets/StukiLayout/js/ui/jquery.ui.datepicker.min.js');
+#$this->plugin('headScript')->prependFile('/assets/StukiLayout/js/ui/jquery.ui.autocomplete.min.js');
+$this->plugin('headScript')->prependFile('/assets/StukiLayout/js/jquery-ui.min.js');
+$this->plugin('headScript')->prependFile('/assets/StukiLayout/js/jquery.min.js');
 
 
-#$this->plugin('headScript')->appendFile('/assets/DefaultLayout/js/testing.js');
-#$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/testing.css');
+#$this->plugin('headScript')->appendFile('/assets/StukiLayout/js/testing.js');
+#$this->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/testing.css');
 
 /*
  * add jQuery common css files
  * stock jquery-ui themes
 */
-$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/base/jquery.ui.all.css');
+$this->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/jquery-ui/themes/base/jquery.ui.all.css');
 
 /*
  * the following file is a file we created by copying the original jquery.ui.css file
  * and replacing the image path with a path that is located below the images folder
- * /assets/DefaultLayout/images/override.jquery-ui/themes/smoothness/images
+ * /assets/StukiLayout/images/override.jquery-ui/themes/smoothness/images
  */
-// $this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui.css');
-#$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui-repathed.css');
+// $this->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui.css');
+#$this->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui-repathed.css');
 
 /*
  * add custom css files
 */
-#$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/stuki/layout.css');
-#$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/stuki/base/jquery.ui.override.css');
-#$this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui.override.css');
+#$this->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/stuki/layout.css');
+#$this->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/jquery-ui/themes/stuki/base/jquery.ui.override.css');
+#$this->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/jquery-ui/themes/stuki/smoothness/jquery.ui.override.css');
 
-// $this->plugin('headScript')->appendFile('/assets/DefaultLayout/droppy/src/javascripts/jquery.droppy.js');
-// $this->plugin('headLink')->appendStylesheet('/assets/DefaultLayout/droppy/src/stylesheets/droppy.css');
+// $this->plugin('headScript')->appendFile('/assets/StukiLayout/droppy/src/javascripts/jquery.droppy.js');
+// $this->plugin('headLink')->appendStylesheet('/assets/StukiLayout/droppy/src/stylesheets/droppy.css');
 
 echo $this->headLink()."\n";
 echo $this->headTitle();
@@ -59,17 +59,17 @@ echo $this->headScript()."\n";
 ?>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Stuki</title>
-    <link rel="stylesheet" href="/assets/defaultlayout/css/style.css" type="text/css" />
-    <link rel="stylesheet" href="/assets/defaultlayout/css/stuki.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/StukiLayout/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/StukiLayout/css/stuki.css" type="text/css" />
     <!--[if IE 7]>
-        <link rel="stylesheet" href="/assets/defaultlayout/css/ie7.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/StukiLayout/css/ie7.css" type="text/css" />
     <![endif]-->
 </head>
 
     <body>
         <div class="page">
             <div class="header">
-                <a href="/" id="logo"><img src="/assets/defaultlayout/images/stuki.png" alt=""/></a>
+                <a href="/" id="logo"><img src="/assets/StukiLayout/images/stuki.png" alt=""/></a>
                 <ul>
                     <li class="selected"><a href="/">Home</a></li>
 
@@ -88,7 +88,10 @@ echo $this->headScript()."\n";
                 <ul>
                     <li><a href="/">Home</a></li>
                 </ul>
-                <p>&#169; Copyright &#169; 2012. Stuki all rights reserved.  Stuki is published under the MIT open source license.</p>
+                <p>&#169;2012 Stuki all rights reserved.  Stuki is published under the MIT open source license.
+                    <br>
+                    Stuki is a product of <a href="http://www.soliantconsulting.com/">Soliant Consulting</a>.
+                </p>
                 <div class="connect">
                 </div>
             </div>
