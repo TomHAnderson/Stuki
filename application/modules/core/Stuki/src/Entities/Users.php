@@ -20,7 +20,7 @@ class Users extends Entity
      * @ORM\Id
      * @ORM\GeneratedValue
      */
-    protected $user_key;
+    protected $user_id;
 
     public function getKey() {
         return $this->user_key;

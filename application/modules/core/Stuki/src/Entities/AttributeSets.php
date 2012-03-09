@@ -27,7 +27,7 @@ class AttributeSets extends Entity
 
     /**
      * @ORM\ManyToOne(targetEntity="Users")
-     * @ORM\JoinColumn(name="ref_user", referencedColumnName="user_key")
+     * @ORM\JoinColumn(name="ref_user", referencedColumnName="user_id")
      */
     protected $user;
 

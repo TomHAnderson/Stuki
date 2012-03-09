@@ -49,7 +49,7 @@ class Renderer extends Textarea implements StukiRenderer
         require_once __DIR__ . '/../../vendor/htmlpurifier-4.4.0-lite/library/HTMLPurifier.auto.php';
 
         $config = \HTMLPurifier_Config::createDefault();
-        $config->set('Cache.SerializerPath', APPLICATION_PATH . '/data/HTMLPurifier')
+        $config->set('Cache.SerializerPath', APPLICATION_PATH . '/data/HTMLPurifier');
         $hp = new \HTMLPurifier($config);
         return $hp->purify($value);
     }

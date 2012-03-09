@@ -38,7 +38,7 @@ class Entities extends Entity
 
     /**
      * @ORM\ManyToOne(targetEntity="Users", inversedBy="entities")
-     * @ORM\JoinColumn(name="ref_user", referencedColumnName="user_key")
+     * @ORM\JoinColumn(name="ref_user", referencedColumnName="user_id")
      */
     protected $user;
 
