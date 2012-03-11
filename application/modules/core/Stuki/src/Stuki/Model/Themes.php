@@ -19,11 +19,12 @@ class Themes extends Model {
         // Verify template exists
         $view = $this->getLocator()->get('view');
         #if (!$view->resolver()->resolve($template))
-        try {
-            $view->resolver()->getScriptPath($template);
-        } catch (\Exception $e) {
-            throw new Exception\InvalidArgumentException('Theme file does not exist');
-        }
+#FIXME: verify path resolves commented because it's broke in zf2-b3
+#        try {
+#            $view->resolver()->getScriptPath($template);
+#        } catch (\Exception $e) {
+#            throw new Exception\InvalidArgumentException('Theme file does not exist');
+#        }
 
         // Is renderer already installed?
         if ($this->findOneBy(array(
