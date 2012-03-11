@@ -85,10 +85,10 @@ class Module
 
     public function notifyNoDatabase($e) {
         $response = $e->getTarget()->getResponse();
-        echo '<h1>Stuki ' . Version::getVersion() . '</h1>
+        $response->setContent('<h1>Stuki ' . Version::getVersion() . '</h1>
               The stuki database does not exist.
               Please create the database and try again.
-        ';
+        ');
         $e->stopPropagation();
         return $response;
     }
@@ -98,12 +98,12 @@ class Module
      */
     public function showInstall($e) {
         $response = $e->getTarget()->getResponse();
-        echo '<h1>Stuki ' . Version::getVersion() . '</h1>
+        $response->setContent('<h1>Stuki ' . Version::getVersion() . '</h1>
               Welcome to Stuki.  Stuki thinks it is not installed because it cannot connect to your
               database.
               <br>
               <a href="/?install=1">Begin installation</a>
-        ';
+        ');
 
         $e->stopPropagation();
         return $response;
@@ -131,7 +131,7 @@ class Module
         ';
 
         if ($errors) {
-            echo $return;
+            $response->setContent($return);
             $e->stopPropagation();
             return $response;
         }
@@ -182,7 +182,7 @@ class Module
         ';
 
         if ($errors) {
-            echo $return;
+            $response->setContent($return);
             $e->stopPropagation();
             return $response;
         }
@@ -216,10 +216,12 @@ class Module
             $em->persist($user);
             $em->flush();
 
-            echo "User administrator has password $password<BR><BR>
+            $response->setContent("User administrator has password $password<BR><BR>
             <a href=\"/\">Start using Stuki</a>
-            ";
+            ");
 
+            $e->stopPropagation();
+            return $response;
         } catch (\Exception $error) {
             print_r($error->getMessage());
         }
