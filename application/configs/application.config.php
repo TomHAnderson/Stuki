@@ -11,7 +11,7 @@ return array(
         'cache_dir' => 'data/Cache',
         'module_paths' => array(
             APPLICATION_PATH . '/modules/core',      # core Stuki modules
-            APPLICATION_PATH . '/modules/vendor',       # 3rd party modules
+            APPLICATION_PATH . '/../vendor',       # 3rd party modules
             APPLICATION_PATH . '/modules/renderers',    # Stuki renderers
             APPLICATION_PATH . '/modules/plugins',      # entity plugins
             APPLICATION_PATH . '/modules/client',       # client specific modules
