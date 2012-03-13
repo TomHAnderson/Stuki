@@ -45,7 +45,6 @@ class Module
                     if ($application->getRequest()->query()->get('install')) {
                         // The last event in this list must stop propogation
                         $events->attach('Zend\Mvc\Application', 'route', array($this, 'buildDatabase'));
-                        $events->attach('Zend\Mvc\Application', 'route', array($this, 'setDefaults'));
                     } else {
                         // Begin installation
                         $events->attach('Zend\Mvc\Application', 'route', array($this, 'showInstall'));
@@ -203,9 +202,13 @@ class Module
             $tool = new SchemaTool($em);
             $res = $tool->createSchema($em->getMetadataFactory()->getAllMetadata());
 
+            // Set Defaults
+            $this->setDefaults($e);
+
             // Create administrator user
             $password = $this->generatePassword(8);
 
+/*
             $user = new \Entities\Users;
             $user->setName('Administrator');
             $user->setUsername('administrator');
@@ -215,8 +218,9 @@ class Module
 
             $em->persist($user);
             $em->flush();
-
-            $response->setContent("User administrator has password $password<BR><BR>
+*/
+#User administrator has password $password<BR><BR>
+            $response->setContent("
             <a href=\"/\">Start using Stuki</a>
             ");
 
@@ -247,9 +251,6 @@ class Module
 
         $plugins->insert('Attachments', 'Attachments\Attachments');
         $plugins->insert('Favorites', 'Favorites\Favorites');
-
-        $e->stopPropagation();
-        return $e->getTarget()->getResponse();
     }
 
     private function generatePassword($length) {

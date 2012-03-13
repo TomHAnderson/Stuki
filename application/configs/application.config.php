@@ -22,7 +22,6 @@ return array(
         // Vendors - load first
         'DoctrineModule',
         'DoctrineORMModule',
-//        'Assets',
         'AssetsCompiler',
 
         // Stuki core
@@ -45,12 +44,11 @@ return array(
 #        'FacebookComments',
 
         // Client Specific
-        # e.g. overriding default layout
         'DefaultLayout',
 
         // Vendors - load last
-        'ZfcBase',
-        'ZfcUser',
-        'ZfcUserDoctrineORM',
+#        'ZfcBase',
+#        'ZfcUser',
+#        'ZfcUserDoctrineORM',
     ),
 );

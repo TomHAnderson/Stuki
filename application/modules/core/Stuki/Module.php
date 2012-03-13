@@ -57,7 +57,7 @@ class Module implements AutoloaderProvider
     public function checkSecurity($e) {
         $response = $e->getTarget()->getResponse();
         $locator = $e->getTarget()->getLocator();
-
+return true;
         $userService = $locator->get('zfcuser_user_service');
         $auth = $userService->getAuthService();
 
