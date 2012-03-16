@@ -10,11 +10,11 @@ return array(
         'config_cache_enabled' => false,
         'cache_dir' => 'data/Cache',
         'module_paths' => array(
-            APPLICATION_PATH . '/modules/core',      # core Stuki modules
-            APPLICATION_PATH . '/../vendor',       # 3rd party modules
-            APPLICATION_PATH . '/modules/renderers',    # Stuki renderers
-            APPLICATION_PATH . '/modules/plugins',      # entity plugins
-            APPLICATION_PATH . '/modules/client',       # client specific modules
+            __DIR__ . '/../modules/core',      # core Stuki modules
+            __DIR__ . '/../vendor',       # 3rd party modules
+            __DIR__ . '/../modules/renderers',    # Stuki renderers
+            __DIR__ . '/../modules/plugins',      # entity plugins
+            __DIR__ . '/../modules/client',       # client specific modules
         ),
     ),
 

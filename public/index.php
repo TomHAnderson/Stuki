@@ -27,7 +27,7 @@ if (get_magic_quotes_gpc()) {
 
 // Define path to application directory
 defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(__DIR__ . '/../application'));
+    || define('APPLICATION_PATH', realpath(__DIR__ . '/../'));
 
 // Define application environment
 defined('APPLICATION_ENV')
@@ -35,7 +35,7 @@ defined('APPLICATION_ENV')
 
 // Ensure library is on the include path
 set_include_path(implode(PATH_SEPARATOR, array(
-    realpath(APPLICATION_PATH . '/../vendor/ZendFramework/library'),
+    realpath(__DIR__ . '/../vendor/ZendFramework/library'), #. '/../vendor/ZendFramework/library'),
     get_include_path(),
 )));
 
@@ -46,13 +46,13 @@ Zend\Loader\AutoloaderFactory::factory(array(
 ));
 
 // Load global application config
-$appConfig = include APPLICATION_PATH . '/configs/application.config.php';
+$appConfig = include __DIR__ . '/../configs/application.config.php';
 
 // Start Module Loader
 $listenerOptions = new Zend\Module\Listener\ListenerOptions($appConfig['module_listener_options']);
 $defaultListeners = new Zend\Module\Listener\DefaultListenerAggregate($listenerOptions);
-$defaultListeners->getConfigListener()->addConfigGlobPath(APPLICATION_PATH . '/configs/autoload/*.config.php');
-$defaultListeners->getConfigListener()->addConfigGlobPath(APPLICATION_PATH . '/configs/autoload/' . APPLICATION_ENV . '/*.config.php');
+$defaultListeners->getConfigListener()->addConfigGlobPath(__DIR__ . '/../configs/autoload/*.config.php');
+$defaultListeners->getConfigListener()->addConfigGlobPath(__DIR__ . '/../configs/autoload/' . APPLICATION_ENV . '/*.config.php');
 
 // Module settings
 $moduleManager = new Zend\Module\Manager($appConfig['modules']);

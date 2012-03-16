@@ -48,7 +48,7 @@ class Module implements AutoloaderProvider
     public function compileAssets($e) {
         foreach ($this->getModuleManager()->getModules() as $module) {
             if ($path = $this->pathTo($module)) {
-               $this->copyr($path, APPLICATION_PATH . '/../public/assets/' . $module);
+               $this->copyr($path, APPLICATION_PATH . '/public/assets/' . $module);
             }
         }
     }
