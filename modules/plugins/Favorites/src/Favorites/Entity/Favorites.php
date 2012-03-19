@@ -46,7 +46,7 @@ class Favorites extends StukiEntity
         return $this->user;
     }
 
-    public function setUser(\Entities\Users $value) {
+    public function setUser(\ZfcUserDoctrineORM\Entity\User $value) {
         $this->user = $value;
     }
 }

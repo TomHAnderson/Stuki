@@ -40,7 +40,7 @@ class Favorites extends Model {
     }
 
 
-    public function insert (\Entities\Entities $entity, \Entities\Users $user) {
+    public function insert (\Entities\Entities $entity, \ZfcUserDoctrineORM\Entity\User $user) {
 
         $favorite = new \Entities\Favorites();
         $favorite->setEntity($entity);
@@ -52,7 +52,7 @@ class Favorites extends Model {
         return $favorite;
     }
 
-    public function delete(\Entities\Entities $entity, \Entities\Users $user) {
+    public function delete(\Entities\Entities $entity, \ZfcUserDoctrineORM\Entity\User $user) {
         $favorite = $this->findOneBy(array(
             'entity' => $entity,
             'user' => $user

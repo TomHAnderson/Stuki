@@ -76,7 +76,7 @@ class Module implements AutoloaderProvider
             'Entities\Plugins',
             'Entities\Renderers',
             'Entities\Themes',
-            'Entities\Users',
+            '\ZfcUserDoctrineORM\Entity\User',
             'Entities\ValuesArray',
             'Entities\ValuesDatetime',
             'Entities\ValuesDecimal',

@@ -19,7 +19,7 @@ class Authentication extends StukiModel {
     }
 
     public function getEntity() {
-        $entity = $this->getEm()->getRepository('Entities\Users')->find($this->getIdentity());
+        $entity = $this->getEm()->getRepository('ZfcUserDoctrineORM\Entity\User')->find($this->getIdentity());
 
         if (!$entity) throw new \Stuki\Exception('Cannot return an entity when user is not authenticated');
 

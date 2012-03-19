@@ -54,7 +54,7 @@ class Users extends StukiModel {
 
 
     public function insert($values) {
-        $user = new \Entities\Users;
+        $user = new \ZfcUserDoctrineORM\Entity\User;
         foreach ($values as $key => $val) {
             $user->$key = $val;
         }

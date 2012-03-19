@@ -209,7 +209,7 @@ class Module
             $password = $this->generatePassword(8);
 
 /*
-            $user = new \Entities\Users;
+            $user = new \ZfcUserDoctrineORM\Entity\User;
             $user->setName('Administrator');
             $user->setUsername('administrator');
             $user->setEmail('root@localhost');
