@@ -57,16 +57,12 @@ class Module implements AutoloaderProvider
     public function checkSecurity($e) {
         $response = $e->getTarget()->getResponse();
         $locator = $e->getTarget()->getLocator();
-return true;
         $userService = $locator->get('zfcuser_user_service');
         $auth = $userService->getAuthService();
 
         // If we are not in the user module then check auth
-        return true;
         if (!$e->getTarget() instanceof \ZfcUser\Controller\UserController) {
             if (!$auth->hasIdentity()) {
-
-print_r($e->getTarget());die();
                 $e->getTarget()->plugin('redirect')->toUrl('/user');
                 $e->stopPropagation();
                 return $response;

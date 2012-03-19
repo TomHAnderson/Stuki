@@ -47,8 +47,8 @@ return array(
         'DefaultLayout',
 
         // Vendors - load last
-#        'ZfcBase',
-#        'ZfcUser',
-#        'ZfcUserDoctrineORM',
+        'ZfcBase',
+        'ZfcUser',
+        'ZfcUserDoctrineORM',
     ),
 );

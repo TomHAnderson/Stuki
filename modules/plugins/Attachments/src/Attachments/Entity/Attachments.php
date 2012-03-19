@@ -33,6 +33,7 @@ class Attachments extends Entity
 
     public function setEntity(\Entities\Entities $value) {
         $this->entity = $value;
+        return $this;
     }
 
 
@@ -47,6 +48,7 @@ class Attachments extends Entity
 
     public function setFilename($value) {
         $this->filename = $value;
+        return $this;
     }
 
 
@@ -64,8 +66,22 @@ class Attachments extends Entity
             throw new \Stuki\Exception('Uploaded at must be a date time object');
 
         $this->uploadedAt = $value;
+        return $this;
     }
 
+    /**
+     * @ORM\Column(name="md5", type="string")
+     */
+    protected $md5;
+
+    public function getMd5() {
+        return $this->md5;
+    }
+
+    public function setMd5($value) {
+        $this->md5 = $value;
+        return $this;
+    }
 
     /**
      * @ORM\Column(name="path", type="text")
@@ -78,6 +94,7 @@ class Attachments extends Entity
 
     public function setPath($value) {
         $this->path = $value;
+        return $this;
     }
 
 
@@ -94,5 +111,6 @@ class Attachments extends Entity
 
     public function setDescription($value) {
         $this->description = $value;
+        return $this;
     }
 }

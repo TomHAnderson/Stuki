@@ -68,6 +68,7 @@ class Attachments extends Model {
         $attachment->setDescription($values['description']);
         $attachment->setFilename($values['filename']);
         $attachment->setPath($values['path']);
+        $attachment->setMd5(md5($values['path']));
         $attachment->setUploadedAt(new \Datetime());
 
         $this->getEm()->persist($attachment);
@@ -84,6 +85,7 @@ class Attachments extends Model {
         $attachment->setPath($values['path']);
         $attachment->setDescription($values['description']);
         $attachment->setFileName($values['filename']);
+        $attachment->setMd5(md5($values['path']));
 
         $this->getEm()->flush();
 

@@ -7,12 +7,12 @@
  */
 $settings = array(
     /**
-     * PDO Connection DI alias
+     * Zend\Db\Adapter\Adapter DI Alias
      *
-     * Please specify the DI alias for the configured PDO instance that ZfcUser
-     * should use.
+     * Please specify the DI alias for the configured Zend\Db\Adapter\Adapter
+     * instance that ZfcUser should use.
      */
-    'zend_db_pdo' => false, #'CHANGEME',
+    'zend_db_adapter' => 'Zend\Db\Adapter\Adapter',
 
     /**
      * User Model Entity Class
@@ -20,7 +20,17 @@ $settings = array(
      * Name of Entity class to use. Useful for using your own entity class
      * instead of the default one provided. Default is ZfcUser\Model\UserBase.
      */
+    //'user_model_class' => 'ZfcUser\Model\UserBase',
     'user_model_class' => 'Entities\Users',
+
+    /**
+     * Enable registration
+     *
+     * Allows users to register through the website.
+     *
+     * Accepted values: boolean true or false
+     */
+    'enable_registration' => true,
 
     /**
      * UserMeta Model Entity Class
@@ -28,7 +38,9 @@ $settings = array(
      * Name of Entity class to use. Useful for using your own entity class
      * instead of the default one provided. Default is ZfcUser\Model\UserMetaBase.
      */
+    //'usermeta_model_class' => 'ZfcUser\Model\UserMetaBase',
     'usermeta_model_class' => 'Entities\UsersMeta',
+
 
     /**
      * Enable Username
@@ -38,7 +50,7 @@ $settings = array(
      *
      * Accepted values: boolean true or false
      */
-    'enable_username' => false,
+    //'enable_username' => false,
 
     /**
      * Enable Display Name
@@ -59,7 +71,7 @@ $settings = array(
      *
      * Accepted values: boolean true or false
      */
-    'require_activation' => false,
+    //'require_activation' => false,
 
     /**
      * Login After Registration
@@ -69,7 +81,7 @@ $settings = array(
      *
      * Accepted values: boolean true or false
      */
-    'login_after_registration' => false,
+    //'login_after_registration' => true,
 
     /**
      * Registration Form Captcha
@@ -79,7 +91,7 @@ $settings = array(
      * Zend\Text\Figlet CAPTCHA, but I have plans to make all Zend\Captcha
      * adapters work.)
      */
-    'registration_form_captcha' => false,
+    //'registration_form_captcha' => true,
 
     /**
      * Use Redirect Parameter If Present
@@ -88,7 +100,7 @@ $settings = array(
      *
      * Accepted values: boolean true or false
      */
-    'use_redirect_parameter_if_present' => false,
+    //'use_redirect_parameter_if_present' => true,
 
     /**
      * Password Security
@@ -111,7 +123,7 @@ $settings = array(
      *
      * Accepted values: 'blowfish', 'sha512', and 'sha256'
      */
-#    'password_hash_algorithm' => 'blowfish',
+    //'password_hash_algorithm' => 'blowfish',
 
     /**
      * Blowfish Cost
@@ -122,7 +134,7 @@ $settings = array(
      *
      * Accepted values: integer between 4 and 31
      */
-#    'blowfish_cost' => 10,
+    //'blowfish_cost' => 10,
 
     /**
      * SHA-512 Rounds
@@ -157,7 +169,7 @@ return array(
     'di' => array(
         'instance' => array(
             'alias' => array(
-                'zfcuser_pdo' => $settings['zend_db_pdo'],
+                'zfcuser_zend_db_adapter' => $settings['zend_db_adapter'],
             ),
         ),
     ),

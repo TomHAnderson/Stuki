@@ -18,4 +18,4 @@
 	url = git://github.com/toma42/ZfcUser
 [submodule "vendor/ZfcUserDoctrineORM"]
 	path = vendor/ZfcUserDoctrineORM
-	url = git://github.com/toma42/ZfcUser/ZfcUserDoctrineORM
+	url = git://github.com/toma42/ZfcUserDoctrineORM

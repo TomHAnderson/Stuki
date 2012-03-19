@@ -42,6 +42,7 @@ $settings = array(
     ),
 
     'namespace_aliases' => array(
+        'Entities',
     ),
 );
 
