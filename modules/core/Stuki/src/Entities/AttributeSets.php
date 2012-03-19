@@ -6,7 +6,7 @@
 namespace Entities;
 
 use Stuki\Entity\Entity,
-    ZfcUserDoctrineORM\Entity\User,
+    ZfcUserDoctrineORM\Entity\User as ZfcUser,
     Doctrine\ORM\Mapping AS ORM;
 
 /**
@@ -27,7 +27,7 @@ class AttributeSets extends Entity
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="\ZfcUserDoctrineORM\Entity\User")
      * @ORM\JoinColumn(name="ref_user", referencedColumnName="user_id")
      */
     protected $user;
@@ -36,7 +36,7 @@ class AttributeSets extends Entity
         return $this->user;
     }
 
-    public function setUser(Users $value) {
+    public function setUser(ZfcUser  $value) {
         $this->user = $value;
     }
 

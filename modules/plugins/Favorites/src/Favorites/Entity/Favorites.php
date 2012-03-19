@@ -1,15 +1,15 @@
 <?
 namespace Entities;
 
-use Stuki\Entity\Entity,
-    ZfcUserDoctrineORM\Entity\User,
+use Stuki\Entity\Entity as StukiEntity,
+    ZfcUserDoctrineORM\Entity as ZfcEntity,
     Doctrine\ORM\Mapping AS ORM;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="favorites")
  */
-class Favorites extends Entity
+class Favorites extends StukiEntity
 {
     /**
      * @ORM\Column(type="integer")
@@ -37,7 +37,7 @@ class Favorites extends Entity
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="\ZfcUserDoctrineORM\Entity\User")
      * @ORM\JoinColumn(name="ref_user", referencedColumnName="user_id")
      */
     protected $user;

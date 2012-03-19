@@ -38,7 +38,7 @@ class Entities extends Entity
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="\ZfcUserDoctrineORM\Entity\User")
      * @ORM\JoinColumn(name="ref_user", referencedColumnName="user_id")
      */
     protected $user;

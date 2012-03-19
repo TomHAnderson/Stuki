@@ -21,7 +21,7 @@ $settings = array(
      * instead of the default one provided. Default is ZfcUser\Model\UserBase.
      */
     //'user_model_class' => 'ZfcUser\Model\UserBase',
-    'user_model_class' => 'Entities\Users',
+#    'user_model_class' => 'Entities\Users',
 
     /**
      * Enable registration
@@ -39,7 +39,7 @@ $settings = array(
      * instead of the default one provided. Default is ZfcUser\Model\UserMetaBase.
      */
     //'usermeta_model_class' => 'ZfcUser\Model\UserMetaBase',
-    'usermeta_model_class' => 'Entities\UsersMeta',
+#    'usermeta_model_class' => 'Entities\UsersMeta',
 
 
     /**

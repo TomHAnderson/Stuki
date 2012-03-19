@@ -26,7 +26,7 @@ class Module
         $events->attach('Zend\Mvc\Application', 'route', array($this, 'checkIni'));
 
         $conn = $em->getConnection();
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT * FROM user";
         try {
 
             $stmt = $conn->query($sql);
