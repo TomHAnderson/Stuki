@@ -40,7 +40,7 @@ foreach ($attributeSets as $set) {
                 <?php echo $set->getTabs(); ?>
             </td>
             <td>
-                <?php echo $set->getUser()->getName(); ?>
+                <?php echo $set->getUser()->getDisplayName(); ?>
             </td>
             <td>
                 <a href="/attributesets/delete?attribute_set_key=<?php echo $set->getKey(); ?>">
