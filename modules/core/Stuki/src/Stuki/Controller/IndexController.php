@@ -11,14 +11,12 @@ class IndexController extends ActionController
         $modelAttributeSets = $this->getLocator()->get('modelAttributeSets');
         $modelEntities = $this->getLocator()->get('modelEntities');
 
-        $attributeSets = $modelAttributeSets->findAll();
         if (!$root = $modelEntities->getRoot()) {
             $root = new \Entities\Entities;
         }
 
         return array(
             'rootEntity' => $root->getKey(),
-            'attributeSets' => $attributeSets
         );
     }
 
@@ -34,6 +32,7 @@ class IndexController extends ActionController
 
         return array(
             'rootEntity' => $root->getKey(),
+            'attributeSets' => $attributeSets
         );
     }
 }

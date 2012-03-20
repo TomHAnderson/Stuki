@@ -9,14 +9,37 @@
         <li><a href="/plugins">Manage Plugins</a></li>
         <li><a href="/themes">Manage Themes</a></li>
 <br>
+<?php if (!$rootEntity) {  ?>
+        <li>
+            <form action="/entities/insert">
+                <select name="attribute_set_key">
+                    <?php
+                    foreach ($attributeSets as $att) {
+                    ?>
+                        <option value="<?php echo $att->getKey(); ?>">
+                            <?php echo $att->getName(); ?>
+                        </option>
 
-        <li><a href="/entities/view?entity_key=<?php echo $rootEntity; ?>">Entities</a></li>
+                    <?php
+                    }
+                    ?>
+                </select>
+                <input type="hidden" value="1" name="parent_key">
+                <input type="submit" value="Create Root Entity">
+            </form>
+        </li>
+<?php
+} else {
+?>
+        <li><a href="/entities/view?entity_key=<?php echo $rootEntity; ?>">Proceed to Entities</a></li>
         <li><a href="/search">Search Entities</a></li>
         <li><a href="/attachments/search">Search Attachments</a></li>
-
-<br>
         <li><a href="/stuql">StuQL: Stuki Query Language</a></li>
-<br>
+<?php
+}
+?>
+
+
 
 <!--
         <li><a href="/search/reindex">Rebuild Lucene Index</a></li>
