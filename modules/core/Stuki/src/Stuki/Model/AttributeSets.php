@@ -128,7 +128,7 @@ class AttributeSets extends Model {
         $query->getResult();
 
         // Insert new relations
-        foreach ($children as $ref_child) {
+        foreach ((array)$children as $ref_child) {
             $relation = new \Entities\AttributeSetRelations();
             $relation->setParent($attributeSet);
             $relation->setChild($this->find((int)$ref_child));
