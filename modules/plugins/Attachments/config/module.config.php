@@ -18,6 +18,8 @@ return array(
                 'parameters' => array(
                     'drivers' => array(
                         'attachments_annotation_driver' => array(
+                            'class'     => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                            'namespace' => 'Entities',
                             'paths' => array(
                                 APPLICATION_PATH . '/modules/plugins/Attachments/src/Attachments/Entity',
                             )
