@@ -28,15 +28,11 @@ return array(
                 )
             ),
 
-            'Zend\View\Renderer\PhpRenderer' => array(
+            'Zend\View\Resolver\TemplatePathStack' => array(
                 'parameters' => array(
-                    'resolver' => 'Zend\View\Resolver\AggregateResolver',
-                    'options' => array(
-                        'script_paths' => array(
-                            'attachments' => __DIR__ . '/../views',
-                        ),
+                    'paths' => array(
+                        'attachments' => __DIR__ . '/../views',
                     ),
-                    'broker' => 'Zend\View\HelperBroker',
                 ),
             ),
         ),
