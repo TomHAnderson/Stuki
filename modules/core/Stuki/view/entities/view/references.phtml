@@ -1,16 +1,8 @@
+<?php
+if (!sizeof($entity->getChildren())) return
+?>
 <div>
     <h3>References</h3>
-
-    <?php
-    /*
-    if ($entity != $entity->getParent()) {
-    ?>
-    <a href="/entities/view?entity_key=<?php echo $entity->getParent()->getKey(); ?>">Parent</a>
-    <?php
-    }
-    */
-    # parent is not needed with >> list above
-    ?>
 
     <?php
 
@@ -23,7 +15,7 @@
 
     foreach ($groupedChildren as $children) {
         $first = true;
-        $children = array_slice($children, 0, 25);
+        $children = array_slice($children, 0, 100);
         foreach ($children as $child) {
             if ($first) {
             ?>

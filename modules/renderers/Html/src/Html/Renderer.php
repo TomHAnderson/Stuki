@@ -16,7 +16,7 @@ class Renderer extends Textarea implements StukiRenderer
         // Get the view object
         $locator = \Zend\Registry::get('locator');
         $view = $locator->get('view');
-        $view->plugin('headScript')->appendFile('/assets/html/ckeditor/ckeditor.js');
+        $view->plugin('headScript')->appendFile('/assets/Html/ckeditor/ckeditor.js');
     }
 
 

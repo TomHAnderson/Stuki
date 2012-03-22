@@ -27,6 +27,11 @@ include 'view/entity.insert.phtml';
 
 <br>
 
+<a href="/entities/insert?parent_key=<?php echo $entity->getParent()->getKey(); ?>&attribute_set_key=<? echo $entity->getAttributeSet()->getKey(); ?>">
+    Add New to Parent
+    </a>
+    &nbsp;&nbsp;
+
 <a href="/entities/update?entity_key=<?php echo $entity->getKey(); ?>">
     Edit
 </a>
@@ -52,18 +57,14 @@ echo "Attribute Set: " . $entity->getAttributeSet()->getName();
 
 ?>
 
-<hr>
-
 <?php
 include 'view/details.phtml';
 ?>
 
-<hr>
-
 <?php
-include 'view/references.phtml';
+include 'view/plugins.phtml';
 ?>
 
 <?php
-include 'view/plugins.phtml';
+include 'view/references.phtml';
 ?>
