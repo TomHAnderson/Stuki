@@ -106,7 +106,7 @@ class AttributesController extends ActionController
         $modelAttributes->delete($attribute);
 
         // Redirect to /renderers
-        $this->plugin('redirect')->toUrl('/attributesets/view?attribute_set_key=' .
+        return $this->plugin('redirect')->toUrl('/attributesets/view?attribute_set_key=' .
             $attribute->getOriginalAttributeSet()->getKey());
     }
 
@@ -116,7 +116,7 @@ class AttributesController extends ActionController
         $modelAttributes->undelete($attribute);
 
         // Redirect to /renderers
-        $this->plugin('redirect')->toUrl('/attributesets/view?attribute_set_key=' .
+        return $this->plugin('redirect')->toUrl('/attributesets/view?attribute_set_key=' .
             $attribute->getAttributeSet()->getKey());
     }
 
