@@ -26,6 +26,10 @@ include 'view/entity.insert.phtml';
 ?>
 
 <br>
+<a href="/attributesets/view?attribute_set_key=<?php echo $entity->getAttributeSet()->getKey(); ?>">
+    Admin Attribute Set
+</a>
+&nbsp;&nbsp;
 
 <a href="/entities/insert?parent_key=<?php echo $entity->getParent()->getKey(); ?>&attribute_set_key=<? echo $entity->getAttributeSet()->getKey(); ?>">
     Add New to Parent
@@ -53,7 +57,7 @@ if (!sizeof($entity->getChildren())) {
 
 <?php
 
-echo "Attribute Set: " . $entity->getAttributeSet()->getName();
+echo "<h3>Attribute Set: " . $entity->getAttributeSet()->getName() . "</h3>";
 
 ?>
 

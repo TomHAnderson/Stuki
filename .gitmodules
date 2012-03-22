@@ -19,3 +19,6 @@
 [submodule "vendor/ZfcUserDoctrineORM"]
 	path = vendor/ZfcUserDoctrineORM
 	url = git://github.com/toma42/ZfcUserDoctrineORM
+[submodule "vendor/SoliantDoctrineQueue"]
+	path = vendor/SoliantDoctrineQueue
+	url = git://github.com/toma42/SoliantDoctrineQueue

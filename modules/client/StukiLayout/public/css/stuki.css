@@ -69,3 +69,7 @@ ul.form-errors ul.errors li {
 
 /* End Zend_Form */
 
+
+table {
+	width: 100%;
+}

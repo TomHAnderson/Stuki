@@ -19,7 +19,7 @@ if (!sizeof($entity->getChildren())) return
         foreach ($children as $child) {
             if ($first) {
             ?>
-                <table border="3">
+                <table class="reference">
                 <caption><?php echo $child->getAttributeSet()->getName(); ?></caption>
                 <tr>
                     <th>Title</th>
