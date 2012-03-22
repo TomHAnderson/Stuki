@@ -31,7 +31,6 @@ class Module implements AutoloaderProvider
 
         // Bootstrap the app
 #        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
-        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeQueue'));
         $events->attach('bootstrap', 'bootstrap', array($this, 'initializeRegistry'));
 
         // Add queue listener in lieu of a cron script
@@ -100,33 +99,6 @@ class Module implements AutoloaderProvider
                 )
             )
         );
-    }
-
-    /**
-     * There's a lot of work possible here such as using
-     * a Doctrine adapter and not using the registry but
-     * for the time being this will work.
-     *
-     * Doctrine entities exist for the queue and messages
-     * so the database can create itself.
-     */
-    public function initializeQueue($e) {
-
-        $application = $e->getParam('application');
-        $config = $e->getParam('config');
-        $params = $config->di->instance->orm_connection->parameters->params;
-
-#        $options['driverOptions'] = array(
-#            'host' => $params->host,
-#            'username' => $params->user,
-#            'password' => $params->password,
-#            'dbname' => $params->dbname,
-#            'type' => 'PdoMysql',
-#            'port' => $params->port
-#        );
-        $options['name'] = 'stuki';
-
-        \Zend\Registry::set('queueOptions', $options);
     }
 
     // Store registry values prn

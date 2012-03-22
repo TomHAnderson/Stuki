@@ -17,7 +17,7 @@ return array(
             'orm_driver_chain' => array(
                 'parameters' => array(
                     'drivers' => array(
-                        'application_annotation_driver' => array(
+                        'attachments_annotation_driver' => array(
                             'paths' => array(
                                 APPLICATION_PATH . '/modules/plugins/Attachments/src/Attachments/Entity',
                             )
@@ -31,7 +31,7 @@ return array(
                     'resolver' => 'Zend\View\Resolver\AggregateResolver',
                     'options' => array(
                         'script_paths' => array(
-                            'stuql' => __DIR__ . '/../views',
+                            'attachments' => __DIR__ . '/../views',
                         ),
                     ),
                     'broker' => 'Zend\View\HelperBroker',

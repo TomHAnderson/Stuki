@@ -45,6 +45,7 @@ return array(
 
         // Client Specific
         'DefaultLayout',
+	'StukiLayout',
 
         // Vendors - load last
         'ZfcBase',

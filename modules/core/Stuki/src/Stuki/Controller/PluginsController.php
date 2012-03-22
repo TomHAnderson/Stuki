@@ -33,7 +33,7 @@ class PluginsController extends ActionController
                 $modelPlugins->insert($values['alias'], $values['class']);
 
                 // Redirect
-                $this->plugin('redirect')->toUrl('/plugins');
+                return $this->plugin('redirect')->toUrl('/plugins');
 
             } catch (Exception\InvalidArgumentException $e) {
                 $form->getElement('class')->addError($e->getMessage());
@@ -53,7 +53,7 @@ class PluginsController extends ActionController
         $plugins->delete($plugin);
 
         // Redirect
-        $this->plugin('redirect')->toUrl('/plugins');
+        return $this->plugin('redirect')->toUrl('/plugins');
     }
 
     public function attributesetsAction() {
