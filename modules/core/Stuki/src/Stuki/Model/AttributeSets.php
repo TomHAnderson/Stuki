@@ -149,7 +149,7 @@ class AttributeSets extends Model {
         );
         $query->getResult();
 
-        foreach ($plugins as $plugin_key) {
+        foreach ((array)$plugins as $plugin_key) {
             $newPlugin = new \Entities\AttributeSetPlugins();
             $newPlugin->setAttributeSet($attributeSet);
             $newPlugin->setPlugin($modelPlugins->find((int)$plugin_key));

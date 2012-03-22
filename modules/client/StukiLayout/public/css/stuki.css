@@ -69,3 +69,14 @@ ul.form-errors ul.errors li {
 
 /* End Zend_Form */
 
+
+table.reference {
+	width: 100%;
+	border: solid;
+	border-width: 1px; 
+	margin-bottom: 5px;
+}
+
+table.reference tr { 
+	font-weight: normal; 
+}

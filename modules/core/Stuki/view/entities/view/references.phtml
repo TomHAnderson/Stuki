@@ -2,7 +2,7 @@
 if (!sizeof($entity->getChildren())) return
 ?>
 <div>
-    <h3>References</h3>
+    <h3>References by Attribute Set</h3>
 
     <?php
 
@@ -19,10 +19,11 @@ if (!sizeof($entity->getChildren())) return
         foreach ($children as $child) {
             if ($first) {
             ?>
-                <table border="3">
-                <caption><?php echo $child->getAttributeSet()->getName(); ?></caption>
+                <table class="reference">
                 <tr>
-                    <th>Title</th>
+		<th>
+                <?php echo $child->getAttributeSet()->getName(); ?>
+		</th>
                 <?php
                 foreach ($child->getValues() as $value) {
                     if ($value->getAttribute()->getIsIncludedInSummary()) {
@@ -44,6 +45,7 @@ if (!sizeof($entity->getChildren())) return
             // Always add title
             ?>
             <td>
+
                 <a href="/entities/view?entity_key=<?php echo $child->getKey(); ?>">
                     <?php echo $child->getTitle(); ?>
                 </a>

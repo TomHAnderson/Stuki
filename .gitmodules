@@ -22,6 +22,3 @@
 [submodule "modules/core/SoliantDoctrineQueue"]
 	path = modules/core/SoliantDoctrineQueue
 	url = git://github.com/toma42/SoliantDoctrineQueue
-[submodule "SoliantDoctrineQueue"]
-	path = SoliantDoctrineQueue
-	url = git://github.com/toma42/SoliantDoctrineQueue
