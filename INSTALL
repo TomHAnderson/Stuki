@@ -12,4 +12,14 @@ and add your database connection information.
 
 Create your database.
 
+**BUG WORK AROUND**
+* Until I can figure out why the doctrine code doesn't recoginze a class in scope, you must edit
+* ~/vendor/DoctrineORMModule/vendor/doctrine-orm/lib/vendor/doctrine-common/lib/Doctrine/Common/ClassLoader.php
+* Change the line which reads  
+*     if (class_exists($className, false) || ...
+* to
+*     if (class_exists($className)) || ...
+* END BUG WORK AROUND
+
+
 Open a web browser to the Stuki virtual host and follow instructions.
