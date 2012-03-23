@@ -22,3 +22,6 @@
 [submodule "vendor/SoliantAssetsCompiler"]
 	path = vendor/SoliantAssetsCompiler
 	url = git://github.com/toma42/SoliantAssetsCompiler
+[submodule "vendor/SoliantDoctrineQueue"]
+	path = vendor/SoliantDoctrineQueue
+	url = git://github.com/toma42/SoliantDoctrineQueue
