@@ -30,7 +30,8 @@ class Module implements AutoloaderProvider
         $events = StaticEventManager::getInstance();
 
         // Bootstrap the app
-#        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
+        $events->attach('bootstrap', 'bootstrap', array($this, 'wireJsonStrategy'), 100);
+        $events->attach('bootstrap', 'bootstrap', array($this, 'initView'), 100);
         $events->attach('bootstrap', 'bootstrap', array($this, 'initializeRegistry'));
 
         // Add queue listener in lieu of a cron script
@@ -136,31 +137,30 @@ class Module implements AutoloaderProvider
         return $viewListener;
     }
 
-    public function initializeView($e) {
-            $app = $e->getParam('application');
-            $locator = $app->getLocator();
-            $config = $e->getParam('config');
-            $view = $this->getView($app);
-            $viewListener = $this->getViewListener($view, $config);
-            $app->events()->attachAggregate($viewListener);
-            $events = StaticEventManager::getInstance();
-            $viewListener->registerStaticListeners($events, $locator);
+    public function wireJsonStrategy($e)
+    {
+        $app          = $e->getParam('application');
+        $locator      = $app->getLocator();
+        $view         = $locator->get('Zend\View\View');
+        $jsonStrategy = $locator->get('Zend\View\Strategy\JsonStrategy');
+
+        // Attach rendering and response strategies to view
+        $view->addRenderingStrategy(array($jsonStrategy, 'selectRenderer'), 10);
+        $view->addResponseStrategy(array($jsonStrategy,  'injectResponse'), 10);
     }
 
-    protected function getView($app) {
-        if ($this->view) {
-            return $this->view;
-        }
-
+    public function initView($e) {
+        $app = $e->getParam('application');
         $locator = $app->getLocator();
         $view = $locator->get('view');
 
         // Set up view helpers
         $view->plugin('url')->setRouter($app->getRouter());
         $view->doctype()->setDoctype('HTML5');
+#        $view->pageTitle(); //->setPageTiele('Stuki');
 
-        $basePath = $app->getRequest()->getBaseUrl();
-        $view->plugin('basePath')->setBasePath($basePath);
+#        $basePath = $app->getRequest()->getBaseUrl();
+#        $view->plugin('basePath')->setBasePath($basePath);
 
         $this->view = $view;
         return $view;

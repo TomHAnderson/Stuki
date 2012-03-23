@@ -12,34 +12,14 @@ return array(
                 'modelSearchIndex' => 'Search\Model\Index',
             ),
 
-            'Zend\View\HelperBroker' => array(
+            'Zend\View\Resolver\TemplatePathStack' => array(
                 'parameters' => array(
-                    'loader' => 'Zend\View\HelperLoader',
-                ),
-            ),
-
-            'Zend\View\Renderer\PhpRenderer' => array(
-                'parameters' => array(
-                    'resolver' => 'Zend\View\Resolver\AggregateResolver',
-                    'options' => array(
-                        'script_paths' => array(
-                            'search' => __DIR__ . '/../views',
-                        ),
+                    'paths' => array(
+                        'search' => __DIR__ . '/../views',
                     ),
-                    'broker' => 'Zend\View\HelperBroker',
                 ),
             ),
 
-
-
-
-            /*
-            'Stuki\Model' => array(
-                'parameters' => array(
-                    'em' => 'doctrine_em'
-                )
-            ),
-*/
         ),
     ),
 );

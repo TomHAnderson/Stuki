@@ -15,6 +15,8 @@ class Attachments implements Plugin {
         $modelAttachments = $locator->get('modelAttachments');
         $view = $locator->get('view');
 
+        $view->plugin('headScript')->prependFile('/assets/Attachments/js/upload.js');
+
         $view->setVars(
             array(
                 'attachments' => $modelAttachments->findBy(
