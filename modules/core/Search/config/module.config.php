@@ -23,7 +23,7 @@ return array(
                     'resolver' => 'Zend\View\Resolver\AggregateResolver',
                     'options' => array(
                         'script_paths' => array(
-                            'stuql' => __DIR__ . '/../views',
+                            'search' => __DIR__ . '/../views',
                         ),
                     ),
                     'broker' => 'Zend\View\HelperBroker',

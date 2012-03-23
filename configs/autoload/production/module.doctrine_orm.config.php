@@ -26,9 +26,9 @@ $settings = array(
         'driver'   => 'pdo_mysql',
         'host'     => 'localhost',
         'port'     => '3306',
-        'user'     => 'stukinet_root',
-        'password' => 'cq1ZFtTf',
-        'dbname'   => 'stukinet_stuki',
+        'user'     => 'root',
+        'password' => '',
+        'dbname'   => 'stuki2',
     ),
 
     'driver' => array(

@@ -22,7 +22,6 @@ return array(
         // Vendors - load first
         'DoctrineModule',
         'DoctrineORMModule',
-        'AssetsCompiler',
 
         // Stuki core
         'Stuki',
@@ -45,7 +44,10 @@ return array(
 
         // Client Specific
         'DefaultLayout',
-	'StukiLayout',
+    	'StukiLayout',
+
+        // Vendors - Soliant
+        'SoliantAssetsCompiler',
 
         // Vendors - load last
         'ZfcBase',
