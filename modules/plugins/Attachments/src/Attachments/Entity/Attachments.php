@@ -1,30 +1,17 @@
 <?
-namespace Entities;
+namespace Attachments\Entity;
 
 use Stuki\Entity\Entity,
     Doctrine\ORM\Mapping AS ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="attachments")
- */
 class Attachments extends Entity
 {
-    /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     */
     protected $attachment_key;
 
     public function getKey() {
         return $this->attachment_key;
     }
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Entities")
-     * @ORM\JoinColumn(name="ref_entity", referencedColumnName="entity_key")
-     */
     protected $entity;
 
     public function getEntity() {
@@ -36,10 +23,6 @@ class Attachments extends Entity
         return $this;
     }
 
-
-    /**
-     * @ORM\Column(type="text")
-     */
     protected $filename;
 
     public function getFilename() {
@@ -51,10 +34,6 @@ class Attachments extends Entity
         return $this;
     }
 
-
-    /**
-     * @ORM\Column(name="uploaded_at", type="datetime")
-     */
     protected $uploadedAt;
 
     public function getUploadedAt() {
@@ -69,9 +48,6 @@ class Attachments extends Entity
         return $this;
     }
 
-    /**
-     * @ORM\Column(name="md5", type="string")
-     */
     protected $md5;
 
     public function getMd5() {
@@ -83,9 +59,6 @@ class Attachments extends Entity
         return $this;
     }
 
-    /**
-     * @ORM\Column(name="path", type="text")
-     */
     protected $path;
 
     public function getPath() {
@@ -97,12 +70,6 @@ class Attachments extends Entity
         return $this;
     }
 
-
-    /**
-     * The description of the attachment
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
     protected $description = '';
 
     public function getDescription() {

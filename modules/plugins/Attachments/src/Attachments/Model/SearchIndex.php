@@ -45,7 +45,7 @@ class SearchIndex extends Model
     /**
      * Index or re-index an EAV entity
      */
-    public function index(\Entities\Attachments $attachment) {
+    public function index(\Attachments\Entity\Attachments $attachment) {
         $this->delete($attachment);
         $this->insert($attachment);
 
@@ -62,7 +62,7 @@ class SearchIndex extends Model
         return true;
     }
 
-    public function delete(\Entities\Attachments $attachment) {
+    public function delete(\Attachments\Entity\Attachments $attachment) {
         $index = $this->getIndex();
         $query = new Boolean();
 
@@ -87,7 +87,7 @@ class SearchIndex extends Model
         return true;
     }
 
-    public function insert(\Entities\Attachments $attachment) {
+    public function insert(\Attachments\Entity\Attachments $attachment) {
         if ($doc = $this->buildDocument($attachment)) {
             $this->getIndex()->addDocument($doc);
         }
@@ -110,7 +110,7 @@ class SearchIndex extends Model
     /**
      * Build a search document
      */
-    public function buildDocument(\Entities\Attachments $attachment) {
+    public function buildDocument(\Attachments\Entity\Attachments $attachment) {
 
         $index = $this->getIndex();
 

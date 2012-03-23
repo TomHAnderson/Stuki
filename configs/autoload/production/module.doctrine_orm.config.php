@@ -36,7 +36,6 @@ $settings = array(
         'namespace' => 'Entities',
         'paths'     => array(
             APPLICATION_PATH . '/modules/core/Stuki/src/Entities',
-            APPLICATION_PATH . '/modules/plugins/Attachments/src/Attachments/Entity',
             APPLICATION_PATH . '/modules/plugins/Favorites/src/Favorites/Entity',
         )
     ),

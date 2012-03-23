@@ -19,16 +19,12 @@ return array(
     ),
 
     'modules' => array(
-        // Vendors - load first
-        'DoctrineModule',
-        'DoctrineORMModule',
-
-
+        // Core
+        'Install',  # Comment out after installation if desired
         'Stuki',
         'StuQL',
 
         // Additional Core Stuki Modules
-        'Install',  # Comment out after installation
         'Search',
 #        'Auditing',
 
@@ -44,13 +40,15 @@ return array(
 
         // Client Specific
         'DefaultLayout',
-    	'StukiLayout',
+        'StukiLayout',
 
         // Vendors - Soliant
         'SoliantAssetsCompiler',
-	'SoliantDoctrineQueue',
+        'SoliantDoctrineQueue',
 
         // Vendors - load last
+        'DoctrineModule',
+        'DoctrineORMModule',
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',

@@ -26,8 +26,8 @@ class IndexController extends ActionController
         // Get file meta data
         if (!$filename = $this->request->headers()->get('x-file-name')->getFieldValue())
             throw new \Stuki\Exception('File name missing');
-        $filesize = $this->request->headers()->get('x-file-size')->getFieldValue();
-        $filetype = $this->request->headers()->get('x-file-type')->getFieldValue();
+#        $filesize = $this->request->headers()->get('x-file-size')->getFieldValue();
+#        $filetype = $this->request->headers()->get('x-file-type')->getFieldValue();
 
         // Decode the content
         $post = $this->request->post()->get('file-data');
@@ -57,16 +57,12 @@ class IndexController extends ActionController
             'description' => $description
         ));
 
-        // Disable layout
-        $this->getLocator()->get('view')->layout()->disableLayout();
-
+        // Should return a json object
         return array(
-            'json' => array(
-                'success' => true,
-                'code' => 0,
-                'message' => 'File Uploaded',
-                'originalFileName' => $filename
-            )
+            'success' => true,
+            'code' => 0,
+            'message' => 'File Uploaded',
+            'originalFileName' => $filename
         );
 
 

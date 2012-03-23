@@ -161,7 +161,7 @@ function uploadFile(file, totalFiles, entity_key, description) {
                     data: "description=" + encodeURIComponent(description) + "&file-data=" + encodeURIComponent(data.substring(base64StartIndex)), // Just send the Base64 content in POST body
                     processData: false, // No need to process
                     timeout: 60000, // 1 min timeout
-                    dataType: 'text', // Pure Base64 char data
+                    dataType: 'json', // Return JSON
                     beforeSend: function onBeforeSend(xhr, settings) {
                         // Put the important file data in headers
                         xhr.setRequestHeader('x-file-name', file.name);
@@ -182,7 +182,8 @@ function uploadFile(file, totalFiles, entity_key, description) {
                         }
                     },
                     success: function onUploadComplete(response) {
-                        response = $.parseJSON(response);
+
+                        response = response.content;
 
                         // If the parse operation failed (for whatever reason) bail
                         if(!response || typeof response == "undefined") {
@@ -237,9 +238,6 @@ function uploadFile(file, totalFiles, entity_key, description) {
                             var markup = new String();
                             markup += "<div class='resultBox'>";
                             markup += "  <div style='float: left;'>";
-                            markup += "    <span class='thumbnail-container'>";
-                            markup += "      <img width='150' src='/public/images/missing-thumbnail.png' />";
-                            markup += "    </span>";
                             markup += "  </div>";
                             markup += "  <div style='float: left; vertical-align: top;'>";
                             markup += "  </div>";

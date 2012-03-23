@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<orm-designer version="1.4.7.499">
+
+  <project code-name="Attachments" framework="Without Framework" name="Attachments" orm="Doctrine2" visSizeX="0" visSizeX2="499" visSizeY="0" visSizeY2="344">
+    <module-position name="Attachments" visPositionX="50" visPositionY="50"/>
+  </project>
+
+  <module import-format="Doctrine2Xml" import-path="..\config\xml\" name="Attachments" visSizeX="0" visSizeX2="399" visSizeY="0" visSizeY2="161">
+    <table name="Attachments" visPositionX="20" visPositionY="40" visSizeX="0" visSizeX2="133" visSizeY="0" visSizeY2="101">
+      <column auto-increment="true" name="attachment_key" primary="true" type="integer"/>
+      <column name="filename" type="text"/>
+      <column name="uploadedAt" type="datetime">
+        <orm-properties>
+          <attribute name="column">uploaded_at</attribute>
+        </orm-properties>
+      </column>
+      <column name="md5" type="string"/>
+      <column name="path" type="string"/>
+      <column name="description" type="text"/>
+      <orm-properties>
+        <attribute name="table">attachments</attribute>
+      </orm-properties>
+    </table>
+    <comment caption="You must modify the xml after creation" description="Because ORMDesigner needs multiple tables to join them the join between attachments and entities is added to the xml by hand" visBkColor="14745599" visPositionX="193" visPositionY="40" visSizeX="0" visSizeX2="186" visSizeY="0" visSizeY2="68" visTextColor="0"/>
+    <orm-properties>
+      <attribute name="namespace">Attachments\Entity</attribute>
+    </orm-properties>
+  </module>
+
+</orm-designer>

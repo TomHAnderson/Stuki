@@ -13,7 +13,7 @@ class Attachments extends Model {
      */
     public function find($attachment_key) {
         if (!is_int($attachment_key)) throw new \Stuki\Exception('Attachment key must be an integer');
-        return $this->getEm()->getRepository('Entities\Attachments')->find($attachment_key);
+        return $this->getEm()->getRepository('Attachments\Entity\Attachments')->find($attachment_key);
     }
 
     /**
@@ -21,7 +21,7 @@ class Attachments extends Model {
      */
     public function findAll($sort = null) {
         if (!$sort) $sort = array('filename' => 'asc');
-        return $this->getEm()->getRepository('Entities\Attachments')->findBy(array(), $sort);
+        return $this->getEm()->getRepository('Attachments\Entity\Attachments')->findBy(array(), $sort);
     }
 
     /**
@@ -29,14 +29,14 @@ class Attachments extends Model {
      */
     public function findBy($search, $sort = null) {
         if (!$sort) $sort = array('filename' => 'asc');
-        return $this->getEm()->getRepository('Entities\Attachments')->findBy($search, $sort);
+        return $this->getEm()->getRepository('Attachments\Entity\Attachments')->findBy($search, $sort);
     }
 
     /**
      * Retrieve one using an assoc array of params
      */
     public function findOneBy($search) {
-        return $this->getEm()->getRepository('Entities\Attachments')->findOneBy($search);
+        return $this->getEm()->getRepository('Attachments\Entity\Attachments')->findOneBy($search);
     }
 
     /**
@@ -62,7 +62,7 @@ class Attachments extends Model {
         if (!file_exists($values['path']))
             throw new \Stuki\Exception('Attachment file does not exist: ' . $values['path']);
 
-        $attachment = new \Entities\Attachments();
+        $attachment = new \Attachments\Entity\Attachments();
 
         $attachment->setEntity($entity);
         $attachment->setDescription($values['description']);
@@ -81,7 +81,7 @@ class Attachments extends Model {
     }
 
     // #FIXME
-    public function update(\Entities\Attachments $attachment, $values) {
+    public function update(\Attachments\Entity\Attachments $attachment, $values) {
         $attachment->setPath($values['path']);
         $attachment->setDescription($values['description']);
         $attachment->setFileName($values['filename']);
@@ -94,7 +94,7 @@ class Attachments extends Model {
         return $attachment;
     }
 
-    public function delete(\Entities\Attachments $attachment) {
+    public function delete(\Attachments\Entity\Attachments $attachment) {
 
         ## DO NOT UNLINK FILE - by keeping the original file we keep an audit
         ## trail for the attachment record thereby allowing file versioning
