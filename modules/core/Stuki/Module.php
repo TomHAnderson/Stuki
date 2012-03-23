@@ -78,7 +78,7 @@ class Module implements AutoloaderProvider
      */
     public function processQueue($e) {
         $modelQueue = $e->getTarget()->getLocator()->get('modelQueue');
-//        $modelQueue->process(25);
+        $modelQueue->process(25);
     }
 
     /**

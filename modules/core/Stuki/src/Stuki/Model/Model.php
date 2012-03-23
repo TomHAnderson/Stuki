@@ -7,7 +7,8 @@ use Doctrine\ORM\EntityManager,
     Zend\EventManager\EventManager,
     Zend\EventManager\StaticEventManager,
     Zend\Queue\Queue,
-    Stuki\Model\Authentication as ModelAuthentication;
+    Stuki\Model\Authentication as ModelAuthentication,
+    SoliantDoctrineQueue\Queue\Adapter\Doctrine as DoctrineAdapter;
 
 abstract class Model {
 
@@ -29,8 +30,13 @@ abstract class Model {
     }
 
     public function getQueue() {
-        //return new Queue('Db', \Zend\Registry::get('queueOptions'));
-        return new Queue('Null');
+	$doctrine = new DoctrineAdapter(array());
+	$doctrine->setEm($this->getLocator()->get('doctrine_em'));
+	$queue = new Queue($doctrine, array (
+		    'name' => 'stuki'
+	    ));
+
+	return $queue;
     }
 
 
