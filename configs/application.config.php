@@ -23,7 +23,7 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
 
-        // Stuki core
+
         'Stuki',
         'StuQL',
 
@@ -48,6 +48,7 @@ return array(
 
         // Vendors - Soliant
         'SoliantAssetsCompiler',
+	'SoliantDoctrineQueue',
 
         // Vendors - load last
         'ZfcBase',
