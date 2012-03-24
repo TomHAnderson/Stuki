@@ -33,7 +33,7 @@ if (!$entity->getValues()) return;
             <dt id="eav_<?php echo $value->getAttribute()->getKey(); ?>-label">
                 <? echo $value->getAttribute()->getLabel(); ?>
             </dt>
-            <dd width="85%" valign="top" id="eav_<?php $value->getKey(); ?>" valign="top" width="100%">
+            <dd id="eav_<?php $value->getKey(); ?>">
                 <?php
                     $renderer = $value->getAttribute()->getRenderer()->getClassObject('view');
                     if ($renderer instanceof \Stuki\Renderer\Parameters)

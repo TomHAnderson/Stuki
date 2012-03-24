@@ -1,5 +1,6 @@
-Location Tree:<br>
 <?
+// Echo the location tree
+
 $parentList[] = $entity;
 
 $last = $entity;
@@ -12,10 +13,9 @@ while ($parent = $last->getParent()) {
 $parentList = array_reverse($parentList);
 
 $count = 0;
+if ($parentList) echo '<ul class="breadcrumb">';
 foreach ($parentList as $p) {
-    echo '<a href="/entities/view?entity_key=' . $p->getKey() . '">' . $p->getTitle() . '</a>';
-    if (sizeof($parentList) != ++$count)
-        echo " >> ";
+    echo '<li><a href="/entities/view?entity_key=' . $p->getKey() . '">' . $p->getTitle() . '</a></li>';
 }
 
-?>
+if ($parentList) echo '</ul>';?>
