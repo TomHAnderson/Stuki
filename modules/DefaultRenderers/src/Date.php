@@ -46,6 +46,7 @@ class Date extends Text implements Renderer
 
     // Format for search
     public function formatSearchValue($value) {
+        if (!$value) return false;
         return $value->format('Ymd');
     }
 
