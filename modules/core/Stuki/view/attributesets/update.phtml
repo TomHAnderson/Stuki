@@ -8,7 +8,7 @@ $(function() {
     $(div).addClass('ui-widget');
     $(div).addClass('ui-widget-content');
     $(div).addClass('ui-corner-all');
-//    $('dl.zend_form').wrap(div);
+    $('dl.zend_form').wrap(div);
 
 
     ul = $('<ul id="item_tabs" class="subsection_tabs">');
@@ -47,6 +47,9 @@ $(function() {
     $('#tabs').prepend(dl_tab1);
     $('#tabs').prepend(ul);
 
+    $('dd#save-element').append($('<span>&nbsp;&nbsp;</span>'));
+    $('dd#save-element').append($('<a href="#" onClick="history.back(); return false;">Cancel</a>'));
+
     $('#tabs').tabs();
     $('input#name').focus();
 });
@@ -54,5 +57,3 @@ $(function() {
 </script>
 
 <?php echo $form->render(); ?>
-
-<a href="/attributesets">Return to Attribute Sets</a>

@@ -58,7 +58,6 @@ $(function() {
     $('dt#save-label').appendTo(dl_notab);
     $('dd#save-element').appendTo(dl_notab);
 
-
     $('dl.zend_form').remove();
     $('#tabs').prepend(dl_notab);
     $('#tabs').prepend(dl_tab4);
@@ -66,6 +65,9 @@ $(function() {
     $('#tabs').prepend(dl_tab2);
     $('#tabs').prepend(dl_tab1);
     $('#tabs').prepend(ul);
+
+    $('dd#save-element').append($('<span>&nbsp;&nbsp;</span>'));
+    $('dd#save-element').append($('<a href="#" onClick="history.back(); return false;">Cancel</a>'));
 
     $('#tabs').tabs();
     $('input#label').focus();
