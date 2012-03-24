@@ -17,8 +17,8 @@ class Update extends Form
         $label = $this->createElement('text', 'label');
         $label->addValidator('stringLength', false, array(1, 255))
               ->setRequired(true)
-              ->setLabel('Label')
-              ->setDescription('The label for this attribute');
+              ->setLabel('Name')
+              ->setDescription('The name for this attribute');
         $label->size = 60;
 
         // Code
@@ -27,7 +27,7 @@ class Update extends Form
              ->addFilter('StringToLower')
              ->addFilter('Alnum')
              ->setLabel('Code')
-             ->setDescription('A code to reference this attribute.  Will be automatically generated if left empty.')
+             ->setDescription('A code to reference this attribute.  Usually the same as name but in lower case with no spaces.')
         ;
 
 

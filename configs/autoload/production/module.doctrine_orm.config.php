@@ -35,8 +35,8 @@ $settings = array(
         'class'     => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
         'namespace' => 'Entities',
         'paths'     => array(
-            APPLICATION_PATH . '/modules/core/Stuki/src/Entities',
-            APPLICATION_PATH . '/modules/plugins/Favorites/src/Favorites/Entity',
+            APPLICATION_PATH . '/modules/Stuki/src/Entities',
+            APPLICATION_PATH . '/modules/Favorites/src/Favorites/Entity',
         )
     ),
 
