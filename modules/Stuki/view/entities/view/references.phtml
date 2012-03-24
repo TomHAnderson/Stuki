@@ -21,14 +21,14 @@ if (!sizeof($entity->getChildren())) return
             ?>
                 <table class="reference">
                 <tr>
-		<th>
+        <th>
                 <?php echo $child->getAttributeSet()->getName(); ?>
-		</th>
+        </th>
                 <?php
-                foreach ($child->getValues() as $value) {
-                    if ($value->getAttribute()->getIsIncludedInSummary()) {
+                foreach ($child->getAttributeSet()->getAttributes() as $att) {
+                    if ($att->getIsIncludedInSummary()) {
                     ?>
-                        <th><?php echo $value->getAttribute()->getLabel(); ?></th>
+                        <th><?php echo $att->getLabel(); ?></th>
                     <?php
                     }
                 }
