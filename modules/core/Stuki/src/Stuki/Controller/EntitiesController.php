@@ -63,7 +63,8 @@ class EntitiesController extends ActionController
         }
 
         return array(
-            'form' => $form
+            'form' => $form,
+	    'attributeSet' => $attributeSet
         );
     }
 

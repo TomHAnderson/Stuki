@@ -1,3 +1,61 @@
 <h2>Insert Entity</h2>
 
+<script>
+
+$(function() {
+
+// Delineate original 
+original = $('dl.zend_form');
+
+div = $('<div id="tabs">');
+$(div).addClass('ui-tabs');
+$(div).addClass('ui-widget');
+$(div).addClass('ui-widget-content');
+$(div).addClass('ui-corner-all');
+$('dl.zend_form').wrap(div);
+
+
+ul = $('<ul id="item_tabs" class="subsection_tabs">');
+<?php 
+$titles = $attributeSet->getTabTitles();
+for ($i = 1; $i <= $attributeSet->getTabs(); $i++) {
+?>
+    $(ul).append($('<li class="tab"><a href="#tab<?php echo $i;?>"><?php echo ($titles[$i]) ?: 'Tab ' . $i; ?></a></li>'));
+
+    tab = $('<dl class="zend_form" id="tab<?php echo $i; ?>">');
+
+<?php
+    foreach ($attributeSet->getAttributes() as $att) {
+        if ($att->getTab() == $i) {
+	?>
+            $('dt#eav_<?php echo $att->getKey(); ?>-label').appendTo(tab);
+            $('dd#eav_<?php echo $att->getKey(); ?>-element').appendTo(tab);
+	<?php
+	}
+?>
+<?php
+    }
+?>
+    $('#tabs').append(tab);
+<?php
+}
+?>
+
+dl_notab = $('<dl class="" id="notab">');
+$('dt#save-label').appendTo(dl_notab);
+$('dd#save-element').appendTo(dl_notab);
+
+$('#tabs').append(dl_notab);
+
+$('#tabs').prepend(ul);
+$('dd#save-element').append($('<span>&nbsp;&nbsp;</span>'));
+$('dd#save-element').append($('<a href="#" onClick="history.back(); return false;">cancel</a>'));
+
+$('#tabs').tabs();
+$(original).remove();
+
+});
+
+</script>
+
 <?php echo $form->render(); ?>
