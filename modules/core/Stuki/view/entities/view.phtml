@@ -1,10 +1,6 @@
- <h2>Entity</h2>
-
 <?php
 include 'view/location.tree.phtml';
 ?>
-
-<br><br>
 
 <script>
 $(function() {
@@ -26,9 +22,6 @@ include 'view/entity.insert.phtml';
 ?>
 
 <br>
-<a href="/attributesets/view?attribute_set_key=<?php echo $entity->getAttributeSet()->getKey(); ?>">
-    Admin Attribute Set
-</a>
 &nbsp;&nbsp;
 
 <a href="/entities/insert?parent_key=<?php echo $entity->getParent()->getKey(); ?>&attribute_set_key=<? echo $entity->getAttributeSet()->getKey(); ?>">
@@ -50,20 +43,23 @@ if (!sizeof($entity->getChildren())) {
 }
 ?>
 
-<h1 style="text-align: center;" >
-    <?php $entity->getTitle(); ?>
-</h1>
+<div style="text-align: center; font-size:2em"">
+    <?= $entity->getTitle(); ?>
+</div>
+
+<div style="text-align: center; spacing:0px;">Attribute Set: 
+        <a href="/attributesets/view?attribute_set_key=<?php 
+		echo $entity->getAttributeSet()->getKey(); ?>">
+		<?php echo $entity->getAttributeSet()->getName();?>
+	</a>
+</div>
 
 
-<?php
-
-echo "<h3>Attribute Set: " . $entity->getAttributeSet()->getName() . "</h3>";
-
-?>
 
 <?php
 include 'view/details.phtml';
 ?>
+
 
 <?php
 include 'view/plugins.phtml';

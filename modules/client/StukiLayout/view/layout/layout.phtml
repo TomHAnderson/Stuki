@@ -66,23 +66,19 @@ echo $this->headTitle();
     <body>
         <div class="page">
             <div class="header">
-                <a href="/" id="logo"><img src="/assets/StukiLayout/images/stuki.png" alt=""/></a>
+                <a href="/entities/view?entity_key=1" id="logo"><img src="/assets/StukiLayout/images/stuki.png" alt=""/></a>
 
-                <form method="get" action="/search">
+                <form style="float:right;" method="get" action="/search">
                     <input type="text" name="terms">
                     <input type="submit" value="Search">
-                </form>
-
+		<br>
                 <ul>
-                    <li class="selected"><a href="/entities/view?entity_key=1">Entities</a></li>
+                    <li class="selected"><a href="/entities/view?entity_key=1">Home</a></li>
                     <li class="selected"><a href="/index/admin">Admin</a></li>
 
-<!--
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="services.html">Services</a></li>
--->
                 </ul>
+                </form>
+
             </div>
             <div class="body">
                 <?php echo $this->get('content'); ?>
