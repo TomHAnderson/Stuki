@@ -17,8 +17,8 @@ class Insert extends Form
         $label = $this->createElement('text', 'label');
         $label->addValidator('stringLength', false, array(1, 255))
               ->setRequired(true)
-              ->setLabel('Label')
-              ->setDescription('The label for this attribute');
+              ->setLabel('Name')
+              ->setDescription('The name for this attribute');
         $label->size = 60;
 
         // Code
@@ -28,16 +28,17 @@ class Insert extends Form
              ->addFilter('Alnum')
              ->setLabel('Code')
              ->setRequired(true)
-             ->setDescription('A code to reference this attribute.')
+             ->setDescription('A code to reference this attribute. Usually the same as name but in lower case with no spaces.')
         ;
 
 
         // Type of handler to use when displaying and editing this code
         $renderer = $this->createElement('select', 'ref_renderer');
+        $renderer->size = 10;
         $renderer->setRequired(true)
                  ->setLabel('Renderer')
                  ->setOptions(array(
-                     'onChange' => 'return showRenderer()',
+//                     'onChange' => 'return showRenderer()',
                      'id' => 'renderer'
                  ))
                  ->setDescription('What kind of form field should this be?');

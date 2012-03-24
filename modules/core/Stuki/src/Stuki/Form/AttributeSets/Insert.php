@@ -14,7 +14,7 @@ class Insert extends Form
         $name = $this->createElement('text', 'name');
         $name->addValidator('stringLength', false, array(1, 255))
                  ->setRequired(true)
-                 ->setLabel('Attribute Set Name')
+                 ->setLabel('Name')
                  ->setDescription('A name to describes this attribute set.');
         $name->size = 55;
 
@@ -25,7 +25,7 @@ class Insert extends Form
              ->addFilter('Alnum')
              ->setLabel('Code')
              ->setRequired(true)
-             ->setDescription('A code to reference this attribute set.')
+             ->setDescription('A code to reference this attribute set. Usually the same as name but in lower case with no spaces.')
         ;
 
         // Description
