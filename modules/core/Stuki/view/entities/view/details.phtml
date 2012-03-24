@@ -21,11 +21,6 @@ if (!$entity->getValues()) return;
     ?>
         <dl class="entity_view" id="tab<?php echo $tab; ?>">
         <?php
-        /**
-         * This DL section of code should be in it's own file
-         */
-
-
         foreach ($entity->getValues() as $value) {
             if ($value->getAttribute()->getTab() != $tab) continue;
         ?>
