@@ -7,6 +7,8 @@ return array(
 
         'instance' => array(
             'alias' => array(
+                // Controllers
+                'stukilayout' => 'StukiLayout\Controller\IndexController',
             ),
 
             'Zend\View\Resolver\AggregateResolver' => array(

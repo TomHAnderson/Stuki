@@ -231,9 +231,6 @@ class IndexController extends ActionController
         readfile($path);
         die();
 
-        // Disable layout
-        $this->getLocator()->get('view')->layout()->disableLayout();
-
         return array();
     }
 

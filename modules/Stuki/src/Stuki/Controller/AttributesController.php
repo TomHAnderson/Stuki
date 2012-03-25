@@ -21,6 +21,7 @@ class AttributesController extends ActionController
 
 
         $attribute_set_key = $request->query()->get('attribute_set_key');
+        $attributeSet = $modelAttributeSets->find((int)$attribute_set_key);
 
         // Add renderers to form
         // This is done here so we have fine grained control over which renderers are displayed.
@@ -30,15 +31,15 @@ class AttributesController extends ActionController
             $elementRenderer->addMultiOption($renderer->getKey(), $renderer->getAlias());
         }
 
-
         // If the post is valid, continue
         if ($request->isPost() and $form->isValid($request->post()->toArray())) {
-            $attributeSet = $modelAttributeSets->find((int)$attribute_set_key);
             $modelAttributes->insert($attributeSet, $form->getValues());
 
             // Redirect to /renderers
             return $this->plugin('redirect')->toUrl('/attributesets/view?attribute_set_key=' . $attribute_set_key);
         }
+
+        $this->events()->trigger('insert', $this, array('attributeSet' => $attributeSet));
 
         return array(
             'form' => $form,
@@ -93,6 +94,8 @@ class AttributesController extends ActionController
                 'isIncludedInSummary' => $attribute->getIsIncludedInSummary()
             ));
         }
+
+        $this->events()->trigger('update', $this, array('attribute' => $attribute));
 
         return array(
             'form' => $form,

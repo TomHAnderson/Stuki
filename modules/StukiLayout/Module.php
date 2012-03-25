@@ -30,7 +30,15 @@ class Module implements AutoloaderProvider
 
         // Add view listener
         $events->attach('Zend\Mvc\Application', 'dispatch', array($this, 'initLayout'));
-        $events->attach('Zend\Mvc\Application', 'dispatch', array($this, 'addTabbedForms'));
+
+        $events->attach('Stuki\Controller\AttributeSetsController', 'insert', array($this, 'addTabbedForms'));
+        $events->attach('Stuki\Controller\AttributeSetsController', 'update', array($this, 'addTabbedForms'));
+
+        $events->attach('Stuki\Controller\AttributesController', 'insert', array($this, 'addTabbedForms'));
+        $events->attach('Stuki\Controller\AttributesController', 'update', array($this, 'addTabbedForms'));
+
+        $events->attach('Stuki\Controller\EntitiesController', 'insert', array($this, 'addTabbedForms'));
+        $events->attach('Stuki\Controller\EntitiesController', 'update', array($this, 'addTabbedForms'));
     }
 
     public static function getConfig()
@@ -62,9 +70,10 @@ class Module implements AutoloaderProvider
         $view->plugin('headScript')->prependFile('/assets/StukiLayout/js/jquery-ui.min.js');
         $view->plugin('headScript')->prependFile('/assets/StukiLayout/js/jquery.min.js');
         $view->plugin('headScript')->appendFile('/assets/StukiLayout/js/googleAnalytics.js');
-        $view->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/style.css');
         $view->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/stuki.css');
-        $view->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/jquery-ui/themes/base/jquery.ui.all.css');
+        $view->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/style.css');
+//        $view->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/jquery-ui/themes/base/jquery.ui.all.css');
+        $view->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/jquery-ui/themes/smoothness/jquery.ui.css');
     }
 
     /**
@@ -72,37 +81,36 @@ class Module implements AutoloaderProvider
      * them to be tabbed
      */
     public function addTabbedForms($e) {
-        $response = $e->getTarget()->getResponse();
-        $request = $e->getTarget()->getRequest();
+
         $locator = $e->getTarget()->getLocator();
-        $route = $e->getRouteMatch();
 
-        $controller = $route->getParam('controller');
-        $action = $route->getParam('action');
-
-        switch ($controller) {
-            case 'attributesets':
-                switch ($action) {
-                    case 'insert':
-                    case 'update':
-                        $locator->get('view')->plugin('headScript')->appendFile('/assets/StukiLayout/js/AttributeSets/tabbedform.js');
-                        break;
-                    default:
-                        break;
-                }
+        switch (get_class($e->getTarget())) {
+            case 'Stuki\Controller\AttributeSetsController':
+                $locator->get('view')->plugin('headScript')->appendFile('/assets/StukiLayout/js/AttributeSets/tabbedform.js');
                 break;
-            case 'attributes':
-                switch ($action) {
-                    case 'insert':
-                    case 'update':
-                        $locator->get('view')->plugin('headScript')->appendFile('/assets/StukiLayout/js/Attributes/tabbedform.js');
-                        break;
-                    default:
-                        break;
+            case 'Stuki\Controller\AttributesController':
+                $locator->get('view')->plugin('headScript')->appendFile('/assets/StukiLayout/js/Attributes/tabbedform.js');
+                break;
+            case 'Stuki\Controller\EntitiesController':
+                $attributeSet = $e->getParam('attributeSet');
+                $entity = $e->getParam('entity');
+
+                if ($entity) {
+                     $key = $entity->getKey();
+                    $locator->get('view')->plugin('headScript')->appendFile('/stukilayout/entityupdatejs?entity_key=' . $key);
+                } else {
+                    if ($attributeSet) $key = $attributeSet->getKey();
+                    $locator->get('view')->plugin('headScript')->appendFile('/stukilayout/entityinsertjs?attribute_set_key=' . $key);
+
                 }
+
+                break;
             default:
                 break;
         }
+
+
+        return array();
     }
 }
 

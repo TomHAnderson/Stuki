@@ -16,12 +16,6 @@ class EntitiesController extends ActionController
 
         $modelEntities = $this->getLocator()->get('modelEntities');
 
-        // Set view theme
-#       FIXME: themes
-#        $viewModel = new ViewModel();
-#        $viewModel->setTemplate('view/arbitrary.phtml');
-#        return $viewModel;
-
         return array(
             'entity' => $modelEntities->find($request->query()->get('entity_key'))
         );
@@ -62,9 +56,11 @@ class EntitiesController extends ActionController
             return $this->plugin('redirect')->toUrl('/entities/view?entity_key=' . $entity->getKey());
         }
 
+        $this->events()->trigger('insert', $this, array('attributeSet' => $attributeSet));
+
         return array(
             'form' => $form,
-        'attributeSet' => $attributeSet
+            'attributeSet' => $attributeSet
         );
     }
 
@@ -101,6 +97,8 @@ class EntitiesController extends ActionController
                 if ($value) $form->setDefault('eav_' . $a->getKey(), $element->formatEditValue($value->getValue()));
             }
         }
+
+        $this->events()->trigger('insert', $this, array('entity' => $entity));
 
         return array(
             'form' => $form,

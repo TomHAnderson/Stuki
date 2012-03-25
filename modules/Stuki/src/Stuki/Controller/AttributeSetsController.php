@@ -41,6 +41,8 @@ class AttributeSetsController extends ActionController
             ));
         }
 
+        $this->events()->trigger('insert', $this, array());
+
         return array(
             'form' => $form
         );
@@ -78,6 +80,8 @@ class AttributeSetsController extends ActionController
                 'tabs' => $attributeSet->getTabs()
             ));
         }
+
+        $this->events()->trigger('update', $this, array('attributeSet' => $attributeSet));
 
         return array(
             'form' => $form

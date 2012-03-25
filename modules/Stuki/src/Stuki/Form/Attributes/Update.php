@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Add a new attribute to an attribute set
  */
@@ -40,6 +40,7 @@ class Update extends Form
                      'id' => 'renderer'
                  ))
                  ->setDescription('What kind of form field should this be?');
+        $renderer->size = 10;
 
         // Desc
         $description = $this->createElement('textarea', 'description');
