@@ -4,7 +4,7 @@
 
 $(function() {
 
-// Delineate original 
+// Delineate original
 original = $('dl.zend_form');
 
 div = $('<div id="tabs">');
@@ -16,7 +16,7 @@ $('dl.zend_form').wrap(div);
 
 
 ul = $('<ul id="item_tabs" class="subsection_tabs">');
-<?php 
+<?php
 $titles = $attributeSet->getTabTitles();
 for ($i = 1; $i <= $attributeSet->getTabs(); $i++) {
 ?>
@@ -27,11 +27,11 @@ for ($i = 1; $i <= $attributeSet->getTabs(); $i++) {
 <?php
     foreach ($attributeSet->getAttributes() as $att) {
         if ($att->getTab() == $i) {
-	?>
+    ?>
             $('dt#eav_<?php echo $att->getKey(); ?>-label').appendTo(tab);
             $('dd#eav_<?php echo $att->getKey(); ?>-element').appendTo(tab);
-	<?php
-	}
+    <?php
+    }
 ?>
 <?php
     }

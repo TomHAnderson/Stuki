@@ -29,7 +29,44 @@ class Module implements AutoloaderProvider
         $events = StaticEventManager::getInstance();
 
         // Add view listener
-        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
+#        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
+        $events->attach('Zend\Mvc\Application', 'dispatch', array($this, 'addTabbedForms'));
+
+
+    }
+
+    public function addTabbedForms($e) {
+        $response = $e->getTarget()->getResponse();
+        $request = $e->getTarget()->getRequest();
+        $locator = $e->getTarget()->getLocator();
+        $route = $e->getRouteMatch();
+
+        $controller = $route->getParam('controller');
+        $action = $route->getParam('action');
+
+        switch ($controller) {
+            case 'attributesets':
+                switch ($action) {
+                    case 'insert':
+                    case 'update':
+                        $locator->get('view')->plugin('headScript')->prependFile('/assets/StukiLayout/js/AttributeSets/tabbedform.js');
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 'attributes':
+                switch ($action) {
+                    case 'insert':
+                    case 'update':
+                        $locator->get('view')->plugin('headScript')->prependFile('/assets/StukiLayout/js/Attributes/tabbedform.js');
+                        break;
+                    default:
+                        break;
+                }
+            default:
+                break;
+        }
     }
 
     public static function getConfig()
@@ -54,43 +91,6 @@ class Module implements AutoloaderProvider
                 )
             )
         );
-    }
-
-    public function initializeView($e)
-    {
-        $app          = $e->getParam('application');
-        $locator      = $app->getLocator();
-        $config       = $e->getParam('config');
-        $view         = $this->getView($app);
-//        $viewListener = $this->getViewListener($view, $config);
-//        $app->events()->attachAggregate($viewListener);
-//        $events       = StaticEventManager::getInstance();
-//      $viewListener->registerStaticListeners($events, $locator);
-    }
-
-
-    protected function getView($app)
-    {
-        if ($this->view) {
-            return $this->view;
-        }
-
-        $di     = $app->getLocator();
-        $view   = $di->get('view');
-//      $url    = $view->plugin('url');
-//      $url->setRouter($app->getRouter());
-//      $view->plugin('headTitle')->setSeparator(' - ')
-//      ->setAutoEscape(false)
-//      ->append('ZF2 Skeleton Application');
-//      $basePath = $app->getRequest()->detectBaseUrl();
-//      $view->plugin('headLink')->appendStylesheet($basePath . 'css/bootstrap.min.css');
-//      $html5js = '<script src="' . $basePath . 'js/html5.js"></script>';
-//      $view->plugin('placeHolder')->__invoke('html5js')->set($html5js);
-//      $favicon = '<link rel="shortcut icon" href="' . $basePath . 'images/favicon.ico">';
-//      $view->plugin('placeHolder')->__invoke('favicon')->set($favicon);
-
-        $this->view = $view;
-        return $view;
     }
 
 }
