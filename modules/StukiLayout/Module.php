@@ -29,44 +29,8 @@ class Module implements AutoloaderProvider
         $events = StaticEventManager::getInstance();
 
         // Add view listener
-#        $events->attach('bootstrap', 'bootstrap', array($this, 'initializeView'), 100);
+        $events->attach('Zend\Mvc\Application', 'dispatch', array($this, 'initLayout'));
         $events->attach('Zend\Mvc\Application', 'dispatch', array($this, 'addTabbedForms'));
-
-
-    }
-
-    public function addTabbedForms($e) {
-        $response = $e->getTarget()->getResponse();
-        $request = $e->getTarget()->getRequest();
-        $locator = $e->getTarget()->getLocator();
-        $route = $e->getRouteMatch();
-
-        $controller = $route->getParam('controller');
-        $action = $route->getParam('action');
-
-        switch ($controller) {
-            case 'attributesets':
-                switch ($action) {
-                    case 'insert':
-                    case 'update':
-                        $locator->get('view')->plugin('headScript')->prependFile('/assets/StukiLayout/js/AttributeSets/tabbedform.js');
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 'attributes':
-                switch ($action) {
-                    case 'insert':
-                    case 'update':
-                        $locator->get('view')->plugin('headScript')->prependFile('/assets/StukiLayout/js/Attributes/tabbedform.js');
-                        break;
-                    default:
-                        break;
-                }
-            default:
-                break;
-        }
     }
 
     public static function getConfig()
@@ -93,5 +57,52 @@ class Module implements AutoloaderProvider
         );
     }
 
+    public function initLayout($e) {
+        $view = $e->getTarget()->getLocator()->get('view');
+        $view->plugin('headScript')->prependFile('/assets/StukiLayout/js/jquery-ui.min.js');
+        $view->plugin('headScript')->prependFile('/assets/StukiLayout/js/jquery.min.js');
+        $view->plugin('headScript')->appendFile('/assets/StukiLayout/js/googleAnalytics.js');
+        $view->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/style.css');
+        $view->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/stuki.css');
+        $view->plugin('headLink')->appendStylesheet('/assets/StukiLayout/css/jquery-ui/themes/base/jquery.ui.all.css');
+    }
+
+    /**
+     * Add javascript to forms which will modify
+     * them to be tabbed
+     */
+    public function addTabbedForms($e) {
+        $response = $e->getTarget()->getResponse();
+        $request = $e->getTarget()->getRequest();
+        $locator = $e->getTarget()->getLocator();
+        $route = $e->getRouteMatch();
+
+        $controller = $route->getParam('controller');
+        $action = $route->getParam('action');
+
+        switch ($controller) {
+            case 'attributesets':
+                switch ($action) {
+                    case 'insert':
+                    case 'update':
+                        $locator->get('view')->plugin('headScript')->appendFile('/assets/StukiLayout/js/AttributeSets/tabbedform.js');
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 'attributes':
+                switch ($action) {
+                    case 'insert':
+                    case 'update':
+                        $locator->get('view')->plugin('headScript')->appendFile('/assets/StukiLayout/js/Attributes/tabbedform.js');
+                        break;
+                    default:
+                        break;
+                }
+            default:
+                break;
+        }
+    }
 }
 

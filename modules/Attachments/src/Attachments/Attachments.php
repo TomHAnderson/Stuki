@@ -15,7 +15,7 @@ class Attachments implements Plugin {
         $modelAttachments = $locator->get('modelAttachments');
         $view = $locator->get('view');
 
-        $view->plugin('headScript')->prependFile('/assets/Attachments/js/upload.js');
+        $view->plugin('headScript')->appendFile('/assets/Attachments/js/upload.js');
         $view->plugin('headLink')->appendStylesheet('/assets/Attachments/css/upload.css');
 
         $view->setVars(
