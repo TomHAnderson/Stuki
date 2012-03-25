@@ -5,7 +5,7 @@ namespace DefaultRenderers;
 use Stuki\Renderer\Renderer as Renderer,
     Stuki\Renderer\Select as RendererSelect,
     Stuki\Renderer\Parameters as RendererParameters,
-    DefaultRenderers\EntitySelectList\Form as ParametersForm,
+    DefaultRenderers\Forms\EntitySelectList\Form as ParametersForm,
     Zend\Form\Element\Select as ElementSelect;
 
 class EntitySelectList extends ElementSelect implements Renderer, RendererParameters, RendererSelect
