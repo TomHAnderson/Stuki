@@ -1,0 +1,47 @@
+<?php
+if (!$entity->getValues()) return;
+?>
+<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="tabs">
+    <?php
+    if ($entity->getAttributeSet()->getTabs() > 1)  {
+    ?>
+        <ul id="item_tabs" class="subsection_tabs">
+        <?php
+        foreach ($entity->getAttributeSet()->getTabTitles() as $tab => $label) {
+        ?>
+            <li class="tab"><a href="#tab<?php echo $tab; ?>"><?php echo $label; ?></a></li>
+        <?php
+        }
+        ?>
+        </ul>
+    <?php
+    }
+
+    for ($tab = 1; $tab <= $entity->getAttributeSet()->getTabs(); $tab ++) {
+    ?>
+        <dl class="entity_view" id="tab<?php echo $tab; ?>">
+        <?php
+        foreach ($entity->getValues() as $value) {
+            if ($value->getAttribute()->getTab() != $tab) continue;
+        ?>
+
+            <dt id="eav_<?php echo $value->getAttribute()->getKey(); ?>-label">
+                <? echo $value->getAttribute()->getLabel(); ?>
+            </dt>
+            <dd id="eav_<?php $value->getKey(); ?>">
+                <?php
+                    $renderer = $value->getAttribute()->getRenderer()->getClassObject('view');
+                    if ($renderer instanceof \Stuki\Renderer\Parameters)
+                        $renderer->setParameters($value->getAttribute()->getParameters());
+
+                    echo $renderer->formatValue($value->getValue());
+                ?>
+            </dd>
+        <?php
+        }
+        ?>
+        </dl>
+    <?php
+    }
+    ?>
+</div>

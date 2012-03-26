@@ -1,0 +1,21 @@
+<?
+// Echo the location tree
+
+$parentList[] = $entity;
+
+$last = $entity;
+while ($parent = $last->getParent()) {
+    if ($parent == $last) break;
+    $parentList[] = $parent;
+    $last = $parent;
+}
+
+$parentList = array_reverse($parentList);
+
+$count = 0;
+if ($parentList) echo '<ul class="breadcrumb">';
+foreach ($parentList as $p) {
+    echo '<li><a href="/entities/view?entity_key=' . $p->getKey() . '">' . $p->getTitle() . '</a></li>';
+}
+
+if ($parentList) echo '</ul>';?>

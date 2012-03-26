@@ -1,0 +1,70 @@
+<?php
+include 'common/location.tree.phtml';
+?>
+
+<script>
+$(function() {
+    $('div#tabs').tabs();
+});
+</script>
+
+<style>
+
+form.addAttributeSet {
+    border: solid;
+    width: 30%;
+}
+
+</style>
+
+<?php
+include 'view/entity.insert.phtml';
+?>
+
+<br>
+&nbsp;&nbsp;
+
+<a href="/entities/insert?parent_key=<?php echo $entity->getParent()->getKey(); ?>&attribute_set_key=<? echo $entity->getAttributeSet()->getKey(); ?>">
+    Add New to Parent
+    </a>
+    &nbsp;&nbsp;
+
+<a href="/entities/update?entity_key=<?php echo $entity->getKey(); ?>">
+    Edit
+</a>
+&nbsp;&nbsp;
+<?php
+if (!sizeof($entity->getChildren())) {
+?>
+    <a href="/entities/delete?entity_key=<?php echo $entity->getKey(); ?>">
+        Delete
+    </a>
+<?php
+}
+?>
+
+<div style="text-align: center; font-size:2em">
+    <?= $entity->getTitle(); ?>
+</div>
+
+<div style="text-align: center; spacing:0px;">Attribute Set:
+        <a href="/attributesets/view?attribute_set_key=<?php
+        echo $entity->getAttributeSet()->getKey(); ?>">
+        <?php echo $entity->getAttributeSet()->getName();?>
+    </a>
+</div>
+
+
+
+<?php
+include 'view/details.phtml';
+?>
+
+
+<?php
+include 'view/plugins.phtml';
+?>
+
+<?php
+include 'view/references.phtml';
+?>

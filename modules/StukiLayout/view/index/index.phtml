@@ -1,0 +1,38 @@
+<div>
+    Welcome to Stuki, a structued wiki.<br>
+    <BR>
+    <BR>
+    <ul>
+
+<?php if (!$rootEntity) {  ?>
+        <li>
+            <form action="/entities/insert">
+                <select name="attribute_set_key">
+                    <?php
+                    foreach ($attributeSets as $att) {
+                    ?>
+                        <option value="<?php echo $att->getKey(); ?>">
+                            <?php echo $att->getName(); ?>
+                        </option>
+
+                    <?php
+                    }
+                    ?>
+                </select>
+                <input type="hidden" value="1" name="parent_key">
+                <input type="submit" value="Create Root Entity">
+            </form>
+        </li>
+<?php
+} else {
+?>
+        <li><a href="/entities/view?entity_key=<?php echo $rootEntity; ?>">Proceed to Entities</a></li>
+        <li><a href="/search">Search Entities</a></li>
+        <li><a href="/attachments/search">Search Attachments</a></li>
+        <li><a href="/attributesets">Attribute Set Definitions</a></li>
+        <li><a href="/stuql">StuQL: Stuki Query Language</a></li>
+<?php
+}
+?>
+    </ul>
+</div>

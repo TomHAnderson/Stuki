@@ -1,0 +1,81 @@
+<?php
+if (!sizeof($entity->getChildren())) return
+?>
+<div>
+    <h3>References by Attribute Set</h3>
+
+    <?php
+
+    // Gather a unique list of attribute sets
+    $groupedChildren = array();
+    foreach ($entity->getChildren() as $child) {
+        if ($child == $entity) continue; # don't show root on root
+        $groupedChildren[$child->getAttributeSet()->getKey()][] = $child;
+    }
+
+    foreach ($groupedChildren as $children) {
+        $first = true;
+        $children = array_slice($children, 0, 100);
+        foreach ($children as $child) {
+            if ($first) {
+            ?>
+                <table class="reference">
+                <tr>
+        <th>
+                <?php echo $child->getAttributeSet()->getName(); ?>
+        </th>
+                <?php
+                foreach ($child->getAttributeSet()->getAttributes() as $att) {
+                    if ($att->getIsIncludedInSummary()) {
+                    ?>
+                        <th><?php echo $att->getLabel(); ?></th>
+                    <?php
+                    }
+                }
+                ?>
+                </tr>
+                <?php
+                $first = false;
+            }
+
+            ?>
+            <tr>
+
+            <?php
+            // Always add title
+            ?>
+            <td>
+
+                <a href="/entities/view?entity_key=<?php echo $child->getKey(); ?>">
+                    <?php echo $child->getTitle(); ?>
+                </a>
+            </td>
+            <?php
+
+            foreach ($child->getValues() as $value) {
+                ?>
+                <?php
+                if ($value->getAttribute()->getIsIncludedInSummary()) {
+                    // Build renderer
+                    $renderer = $value->getAttribute()->getRenderer()->getClassObject('view');
+                    if ($renderer instanceof \Stuki\Renderer\Parameters)
+                        $renderer->setParameters($value->getAttribute()->getParameters());
+                ?>
+                    <td><?php echo $renderer->formatValue($value->getValue()); ?></td>
+                <?php
+                }
+                ?>
+                <?php
+            }
+
+            ?>
+            </tr>
+            <?php
+
+        }
+        ?>
+        </table>
+        <?php
+    }
+    ?>
+</div>

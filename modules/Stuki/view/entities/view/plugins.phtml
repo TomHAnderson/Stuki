@@ -1,0 +1,14 @@
+<?php
+if (!sizeof($entity->getAttributeSet()->getPlugins())) {
+	return;
+}
+?>
+
+<h3>Plugins</h3>
+
+<?php
+foreach ($entity->getAttributeSet()->getPlugins() as $pluginRef) {
+    echo $pluginRef->getPlugin()->getClassObject()->run($entity);
+}
+
+?>
