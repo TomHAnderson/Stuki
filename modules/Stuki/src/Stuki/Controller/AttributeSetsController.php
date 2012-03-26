@@ -39,6 +39,10 @@ class AttributeSetsController extends ActionController
             $form->setDefaults(array(
                 'tabs' => 1
             ));
+        } else {
+            // Form failed, add global message
+            $form->setDescription('There were errors reported');
+            $form->addDecorator('Description');
         }
 
         $this->events()->trigger('insert', $this, array());
@@ -79,6 +83,10 @@ class AttributeSetsController extends ActionController
                 'ref_theme' => $attributeSet->getTheme()->getKey(),
                 'tabs' => $attributeSet->getTabs()
             ));
+        } else {
+            // Form failed, add global message
+            $form->setDescription('There were errors reported');
+            $form->addDecorator('Description');
         }
 
         $this->events()->trigger('update', $this, array('attributeSet' => $attributeSet));

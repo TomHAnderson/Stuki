@@ -1,5 +1,5 @@
 <?php
-include 'view/location.tree.phtml';
+include 'common/location.tree.phtml';
 ?>
 
 <script>
@@ -47,11 +47,11 @@ if (!sizeof($entity->getChildren())) {
     <?= $entity->getTitle(); ?>
 </div>
 
-<div style="text-align: center; spacing:0px;">Attribute Set: 
-        <a href="/attributesets/view?attribute_set_key=<?php 
-		echo $entity->getAttributeSet()->getKey(); ?>">
-		<?php echo $entity->getAttributeSet()->getName();?>
-	</a>
+<div style="text-align: center; spacing:0px;">Attribute Set:
+        <a href="/attributesets/view?attribute_set_key=<?php
+        echo $entity->getAttributeSet()->getKey(); ?>">
+        <?php echo $entity->getAttributeSet()->getName();?>
+    </a>
 </div>
 
 

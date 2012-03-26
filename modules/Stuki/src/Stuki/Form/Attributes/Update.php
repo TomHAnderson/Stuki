@@ -24,6 +24,7 @@ class Update extends Form
         // Code
         $code = $this->createElement('text', 'code');
         $code->addValidator('stringLength', false, array(1, 255))
+             ->setRequired(true)
              ->addFilter('StringToLower')
              ->addFilter('Alnum')
              ->setLabel('Code')

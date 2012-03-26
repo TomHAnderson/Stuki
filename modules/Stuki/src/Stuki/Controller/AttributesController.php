@@ -37,6 +37,10 @@ class AttributesController extends ActionController
 
             // Redirect to /renderers
             return $this->plugin('redirect')->toUrl('/attributesets/view?attribute_set_key=' . $attribute_set_key);
+        } elseif ($request->isPost()) {
+            // Form failed, add global message
+            $form->setDescription('There were errors reported');
+            $form->addDecorator('Description');
         }
 
         $this->events()->trigger('insert', $this, array('attributeSet' => $attributeSet));
@@ -93,6 +97,10 @@ class AttributesController extends ActionController
                 'isUnique' => $attribute->getIsUnique(),
                 'isIncludedInSummary' => $attribute->getIsIncludedInSummary()
             ));
+        } else {
+            // Form failed, add global message
+            $form->setDescription('There were errors reported');
+            $form->addDecorator('Description');
         }
 
         $this->events()->trigger('update', $this, array('attribute' => $attribute));

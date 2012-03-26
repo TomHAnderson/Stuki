@@ -1,7 +1,7 @@
 /* Website template by freewebsitetemplates.com */
 /*------------------------- Layout styles ------------------------*/ 
 body{
-	margin:0;
+    margin:0;
 }
 .page{
 }
@@ -20,146 +20,145 @@ body{
 
 /*------------------------- Header ------------------------*/ 
 .header{
-	width:940px;
-	margin:0 auto;
-	padding:36px 10px 0;
+    width:940px;
+    margin:0 auto;
+    padding:36px 10px 0;
 }
 .header a#logo{
-	outline:none;
+    outline:none;
 }
 .header a#logo img{
-	border:0;
+    border:0;
 }
 .header ul{
-	margin:0;
-	list-style:none;
-	padding:13px 0 0;
-	float:right;
+    margin:0;
+    list-style:none;
+    padding:13px 0 0;
+    float:right;
 }
 .header ul li{
-	float:left;
-	margin:0 0 0 63px;
+    float:left;
+    margin:0 0 0 63px;
 }
 .header ul li.selected a,.header ul li a:hover{
-	color:#f78117;
+    color:#f78117;
 }
 .header ul li a{
-	font-size:16px;
-	text-decoration:none;
-	color:#5e5e5e;
-	font-family: 'RokkittRegular';
-	outline:none;
+    font-size:16px;
+    text-decoration:none;
+    color:#5e5e5e;
+    font-family: 'RokkittRegular';
+    outline:none;
 }
 
 /*------------------------- Body ------------------------*/ 
 .body{
-	width:940px;
-	margin:0 auto;
-	padding:0 10px;
-	overflow:hidden;
+    width:940px;
+    margin:0 auto;
+    padding:0 10px;
+    overflow:hidden;
 }
 .body div#featured{
-	background:url(../images/house.jpg) no-repeat right top;
-	height:448px;
-	padding:0 0 17px;
+    background:url(../images/house.jpg) no-repeat right top;
+    height:448px;
+    padding:0 0 17px;
 }
 .body div#featured h3{
-	color:#f78117;
-	font-size:36px;
-	font-family: 'RokkittRegular';
-	margin:0 0 30px;
-	width:490px;
-	padding:100px 0 0;
-	font-weight:normal;
+    color:#f78117;
+    font-size:36px;
+    font-family: 'RokkittRegular';
+    margin:0 0 30px;
+    width:490px;
+    padding:100px 0 0;
+    font-weight:normal;
 }
 .body div#featured p{
-	width:480px;
-	color:#5d5d5d;
-	font-family: 'RokkittRegular';
-	font-size:16px;
-	line-height:25px;
-	text-shadow: 0 1px 0 #fcfcfc;
-	text-align:justify;
-	margin:0;
+    width:480px;
+    color:#5d5d5d;
+    font-family: 'RokkittRegular';
+    font-size:16px;
+    line-height:25px;
+    text-shadow: 0 1px 0 #fcfcfc;
+    text-align:justify;
+    margin:0;
 }
 .body div#featured input{
-	background:url(../images/interface.jpg) no-repeat;
-	border:0;
+    background:url(../images/interface.jpg) no-repeat;
+    border:0;
     height:48px;
     width:216px;
-	font-family: 'RokkittRegular';
-	color:#fff;
-	font-size:30px;
-	margin:28px 0 0 125px;
-	cursor:pointer;
-	outline:none;
+    font-family: 'RokkittRegular';
+    color:#fff;
+    font-size:30px;
+    margin:28px 0 0 125px;
+    cursor:pointer;
+    outline:none;
 }
 }
 .body h3{
-	font-family: 'RokkittRegular';
-	font-size:16px;
-	font-weight:bold;
-	color:#636363;
-	margin:15px 0 0;
-	line-height:21px;
+    font-family: 'RokkittRegular';
+    font-size:16px;
+    font-weight:bold;
+    color:#636363;
+    margin:15px 0 0;
+    line-height:21px;
 }
 .body p{
-	font-family: 'RokkittRegular';
-	font-size:16px;
-	text-align:justify;
-	color:#636363;
-	margin:0 0 20px;
-	line-height:21px;
+    font-family: 'RokkittRegular';
+    font-size:16px;
+    text-align:justify;
+    margin:0 0 20px;
+    line-height:21px;
 }
 .body p a{
-	outline:none;
-	color:#636363;
+    outline:none;
+    color:#636363;
 }
 
 
 /*------------------------- Footer ------------------------*/ 
 .footer{
-	width:940px;
-	padding:65px 10px 207px;
-	margin:0 auto;
-	overflow:hidden;
+    width:940px;
+    padding:65px 10px 207px;
+    margin:0 auto;
+    overflow:hidden;
 }
 }
 .footer p{
-	color:#5b5b5b;
-	font-size:10px;
-	font-weight:bold;
-	float:left;
-	margin:6px 0 0 135px;
+    color:#5b5b5b;
+    font-size:10px;
+    font-weight:bold;
+    float:left;
+    margin:6px 0 0 135px;
 }
 .footer div.connect{
-	float:left;
-	margin:0 0 0 92px;
+    float:left;
+    margin:0 0 0 92px;
 }
 .footer div.connect a{
-	float:left;
-	outline:none;
+    float:left;
+    outline:none;
 }
 .footer div.connect a#facebook{
-	width:27px;
-	height:28px;
-	display:block;
-	text-indent:-9999px;
-	background:url(../images/icons.gif) no-repeat;
+    width:27px;
+    height:28px;
+    display:block;
+    text-indent:-9999px;
+    background:url(../images/icons.gif) no-repeat;
 }
 .footer div.connect a#twitter{
-	width:36px;
-	height:28px;
-	display:block;
-	text-indent:-9999px;
-	background:url(../images/icons.gif) no-repeat 0 -48px;
-	margin:0 0 0 68px;
+    width:36px;
+    height:28px;
+    display:block;
+    text-indent:-9999px;
+    background:url(../images/icons.gif) no-repeat 0 -48px;
+    margin:0 0 0 68px;
 }
 .footer div.connect a#vimeo{
-	width:32px;
-	height:28px;
-	display:block;
-	text-indent:-9999px;
-	background:url(../images/icons.gif) no-repeat 0 -96px;
-	margin:0 0 0 73px;
+    width:32px;
+    height:28px;
+    display:block;
+    text-indent:-9999px;
+    background:url(../images/icons.gif) no-repeat 0 -96px;
+    margin:0 0 0 73px;
 }

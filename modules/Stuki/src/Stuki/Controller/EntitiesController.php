@@ -54,13 +54,18 @@ class EntitiesController extends ActionController
             );
 
             return $this->plugin('redirect')->toUrl('/entities/view?entity_key=' . $entity->getKey());
+        } elseif ($request->isPost()) {
+            // Form failed, add global message
+            $form->setDescription('There were errors reported');
+            $form->addDecorator('Description');
         }
 
         $this->events()->trigger('insert', $this, array('attributeSet' => $attributeSet));
 
         return array(
             'form' => $form,
-            'attributeSet' => $attributeSet
+            'attributeSet' => $attributeSet,
+            'parent' => $modelEntities->find($parent_key)
         );
     }
 
@@ -96,9 +101,13 @@ class EntitiesController extends ActionController
                 $value = $entity->findOneValueBy(array('attribute' => $a));
                 if ($value) $form->setDefault('eav_' . $a->getKey(), $element->formatEditValue($value->getValue()));
             }
+        } else {
+            // Form failed, add global message
+            $form->setDescription('There were errors reported');
+            $form->addDecorator('Description');
         }
 
-        $this->events()->trigger('insert', $this, array('entity' => $entity));
+        $this->events()->trigger('update', $this, array('entity' => $entity));
 
         return array(
             'form' => $form,

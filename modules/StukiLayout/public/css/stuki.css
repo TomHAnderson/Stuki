@@ -41,6 +41,10 @@ dl.zend_form {
     list-style-type:none; 
 }
 
+p.hint {
+    color: #ff0000;
+}
+
 .zend_form p{  
     padding:0;  
     margin:0;  
@@ -48,6 +52,8 @@ dl.zend_form {
 
 .zend_form p.description {
     font-style:italic; 
+    color:#636363;
+    line-height:21px;
 }
 
 .zend_form input, .zend_form textarea{  
@@ -99,7 +105,7 @@ dl.entity_view
     padding: .5em;
 }
 
-										.entity_view p.description {
+                                        .entity_view p.description {
     margin: 5px;
     margin-left: 20px;
     font-style:italic; 
@@ -110,14 +116,14 @@ dl.entity_view
 
 /* These are for reference tables */
 table.reference {
-	width: 100%;
-	border: solid;
-	border-width: 1px; 
-	margin-bottom: 5px;
+    width: 100%;
+    border: solid;
+    border-width: 1px; 
+    margin-bottom: 5px;
 }
 
 table.reference tr { 
-	font-weight: normal; 
+    font-weight: normal; 
 }
 
 ul.breadcrumb {
@@ -182,9 +188,7 @@ ul.breadcrumb li:nth-child(5) a       { background:        hsla(34,85%,75%,1); }
 ul.breadcrumb li:nth-child(5) a:after { border-left-color: hsla(34,85%,75%,1); }
 ul.breadcrumb li:last-child a {
     background: transparent !important;
-    color: white;
-    pointer-events: none;
-    cursor: default;
+    color: black;
 }
 ul.breadcrumb li:last-child a:after { border: 0; }
 ul.breadcrumb li a:hover { background: hsla(34,85%,25%,1); }

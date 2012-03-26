@@ -1,15 +1,19 @@
 $(function() {
 
-// Delineate original
+// Save original form dl
 original = $('dl.zend_form');
 
+// Create tab div
 div = $('<div id="tabs">');
 $(div).addClass('ui-tabs');
 $(div).addClass('ui-widget');
 $(div).addClass('ui-widget-content');
 $(div).addClass('ui-corner-all');
+// Wrap the form dl (already inside the form) in the div
 $('dl.zend_form').wrap(div);
 
+// Loop through all entity tabs and move form elements
+// into tabs
 ul = $('<ul id="item_tabs" class="subsection_tabs">');
 <?php
 $titles = $entity->getAttributeSet()->getTabTitles();
@@ -36,14 +40,18 @@ for ($i = 1; $i <= $entity->getAttributeSet()->getTabs(); $i++) {
 }
 ?>
 
+// Add save
 dl_notab = $('<dl class="" id="notab">');
 $('dt#save-label').appendTo(dl_notab);
 $('dd#save-element').appendTo(dl_notab);
 
 $('#tabs').append(dl_notab);
 $('#tabs').prepend(ul);
+// Add cancel
 $('dd#save-element').append($('<span>&nbsp;&nbsp;</span>'));
 $('dd#save-element').append($('<a href="#" onClick="history.back(); return false;">cancel</a>'));
+// Move form description (use for global error notification)
+$('dd#save-element').prepend($('p.hint'));
 
 $('#tabs').tabs();
 $(original).remove();
