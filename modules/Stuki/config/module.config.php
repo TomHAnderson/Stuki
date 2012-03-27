@@ -31,6 +31,19 @@ return array(
 
             ),
 
+            'orm_driver_chain' => array(
+                'parameters' => array(
+                    'drivers' => array(
+                        'stuki_xml_driver' => array(
+                            'class'          => 'Doctrine\ORM\Mapping\Driver\XmlDriver',
+                            'namespace'      => 'Entities',
+                            'paths'          => array(__DIR__ . '/xml'),
+                            'file_extension' => '.dcm.xml',
+                        ),
+                    ),
+                )
+            ),
+
             'modelQueue' => array(
                 'parameters' => array(
                     'entities' => 'modelEntities',

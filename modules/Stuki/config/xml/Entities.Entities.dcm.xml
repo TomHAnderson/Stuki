@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xsi="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Entities\Entities" table="entities">
+    <id name="entity_key" type="integer">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="title" type="text" nullable="true"/>
+    <field name="isLocked" type="boolean" nullable="true" column="is_locked"/>
+    <many-to-one field="attributeSet" target-entity="Entities\AttributeSets" inversed-by="entities">
+      <join-columns>
+        <join-column name="ref_attribute_set" referenced-column-name="attribute_set_key"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="children" target-entity="Entities\Entities" inversed-by="parent">
+      <join-columns>
+        <join-column name="ref_entity" referenced-column-name="entity_key"/>
+      </join-columns>
+    </many-to-one>
+    <one-to-many field="parent" target-entity="Entities\Entities" mapped-by="children"/>
+  </entity>
+</doctrine-mapping>

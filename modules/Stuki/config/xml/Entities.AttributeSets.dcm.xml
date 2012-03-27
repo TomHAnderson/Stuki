@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xsi="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Entities\AttributeSets" table="attribute_sets">
+    <id name="attribute_set_key" type="integer">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="name" type="string" nullable="false"/>
+    <field name="code" type="string" nullable="false"/>
+    <field name="title" type="text" nullable="true"/>
+    <field name="description" type="text" nullable="true"/>
+    <field name="tabs" type="integer" nullable="true"/>
+    <field name="tabTitles" type="text" nullable="true" column="tab_titles"/>
+    <many-to-one field="theme" target-entity="Entities\Themes" inversed-by="attributeSets">
+      <join-columns>
+        <join-column name="ref_theme" referenced-column-name="theme_key"/>
+      </join-columns>
+    </many-to-one>
+    <one-to-many field="attributes" target-entity="Entities\Attributes" mapped-by="attributeSet"/>
+    <one-to-many field="originalAttributes" target-entity="Entities\Attributes" mapped-by="originalAttributeSet"/>
+    <one-to-many field="entities" target-entity="Entities\Entities" mapped-by="attributeSet"/>
+    <many-to-many field="inverseRelations" target-entity="Entities\AttributeSets" inversed-by="relations">
+      <join-table name="attribute_set_relations_xref">
+        <join-columns>
+          <join-column name="ref_attribute_set_parent" referenced-column-name="attribute_set_key" nullable="false"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="ref_attribute_set_child" referenced-column-name="attribute_set_key" nullable="false"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="relations" target-entity="Entities\AttributeSets" mapped-by="inverseRelations"/>
+    <many-to-many field="plugins" target-entity="Entities\Plugins" inversed-by="attributeSets">
+      <join-table name="attribute_set_plugins_xref">
+        <join-columns>
+          <join-column name="ref_attribute_set" referenced-column-name="attribute_set_key" nullable="false"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="ref_plugin" referenced-column-name="plugin_key" nullable="false"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

@@ -10,7 +10,6 @@ use Stuki\Entity\Entity,
     Doctrine\ORM\Mapping AS ORM;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="attribute_sets")
  */
 class AttributeSets extends Entity

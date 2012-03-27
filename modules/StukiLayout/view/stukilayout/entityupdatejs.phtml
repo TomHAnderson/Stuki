@@ -1,5 +1,7 @@
 $(function() {
 
+var first = '';
+
 // Save original form dl
 original = $('dl.zend_form');
 
@@ -25,6 +27,9 @@ for ($i = 1; $i <= $entity->getAttributeSet()->getTabs(); $i++) {
 
 <?php
     foreach ($entity->getAttributeSet()->getAttributes() as $att) {
+?>
+        if (!first) first = $('dd#eav_<?php echo $att->getKey(); ?>-element').children().first();
+<?php
         if ($att->getTab() == $i) {
     ?>
             $('dt#eav_<?php echo $att->getKey(); ?>-label').appendTo(tab);
@@ -55,5 +60,7 @@ $('dd#save-element').prepend($('p.hint'));
 
 $('#tabs').tabs();
 $(original).remove();
+
+$(first).focus();
 
 });

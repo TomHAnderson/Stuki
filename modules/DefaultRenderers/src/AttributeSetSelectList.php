@@ -5,10 +5,11 @@ namespace DefaultRenderers;
 use Stuki\Renderer\Renderer as Renderer,
     Stuki\Renderer\Select as RendererSelect,
     Stuki\Renderer\Parameters as RendererParameters,
+    Stuki\Renderer\ForeignKey as RendererForeignKey,
     DefaultRenderers\Forms\AttributeSetSelectList\Form as ParametersForm,
     Zend\Form\Element\Select as ElementSelect;
 
-class AttributeSetSelectList extends ElementSelect implements Renderer, RendererParameters, RendererSelect
+class AttributeSetSelectList extends ElementSelect implements Renderer, RendererParameters, RendererSelect, RendererForeignKey
 {
     public $datatype = 'integer';
     private $parameters;

@@ -9,7 +9,6 @@ use Stuki\Entity\Entity,
     Doctrine\ORM\Mapping AS ORM;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="attributes")
  */
 class Attributes extends Entity
@@ -96,14 +95,14 @@ class Attributes extends Entity
      *
      * @ORM\Column(type="string")
      */
-    protected $label;
+    protected $name;
 
     public function getLabel() {
-        return $this->label;
+        return $this->name;
     }
 
     public function setLabel($value) {
-        $this->label = $value;
+        $this->label = $name;
     }
 
     /**
