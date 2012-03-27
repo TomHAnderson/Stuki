@@ -29,7 +29,7 @@ class Entities extends StukiModel {
      * Retrieve a subset
      */
     public function findBy($search, $sort = null) {
-        if (!$sort) $sort = array('alias' => 'asc');
+        if (!$sort) $sort = array('title' => 'asc');
         return $this->getEm()->getRepository('Entities\Entities')->findBy($search, $sort);
     }
 

@@ -244,7 +244,7 @@ class Module
         $renderers->insert('String', 'DefaultRenderers\String');
         $renderers->insert('Text', 'DefaultRenderers\Text');
         $renderers->insert('Select', 'DefaultRenderers\Select');
-        $renderers->insert('EntitySelectList', 'DefaultRenderers\EntitySelectList');
+        $renderers->insert('Entity Select List', 'DefaultRenderers\EntitySelectList');
         $renderers->insert('HTML', 'Html\Renderer');
 
         $themes->insert('Default', 'entities/view.phtml');

@@ -20,7 +20,6 @@ body{
 
 /*------------------------- Header ------------------------*/ 
 .header{
-    width:940px;
     margin:0 auto;
     padding:36px 10px 0;
 }
@@ -53,7 +52,6 @@ body{
 
 /*------------------------- Body ------------------------*/ 
 .body{
-    width:940px;
     margin:0 auto;
     padding:0 10px;
     overflow:hidden;
@@ -118,7 +116,6 @@ body{
 
 /*------------------------- Footer ------------------------*/ 
 .footer{
-    width:940px;
     padding:65px 10px 207px;
     margin:0 auto;
     overflow:hidden;
