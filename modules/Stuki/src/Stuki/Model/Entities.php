@@ -106,7 +106,7 @@ class Entities extends StukiModel {
             // Verify parent entity may attach the given attribute set
             $found = false;
             foreach ($parentEntity->getAttributeSet()->getRelations() as $att) {
-                if ($att->getChild() == $attributeSet) {
+                if ($att == $attributeSet) {
                     $found = true;
                     break;
                 }

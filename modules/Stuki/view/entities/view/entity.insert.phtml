@@ -8,8 +8,8 @@ if (sizeof($entity->getAttributeSet()->getRelations())) {
             <?php
             foreach ($entity->getAttributeSet()->getRelations() as $att) {
             ?>
-            <option value="<?php echo $att->getChild()->getKey(); ?>">
-                <?php echo $att->getChild()->getName(); ?>
+            <option value="<?php echo $att->getKey(); ?>">
+                <?php echo $att->getName(); ?>
             </option>
             <?php
             }

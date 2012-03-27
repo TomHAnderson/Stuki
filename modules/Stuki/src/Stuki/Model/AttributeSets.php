@@ -120,23 +120,28 @@ class AttributeSets extends Model {
      * added to a given attribute set
      */
     public function updateRelations(\Entities\AttributeSets $attributeSet, $children) {
-        // Truncate existing relations
-        $query = $this->getEm()->createQuery("
-            DELETE FROM \Entities\AttributeSetRelations a
-            WHERE a.parent = " . $attributeSet->getKey()
-        );
-        $query->getResult();
+
+#print_r($children);die();
+
+        $relations = $attributeSet->getRelations();
+
+        foreach ($relations as $att)  {
+#            echo "removing " . $att->getKey() . '   ';
+
+            $relations->removeElement($att);
+        }
 
         // Insert new relations
         foreach ((array)$children as $ref_child) {
-            $relation = new \Entities\AttributeSetRelations();
-            $relation->setParent($attributeSet);
-            $relation->setChild($this->find((int)$ref_child));
+            $child = $this->find((int)$ref_child);
+            $attributeSet->getRelations()->add($child);
 
-            $this->getEm()->persist($relation);
+#            echo "added " . $child->getKey() . '   ';
         }
 
         $this->getEm()->flush();
+
+#        die('updated');
     }
 
     public function updatePlugins(\Entities\AttributeSets $attributeSet, $plugins) {
