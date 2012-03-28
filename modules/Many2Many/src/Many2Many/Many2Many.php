@@ -1,10 +1,13 @@
 <?php
 
-namespace Attachments;
+namespace Many2Many;
 
-use Stuki\Plugin\Plugin as Plugin;
+use Stuki\Plugin\Plugin as Plugin,
+    Stuki\Plugin\Parameters,
+    Many2Many\Form\Parameters as ParametersForm
+;
 
-class Attachments implements Plugin {
+class Many2Many implements Plugin, Parameters {
 
     protected $parameters;
 
@@ -32,5 +35,13 @@ class Attachments implements Plugin {
         );
 
         return $view->render('attachments/view.phtml');
+    }
+
+    public function getParametersForm() {
+        return new ParametersForm();
+    }
+
+    public function setParameters($parameters) {
+        $this->parameters = $parameters;
     }
 }

@@ -1,40 +1,19 @@
 <?
-/**
- * These are plugins associated with an attribute set.  So these plugins are displayed/ran
- * when an associated entity of this attribute set type is displayed.
- */
 namespace Entities;
 
 use Stuki\Entity\Entity,
+    ZfcUserDoctrineORM\Entity\User as ZfcUser,
     Doctrine\ORM\Mapping AS ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="attribute_set_plugins_xref")
- */
 class AttributeSetPlugins extends Entity
 {
+    protected $attribute_set_plugin_key;
 
-    /**
-     * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="AttributeSets", inversedBy="plugins")
-     * @ORM\JoinColumn(name="ref_attribute_set", referencedColumnName="attribute_set_key")
-     */
-    protected $attributeSet;
-
-    public function getAttributeSet() {
-        return $this->attributeSet;
+    public function getKey() {
+        return $this->attribute_set_plugin_key;
     }
 
-    public function setAttributeSet($value) {
-        $this->attributeSet = $value;
-    }
 
-    /**
-     * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Plugins", inversedBy="attributeSets")
-     * @ORM\JoinColumn(name="ref_plugin", referencedColumnName="plugin_key")
-     */
     protected $plugin;
 
     public function getPlugin() {
@@ -43,6 +22,55 @@ class AttributeSetPlugins extends Entity
 
     public function setPlugin($value) {
         $this->plugin = $value;
+        return $this;
     }
+
+
+    protected $attributeSet;
+
+    public function getAttributeSet() {
+        return $this->attributeSet;
+    }
+
+    public function setAttributeSet($value) {
+        $this->attributeSet = $value;
+        return $this;
+    }
+
+    protected $alias;
+
+    public function getAlias() {
+        return $this->alias;
+    }
+
+    public function setAlias($value) {
+        $this->alias = $value;
+        return $this;
+    }
+
+
+    protected $parameters;
+
+    public function getParameters() {
+        return $this->parameters;
+    }
+
+    public function setParameters($value) {
+        $this->parameters = $value;
+        return $this;
+    }
+
+
+    protected $sort;
+
+    public function getSort() {
+        return $this->sort;
+    }
+
+    public function setSort($value) {
+        $this->sort = $value;
+        return $this;
+    }
+
 
 }

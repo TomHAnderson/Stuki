@@ -8,7 +8,7 @@
     <field name="code" type="string" nullable="false"/>
     <field name="description" type="text" nullable="true"/>
     <field name="options" type="text" nullable="true"/>
-    <field name="parameters" type="text" nullable="true"/>
+    <field name="parameters" type="array" nullable="true"/>
     <field name="regex" type="text" nullable="true"/>
     <field name="error" type="text" nullable="true"/>
     <field name="sort" type="integer" nullable="true"/>

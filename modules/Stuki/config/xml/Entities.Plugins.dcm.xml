@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xsi="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Entities\Plugins">
+  <entity name="Entities\Plugins" table="plugins">
     <id name="plugin_key" type="integer">
       <generator strategy="AUTO"/>
     </id>
     <field name="class" type="string" nullable="false"/>
     <field name="alias" type="string" nullable="false"/>
-    <many-to-many field="attributeSets" target-entity="Entities\AttributeSets" mapped-by="plugins"/>
+    <one-to-many field="attributeSets" target-entity="Entities\AttributeSetPlugins" mapped-by="plugin"/>
   </entity>
 </doctrine-mapping>

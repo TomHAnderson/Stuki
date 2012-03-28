@@ -23,7 +23,7 @@
                                 Tab <?php echo $tab; ?><br>
                                 <input type="text" size="10"
                                     name="tab_titles[<?php echo $tab; ?>]"
-                                    value="<? echo (isset($titles[$tab])) ? $titles[$tab]: ''; ?>">
+                                    value="<?php echo (isset($titles[$tab])) ? $titles[$tab]: ''; ?>">
                             </th>
                         <?php
                         }

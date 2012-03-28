@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<orm-designer version="1.4.7.499">
+
+  <include name="..\modules\Attachments\documentation\Attachments.ormdesigner"/>
+
+  <include name="Y:\Documents\Unnamed2.ormdesigner"/>
+
+  <module import-format="Doctrine2Xml" import-path="..\modules\Stuki\config\xml\" name="Entities" visBkColor="15989236" visSizeX="251" visSizeX2="1167" visSizeY="0" visSizeY2="907">
+    <table name="Renderers" visPositionX="131" visPositionY="709" visSizeX="0" visSizeX2="120" visSizeY="0" visSizeY2="59">
+      <column auto-increment="true" name="renderer_key" primary="true" type="integer"/>
+      <column name="class" required="true" type="string"/>
+      <column name="alias" required="true" type="string"/>
+      <orm-properties>
+        <attribute name="table">renderers</attribute>
+      </orm-properties>
+    </table>
+    <table name="AttributeSets" visPositionX="89" visPositionY="197" visSizeX="0" visSizeX2="138" visSizeY="0" visSizeY2="129">
+      <column auto-increment="true" name="attribute_set_key" primary="true" type="integer"/>
+      <column name="name" required="true" type="string"/>
+      <column name="code" required="true" type="string"/>
+      <column name="title" type="text"/>
+      <column name="description" type="text"/>
+      <column name="tabs" type="integer"/>
+      <column name="tabTitles" type="array">
+        <orm-properties>
+          <attribute name="column">tab_titles</attribute>
+        </orm-properties>
+      </column>
+      <column name="ref_theme" type="integer"/>
+      <orm-properties>
+        <attribute name="table">attribute_sets</attribute>
+      </orm-properties>
+    </table>
+    <table name="Attributes" visPositionX="107" visPositionY="428" visSizeX="0" visSizeX2="168" visSizeY="0" visSizeY2="227">
+      <column auto-increment="true" name="attribute_key" primary="true" type="integer"/>
+      <column name="ref_renderer" type="integer"/>
+      <column name="ref_attribute_set" type="integer"/>
+      <column name="ref_original_attribute_set" type="integer"/>
+      <column name="name" required="true" type="string"/>
+      <column name="code" required="true" type="string"/>
+      <column name="description" type="text"/>
+      <column name="options" type="text"/>
+      <column name="parameters" type="array"/>
+      <column name="regex" type="text"/>
+      <column name="error" type="text"/>
+      <column name="sort" type="integer"/>
+      <column name="tab" type="integer"/>
+      <column name="isRequired" type="boolean">
+        <orm-properties>
+          <attribute name="column">is_required</attribute>
+        </orm-properties>
+      </column>
+      <column name="isUnique" type="boolean">
+        <orm-properties>
+          <attribute name="column">is_unique</attribute>
+        </orm-properties>
+      </column>
+      <column name="isIncludedInSummary" type="boolean">
+        <orm-properties>
+          <attribute name="column">is_included_in_summary</attribute>
+        </orm-properties>
+      </column>
+      <orm-properties>
+        <attribute name="table">attributes</attribute>
+      </orm-properties>
+    </table>
+    <table name="Entities" visPositionX="768" visPositionY="500" visSizeX="0" visSizeX2="134" visSizeY="0" visSizeY2="87">
+      <column auto-increment="true" name="entity_key" primary="true" type="integer"/>
+      <column name="ref_attribute_set" type="integer">
+        <orm-properties>
+          <attribute name="column">ref_attribute_set</attribute>
+        </orm-properties>
+      </column>
+      <column name="title" type="text"/>
+      <column name="isLocked" type="boolean">
+        <orm-properties>
+          <attribute name="column">is_locked</attribute>
+        </orm-properties>
+      </column>
+      <column name="ref_entity" type="integer"/>
+      <orm-properties>
+        <attribute name="table">entities</attribute>
+      </orm-properties>
+    </table>
+    <table name="ValuesArray" visPositionX="421" visPositionY="271" visSizeX="0" visSizeX2="116" visSizeY="0" visSizeY2="73">
+      <column auto-increment="true" name="value_key" primary="true" type="integer"/>
+      <column name="ref_attribute" required="true" type="integer"/>
+      <column name="ref_entity" required="true" type="integer"/>
+      <column name="value" type="text"/>
+      <orm-properties>
+        <attribute name="table">values_array</attribute>
+      </orm-properties>
+    </table>
+    <table name="ValuesDatetime" visPositionX="421" visPositionY="359" visSizeX="0" visSizeX2="116" visSizeY="0" visSizeY2="73">
+      <column auto-increment="true" name="value_key" primary="true" type="integer"/>
+      <column name="ref_attribute" required="true" type="integer"/>
+      <column name="ref_entity" required="true" type="integer"/>
+      <column name="value" type="datetime"/>
+      <orm-properties>
+        <attribute name="table">values_datetime</attribute>
+      </orm-properties>
+    </table>
+    <table name="ValuesDecimal" visPositionX="421" visPositionY="443" visSizeX="0" visSizeX2="116" visSizeY="0" visSizeY2="73">
+      <column auto-increment="true" name="value_key" primary="true" type="integer"/>
+      <column name="ref_attribute" required="true" type="integer"/>
+      <column name="ref_entity" required="true" type="integer"/>
+      <column name="value" type="decimal">
+        <orm-properties>
+          <attribute name="precision">10</attribute>
+          <attribute name="scale">10</attribute>
+        </orm-properties>
+      </column>
+      <orm-properties>
+        <attribute name="table">values_decimal</attribute>
+      </orm-properties>
+    </table>
+    <table name="ValuesInteger" visPositionX="421" visPositionY="527" visSizeX="0" visSizeX2="116" visSizeY="0" visSizeY2="73">
+      <column auto-increment="true" name="value_key" primary="true" type="integer"/>
+      <column name="ref_attribute" required="true" type="integer"/>
+      <column name="ref_entity" required="true" type="integer"/>
+      <column name="value" type="integer"/>
+      <orm-properties>
+        <attribute name="table">values_integer</attribute>
+      </orm-properties>
+    </table>
+    <table name="ValuesText" visPositionX="421" visPositionY="617" visSizeX="0" visSizeX2="116" visSizeY="0" visSizeY2="73">
+      <column auto-increment="true" name="value_key" primary="true" type="integer"/>
+      <column name="ref_attribute" required="true" type="integer"/>
+      <column name="ref_entity" required="true" type="integer"/>
+      <column name="value" type="text"/>
+      <orm-properties>
+        <attribute name="table">values_text</attribute>
+      </orm-properties>
+    </table>
+    <table name="ValuesVarchar" visPositionX="421" visPositionY="714" visSizeX="0" visSizeX2="116" visSizeY="0" visSizeY2="73">
+      <column auto-increment="true" name="value_key" primary="true" type="integer"/>
+      <column name="ref_attribute" required="true" type="integer"/>
+      <column name="ref_entity" required="true" type="integer"/>
+      <column name="value" type="string"/>
+      <orm-properties>
+        <attribute name="table">values_varchar</attribute>
+      </orm-properties>
+    </table>
+    <table name="Plugins" visPositionX="-183" visPositionY="58" visSizeX="0" visSizeX2="110" visSizeY="0" visSizeY2="59">
+      <column auto-increment="true" name="plugin_key" primary="true" type="integer"/>
+      <column name="class" required="true" type="string"/>
+      <column name="alias" required="true" type="string"/>
+      <orm-properties>
+        <attribute name="table">plugins</attribute>
+      </orm-properties>
+    </table>
+    <table name="Themes" visPositionX="411" visPositionY="154" visSizeX="0" visSizeX2="112" visSizeY="0" visSizeY2="59">
+      <column auto-increment="true" name="theme_key" primary="true" type="integer"/>
+      <column name="alias" required="true" type="string"/>
+      <column name="template" required="true" type="string"/>
+    </table>
+    <table name="AttributeSetRelations" visPositionX="55" visPositionY="19" visSizeX="0" visSizeX2="20" visSizeY="0" visSizeY2="20">
+      <column name="ref_attribute_set_child" primary="true"/>
+      <column name="ref_attribute_set_parent" primary="true"/>
+      <orm-properties>
+        <attribute name="table">attribute_set_relations_xref</attribute>
+      </orm-properties>
+    </table>
+    <table name="EntityRelations" visPositionX="810" visPositionY="163" visSizeX="0" visSizeX2="20" visSizeY="0" visSizeY2="20">
+      <column name="ref_entity_child" primary="true" type="integer"/>
+      <column name="ref_entity_parent" primary="true" type="integer"/>
+      <orm-properties>
+        <attribute name="table">entity_relations_xref</attribute>
+      </orm-properties>
+    </table>
+    <table name="AttributeSetPlugins" visPositionX="-217" visPositionY="314" visSizeX="0" visSizeX2="197" visSizeY="0" visSizeY2="59">
+      <column auto-increment="true" name="attribute_set_plugin_key" primary="true" type="integer"/>
+      <column name="ref_plugin" required="true" type="integer"/>
+      <column name="ref_attribute_set" required="true" type="integer"/>
+      <column name="alias" type="string"/>
+      <column name="parameters" type="array"/>
+      <column name="sort" type="integer"/>
+      <orm-properties>
+        <attribute name="table">attribute_set_plugins_xref</attribute>
+      </orm-properties>
+    </table>
+    <orm-properties>
+      <attribute name="namespace">Entities</attribute>
+    </orm-properties>
+    <foreign-key caption="" from="AttributeSets" inverse-alias="theme" name="FK_AttributeSets_Themes_theme_key" owning-alias="attributeSets" to="Themes">
+      <foreign-key-column from="ref_theme" to="theme_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="Attributes" inverse-alias="renderer" name="FK_Attributes_Renderers_renderer_key" owning-alias="attributes" to="Renderers">
+      <foreign-key-column from="ref_renderer" to="renderer_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="Attributes" inverse-alias="attributeSet" name="FK_Attributes_AttributeSets_attribute_set_key" owning-alias="attributes" to="AttributeSets" visCenterX="0" visCenterY="0">
+      <foreign-key-column from="ref_attribute_set" to="attribute_set_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="Attributes" inverse-alias="originalAttributeSet" name="FK_Attributes_AttributeSets_attribute_set_key2" owning-alias="originalAttributes" to="AttributeSets" visCenterX="0" visCenterY="-24">
+      <foreign-key-column from="ref_original_attribute_set" to="attribute_set_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="Entities" inverse-alias="attributeSet" name="FK_Entities_AttributeSets_attribute_set_key" owning-alias="entities" to="AttributeSets">
+      <foreign-key-column from="ref_attribute_set" to="attribute_set_key"/>
+    </foreign-key>
+    <foreign-key caption="Entities Entities" from="Entities" inverse-alias="parent" name="FK_Entities_Entities_entity_key" owning-alias="children" to="Entities" visCaption1X="0" visCaption1Y="0" visCenterX="0" visCenterY="-20">
+      <foreign-key-column from="ref_entity" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesArray" inverse-alias="attribute" name="FK_ValuesArray_Attributes_attribute_key" owning-alias="" to="Attributes">
+      <foreign-key-column from="ref_attribute" to="attribute_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesArray" inverse-alias="entity" name="FK_ValuesArray_Entities_entity_key" owning-alias="" to="Entities">
+      <foreign-key-column from="ref_entity" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesDatetime" inverse-alias="attribute" name="FK_ValuesArray_Attributes_attribute_key2" owning-alias="" to="Attributes">
+      <foreign-key-column from="ref_attribute" to="attribute_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesDatetime" inverse-alias="entity" name="FK_ValuesArray_Entities_entity_key2" owning-alias="" to="Entities">
+      <foreign-key-column from="ref_entity" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesDecimal" inverse-alias="attribute" name="FK_ValuesArray_Attributes_attribute_key3" owning-alias="" to="Attributes">
+      <foreign-key-column from="ref_attribute" to="attribute_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesDecimal" inverse-alias="entity" name="FK_ValuesArray_Entities_entity_key3" owning-alias="" to="Entities">
+      <foreign-key-column from="ref_entity" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesInteger" inverse-alias="attribute" name="FK_ValuesArray_Attributes_attribute_key4" owning-alias="" to="Attributes">
+      <foreign-key-column from="ref_attribute" to="attribute_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesInteger" inverse-alias="entity" name="FK_ValuesArray_Entities_entity_key4" owning-alias="" to="Entities">
+      <foreign-key-column from="ref_entity" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesText" inverse-alias="attribute" name="FK_ValuesArray_Attributes_attribute_key5" owning-alias="" to="Attributes">
+      <foreign-key-column from="ref_attribute" to="attribute_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesText" inverse-alias="entity" name="FK_ValuesArray_Entities_entity_key5" owning-alias="" to="Entities">
+      <foreign-key-column from="ref_entity" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesVarchar" inverse-alias="attribute" name="FK_ValuesArray_Attributes_attribute_key6" owning-alias="" to="Attributes">
+      <foreign-key-column from="ref_attribute" to="attribute_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesVarchar" inverse-alias="entity" name="FK_ValuesArray_Entities_entity_key6" owning-alias="" to="Entities">
+      <foreign-key-column from="ref_entity" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="AttributeSets AttributeSetRelations" from="AttributeSetRelations" name="FK_AttributeSetRelations_AttributeSets_attribute_set_key" to="AttributeSets">
+      <foreign-key-column from="ref_attribute_set_parent" to="attribute_set_key"/>
+    </foreign-key>
+    <foreign-key caption="AttributeSets AttributeSetRelations" from="AttributeSetRelations" name="FK_AttributeSetRelations_AttributeSets_attribute_set_key2" to="AttributeSets">
+      <foreign-key-column from="ref_attribute_set_child" to="attribute_set_key"/>
+    </foreign-key>
+    <foreign-key caption="Entities EntityRelations" from="EntityRelations" name="FK_EntityRelations_Entities_entity_key" to="Entities">
+      <foreign-key-column from="ref_entity_parent" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="Entities EntityRelations" from="EntityRelations" name="FK_EntityRelations_Entities_entity_key2" to="Entities">
+      <foreign-key-column from="ref_entity_child" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="Plugins AttributeSetPlugins" from="AttributeSetPlugins" inverse-alias="plugin" name="FK_AttributeSetPlugins_Plugins_plugin_key" owning-alias="attributeSets" to="Plugins">
+      <foreign-key-column from="ref_plugin" to="plugin_key"/>
+    </foreign-key>
+    <foreign-key caption="AttributeSets AttributeSetPlugins" from="AttributeSetPlugins" inverse-alias="attributeSet" name="FK_AttributeSetPlugins_AttributeSets_attribute_set_key" owning-alias="plugins" to="AttributeSets">
+      <foreign-key-column from="ref_attribute_set" to="attribute_set_key"/>
+    </foreign-key>
+    <many-to-many-relation mn-table="AttributeSetRelations">
+      <many-to-many-foreign-key foreign-key="FK_AttributeSetRelations_AttributeSets_attribute_set_key" relation-alias=""/>
+      <many-to-many-foreign-key foreign-key="FK_AttributeSetRelations_AttributeSets_attribute_set_key2" relation-alias="relations"/>
+    </many-to-many-relation>
+    <many-to-many-relation mn-table="EntityRelations">
+      <many-to-many-foreign-key foreign-key="FK_EntityRelations_Entities_entity_key" relation-alias=""/>
+      <many-to-many-foreign-key foreign-key="FK_EntityRelations_Entities_entity_key2" relation-alias="relations"/>
+    </many-to-many-relation>
+  </module>
+
+</orm-designer>

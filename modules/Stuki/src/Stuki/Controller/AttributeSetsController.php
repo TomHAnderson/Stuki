@@ -177,4 +177,74 @@ class AttributeSetsController extends ActionController
         );
     }
 
+    public function addpluginAction() {
+        $request = $this->getRequest();
+        $modelAttributeSets = $this->getLocator()->get('modelAttributeSets');
+        $modelPlugins = $this->getLocator()->get('modelPlugins');
+
+        if (!$attributeSet = $modelAttributeSets->find((int)$request->post()->get('attribute_set_key')))
+            throw new \Stuki\Exception('Attribute set not found');
+
+        if (!$plugin = $modelPlugins->find((int)$request->post()->get('plugin_key')))
+            throw new \Stuki\Exception('Plugin not found');
+
+        $modelAttributeSets->addPlugin($attributeSet, $plugin);
+
+        // Redirect to attribute set
+        return $this->plugin('redirect')->toUrl('/attributesets/plugins?attribute_set_key=' . $attributeSet->getKey());
+    }
+
+    public function removepluginAction() {
+        $request = $this->getRequest();
+        $modelAttributeSets = $this->getLocator()->get('modelAttributeSets');
+
+        if (!$attribute_set_plugin_key = (int)$request->query()->get('attribute_set_plugin_key'))
+            throw new \Stuki\Exception('Attribute set plugin key not supplied');
+
+        if (!$xref = $modelAttributeSets->findPlugin((int)$attribute_set_plugin_key)) {
+            throw new \Stuki\Exception('Attribute set plugin not found');
+        }
+
+        $attribute_set_key = $xref->getAttributeSet()->getKey();
+
+        $modelAttributeSets->removePlugin($xref);
+
+        // Redirect to attribute set
+        return $this->plugin('redirect')->toUrl('/attributesets/plugins?attribute_set_key=' . $attribute_set_key);
+    }
+
+    public function pluginparametersAction() {
+        $request = $this->getRequest();
+        $modelAttributeSets = $this->getLocator()->get('modelAttributeSets');
+        $modelPlugins = $this->getLocator()->get('modelPlugins');
+
+        if (!$attributeSet = $modelAttributeSets->find((int)$request->query()->get('attribute_set_key')))
+            throw new \Stuki\Exception('Attribute set not found');
+
+        if (!$plugin = $modelAttributeSets->findPlugin((int)$request->query()->get('attribute_set_plugin_key')))
+            throw new \Stuki\Exception('Attribute set Plugin not found');
+
+        $pluginClass = $plugin->getPlugin()->getClassObject();
+        if (!$pluginClass instanceof \Stuki\Plugin\Parameters)
+            throw new \Stuki\Exception('This plugin does not support parameters');
+
+        $form = $pluginClass->getParametersForm();
+
+        if ($request->isPost() and $form->isValid($request->post()->toArray())) {
+            $modelAttributeSets->updatePluginParameters($plugin, $form->getValues());
+
+            return $this->plugin('redirect')->
+                toUrl('/attributesets/view?attribute_set_key=' .
+                    $attributeSet->getKey());
+
+        } else if (!$request->isPost()) {
+            $form->setDefaults((array)$plugin->getParameters());
+        }
+
+        return array(
+            'attributeSet' => $attributeSet,
+            'plugin' => $plugin,
+            'form' => $form
+        );
+    }
 }

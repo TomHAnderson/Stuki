@@ -120,14 +120,9 @@ class AttributeSets extends Model {
      * added to a given attribute set
      */
     public function updateRelations(\Entities\AttributeSets $attributeSet, $children) {
-
-#print_r($children);die();
-
         $relations = $attributeSet->getRelations();
 
         foreach ($relations as $att)  {
-#            echo "removing " . $att->getKey() . '   ';
-
             $relations->removeElement($att);
         }
 
@@ -135,13 +130,9 @@ class AttributeSets extends Model {
         foreach ((array)$children as $ref_child) {
             $child = $this->find((int)$ref_child);
             $attributeSet->getRelations()->add($child);
-
-#            echo "added " . $child->getKey() . '   ';
         }
 
         $this->getEm()->flush();
-
-#        die('updated');
     }
 
     public function updatePlugins(\Entities\AttributeSets $attributeSet, $plugins) {
@@ -202,5 +193,32 @@ class AttributeSets extends Model {
         return $attributeSet;
     }
 
-}
+    public function addPlugin(\Entities\AttributeSets $attributeSet, \Entities\Plugins $plugin) {
+        $xref = new \Entities\AttributeSetPlugins();
+        $xref->setAttributeSet($attributeSet);
+        $xref->setPlugin($plugin);
+        $xref->setAlias($plugin->getAlias());
 
+        $this->getEm()->persist($xref);
+
+        $this->getEm()->flush();
+        return $xref;
+    }
+
+    public function removePlugin(\Entities\AttributeSetPlugins $xref) {
+        $this->getEm()->remove($xref);
+        $this->getEm()->flush();
+    }
+
+    public function findPlugin($attribute_set_plugin_key) {
+        if (!is_int($attribute_set_plugin_key)) throw new \Stuki\Exception('Attribute set plugin key must be an integer');
+        return $this->getEm()->getRepository('Entities\AttributeSetPlugins')->find($attribute_set_plugin_key);
+    }
+
+    public function updatePluginParameters(\Entities\AttributeSetPlugins $plugin, $values) {
+        $plugin->setParameters($values);
+        $this->getEm()->flush();
+    }
+
+
+}

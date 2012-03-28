@@ -90,6 +90,16 @@ class Entities extends Entity
     }
 
     /**
+     * @ORM\OneToMany(targetEntity="Entities", mappedBy="parent")
+     * @ORM\OrderBy({"title" = "ASC"})
+     */
+    protected $relations;
+
+    public function getRelations() {
+        return $this->relations;
+    }
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     protected $title;

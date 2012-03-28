@@ -11,11 +11,21 @@
         <join-column name="ref_attribute_set" referenced-column-name="attribute_set_key"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="children" target-entity="Entities\Entities" inversed-by="parent">
+    <many-to-one field="parent" target-entity="Entities\Entities" inversed-by="children">
       <join-columns>
         <join-column name="ref_entity" referenced-column-name="entity_key"/>
       </join-columns>
     </many-to-one>
-    <one-to-many field="parent" target-entity="Entities\Entities" mapped-by="children"/>
+    <one-to-many field="children" target-entity="Entities\Entities" mapped-by="parent"/>
+    <many-to-many field="relations" target-entity="Entities\Entities">
+      <join-table name="entity_relations_xref">
+        <join-columns>
+          <join-column name="ref_entity_parent" referenced-column-name="entity_key"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="ref_entity_child" referenced-column-name="entity_key"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
   </entity>
 </doctrine-mapping>

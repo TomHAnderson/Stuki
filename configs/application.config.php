@@ -33,6 +33,7 @@ return array(
         // Entity Plugins
         'Attachments',
         'Favorites',
+        'Many2Many',
 #        'FacebookComments',
 
         // Client Specific

@@ -2,37 +2,67 @@
 
 <h3><?php echo $attributeSet->getName(); ?></h3>
 
-<form method="post">
+<form method="post" action="/attributesets/addplugin">
+    <select name="plugin_key">
+        <?php
+        foreach ($allPlugins as $plugin) {
+        ?>
+        <option value="<?php echo $plugin->getKey(); ?>"><?php echo $plugin->getAlias(); ?></option>
+        <?php
+        }
+        ?>
+    </select>
+
+    <input type="hidden" name="attribute_set_key" value="<?php echo $attributeSet->getKey(); ?>">
+    <input type="submit" value="Add Plugin">
+
+</form>
+
+<br>
+<br>
+
+<?php
+if (sizeof($plugins = $attributeSet->getPlugins())) {
+?>
+
+<table border="1">
+    <caption>Plugins Attached to this Attribute Set</caption>
+
+    <tr>
+        <th>Edit</th>
+        <th>Edit Paramters</th>
+        <th>Plugin Name</th>
+        <th>Aliased As</th>
+        <th>Remove</th>
+    </tr>
+
     <?php
-
-    $plugins = $attributeSet->getPlugins();
-
-    foreach ($allPlugins as $plugin) {
+    foreach ($plugins as $plugin) {
     ?>
-        <input name="plugins[]"
-               type="checkbox"
-               value="<?php echo (int)$plugin->getKey(); ?>"
-               <?php
-               foreach ($plugins as $p) {
-                   // Find relations for the current attribute set
-                   if ($p->getPlugin() == $plugin) {
-                   ?>
-                       CHECKED
-                   <?php
-                        break;
-                    }
-                   ?>
+        <tr>
+            <td><a href="/"><img src="/images/icons/application_edit.png"></a></td>
+            <td>
+                <?php
+                if ($plugin->getPlugin()->getClassObject() instanceof \Stuki\Plugin\Parameters) {
+                ?>
+                    <a href="/attributesets/pluginparameters?attribute_set_key=<?php echo $attributeSet->getKey(); ?>&attribute_set_plugin_key=<?php echo $plugin->getKey(); ?>">
+                        Edit Parameters
+                    </a>
                 <?php
                 }
                 ?>
-        >
-        <?php echo $plugin->getAlias(); ?>
-        <br>
+            </td>
+            <td><?php echo $plugin->getPlugin()->getAlias(); ?></td>
+            <td><?php echo $plugin->getAlias(); ?></td>
+            <td><a href="/attributesets/removeplugin?attribute_set_plugin_key=<?php echo $plugin->getKey(); ?>"><img src="/images/icons/delete.png"></a></td>
+        </tr>
     <?php
     }
     ?>
 
-<br>
-<input type="submit" value="Save Plugins">
-</form>
+</table>
+
+<?php
+}
+?>
 

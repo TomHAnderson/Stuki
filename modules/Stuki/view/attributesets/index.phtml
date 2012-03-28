@@ -8,7 +8,6 @@
         <th>Description</th>
         <th>Title</th>
         <th>Tabs</th>
-        <th>Created By</th>
         <th></th>
     </tr>
 
@@ -38,9 +37,6 @@ foreach ($attributeSets as $set) {
             </td>
             <td>
                 <?php echo $set->getTabs(); ?>
-            </td>
-            <td>
-                <?php echo $set->getUser()->getDisplayName(); ?>
             </td>
             <td>
                 <a href="/attributesets/delete?attribute_set_key=<?php echo $set->getKey(); ?>">

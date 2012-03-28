@@ -1,0 +1,28 @@
+<?php
+
+namespace Many2Many\Form;
+
+use Zend\Form\Form as ZFForm;
+
+class Parameters extends ZFForm {
+    function init() {
+        $param1 = $this->createElement('select', 'attribute_set_key');
+        $param1->setLabel('Attribute Set');
+        $param1->setDescription("Select the attribute set to link entities");
+
+        $locator = \Zend\Registry::get('locator');
+
+        $modelAttributeSets = $locator->get('modelAttributeSets');
+
+        foreach ($modelAttributeSets->findAll() as $att) {
+            $param1->addMultiOption($att->getKey(), $att->getName());
+        }
+
+        // Create submit button
+        $submit = $this->createElement('submit', 'save');
+        $submit->setLabel("Save");
+
+        $this->addElement($param1);
+        $this->addElement($submit);
+    }
+}

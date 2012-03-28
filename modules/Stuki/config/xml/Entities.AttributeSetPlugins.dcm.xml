@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xsi="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Entities\AttributeSetPlugins" table="attribute_set_plugins_xref">
+    <id name="attribute_set_plugin_key" type="integer">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="alias" type="string" nullable="true"/>
+    <field name="parameters" type="array" nullable="true"/>
+    <field name="sort" type="integer" nullable="true"/>
+    <many-to-one field="plugin" target-entity="Entities\Plugins" inversed-by="attributeSets">
+      <join-columns>
+        <join-column name="ref_plugin" referenced-column-name="plugin_key" nullable="false"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="attributeSet" target-entity="Entities\AttributeSets" inversed-by="plugins">
+      <join-columns>
+        <join-column name="ref_attribute_set" referenced-column-name="attribute_set_key" nullable="false"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
