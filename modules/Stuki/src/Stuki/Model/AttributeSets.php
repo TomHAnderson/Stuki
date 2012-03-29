@@ -205,6 +205,12 @@ class AttributeSets extends Model {
         return $xref;
     }
 
+    public function updatePlugin(\Entities\AttributeSetPlugins $xref, $values) {
+        $xref->setAlias($values['alias']);
+
+        $this->getEm()->flush();
+    }
+
     public function removePlugin(\Entities\AttributeSetPlugins $xref) {
         $this->getEm()->remove($xref);
         $this->getEm()->flush();

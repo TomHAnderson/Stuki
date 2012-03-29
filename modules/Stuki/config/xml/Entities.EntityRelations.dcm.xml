@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xsi="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Entities\EntityRelations" table="entity_relations_xref">
+    <id name="entity_relation_key" type="integer">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="sort" type="integer" nullable="true"/>
+    <many-to-one field="parent" target-entity="Entities\Entities" inversed-by="inverseRelations">
+      <join-columns>
+        <join-column name="ref_entity_parent" referenced-column-name="entity_key"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="child" target-entity="Entities\Entities" inversed-by="relations">
+      <join-columns>
+        <join-column name="ref_entity_child" referenced-column-name="entity_key"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

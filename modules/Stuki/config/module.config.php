@@ -18,6 +18,7 @@ return array(
                 'themes' => 'Stuki\Controller\ThemesController',
 
                 // Models
+                'modelEntityRelations' => 'Stuki\Model\EntityRelations',
                 'modelAuthentication' => 'Stuki\Model\Authentication',
                 'modelAttributeSets' => 'Stuki\Model\AttributeSets',
                 'modelAttributes' => 'Stuki\Model\Attributes',

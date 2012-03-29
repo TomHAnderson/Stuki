@@ -1,8 +1,11 @@
-<h2>Attribute Renderer Parameters</h2>
+<h2>Plugin Parameters</h2>
 
 <h3>Attribute Set: <?php echo $attributeSet->getName(); ?> (<?php echo $attributeSet->getCode(); ?>)</h3>
 
-<h4>Plugin: <?php echo $plugin->getAlias(); ?></h4>
+<h4>
+    Plugin: <?php echo $plugin->getAlias(); ?><br>
+    Plugin Type: <?php echo $plugin->getPlugin()->getAlias(); ?>
+</h4>
 
 <?php
 

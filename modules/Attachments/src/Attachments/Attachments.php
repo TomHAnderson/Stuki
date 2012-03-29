@@ -11,7 +11,7 @@ class Attachments implements Plugin {
     /**
      * This is the only function from the implementation
      */
-    public function run(\Entities\Entities $entity) {
+    public function run(\Entities\AttributeSetPlugins $pluginXref, \Entities\Entities $entity) {
         $locator = \Zend\Registry::get('locator');
 
         $modelAttachments = $locator->get('modelAttachments');

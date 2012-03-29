@@ -90,13 +90,18 @@ class Entities extends Entity
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="Entities", mappedBy="parent")
-     * @ORM\OrderBy({"title" = "ASC"})
+     * Relations limit which attribute sets may be linked to which
      */
     protected $relations;
 
     public function getRelations() {
         return $this->relations;
+    }
+
+    protected $inverseRelations;
+
+    public function getInverseRelations() {
+        return $this->inverseRelations;
     }
 
     /**

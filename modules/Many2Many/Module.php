@@ -39,8 +39,7 @@ class Module implements AutoloaderProvider
 
     public static function getConfig()
     {
-        return array();
-#        return include __DIR__ . '/config/module.config.php';
+        return include __DIR__ . '/config/module.config.php';
     }
 
     /**

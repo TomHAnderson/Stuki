@@ -95,6 +95,7 @@ class Attributes extends StukiModel {
     }
 
     public function update(\Entities\Attributes $attribute, $values) {
+        $renderer = null;
         $renderers = $this->getLocator()->get('modelRenderers');
 
         // Find renderer

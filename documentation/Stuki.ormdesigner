@@ -155,17 +155,10 @@
       <column name="template" required="true" type="string"/>
     </table>
     <table name="AttributeSetRelations" visPositionX="55" visPositionY="19" visSizeX="0" visSizeX2="20" visSizeY="0" visSizeY2="20">
-      <column name="ref_attribute_set_child" primary="true"/>
-      <column name="ref_attribute_set_parent" primary="true"/>
+      <column name="ref_attribute_set_child" primary="true" type="integer"/>
+      <column name="ref_attribute_set_parent" primary="true" type="integer"/>
       <orm-properties>
         <attribute name="table">attribute_set_relations_xref</attribute>
-      </orm-properties>
-    </table>
-    <table name="EntityRelations" visPositionX="810" visPositionY="163" visSizeX="0" visSizeX2="20" visSizeY="0" visSizeY2="20">
-      <column name="ref_entity_child" primary="true" type="integer"/>
-      <column name="ref_entity_parent" primary="true" type="integer"/>
-      <orm-properties>
-        <attribute name="table">entity_relations_xref</attribute>
       </orm-properties>
     </table>
     <table name="AttributeSetPlugins" visPositionX="-217" visPositionY="314" visSizeX="0" visSizeX2="197" visSizeY="0" visSizeY2="59">
@@ -177,6 +170,15 @@
       <column name="sort" type="integer"/>
       <orm-properties>
         <attribute name="table">attribute_set_plugins_xref</attribute>
+      </orm-properties>
+    </table>
+    <table name="EntityRelations" visPositionX="837" visPositionY="200" visSizeX="0" visSizeX2="20" visSizeY="0" visSizeY2="20">
+      <column auto-increment="true" name="entity_relation_key" primary="true" type="integer"/>
+      <column name="ref_entity_parent" type="integer"/>
+      <column name="ref_entity_child" type="integer"/>
+      <column name="sort" type="integer"/>
+      <orm-properties>
+        <attribute name="table">entity_relations_xref</attribute>
       </orm-properties>
     </table>
     <orm-properties>
@@ -242,25 +244,21 @@
     <foreign-key caption="AttributeSets AttributeSetRelations" from="AttributeSetRelations" name="FK_AttributeSetRelations_AttributeSets_attribute_set_key2" to="AttributeSets">
       <foreign-key-column from="ref_attribute_set_child" to="attribute_set_key"/>
     </foreign-key>
-    <foreign-key caption="Entities EntityRelations" from="EntityRelations" name="FK_EntityRelations_Entities_entity_key" to="Entities">
-      <foreign-key-column from="ref_entity_parent" to="entity_key"/>
-    </foreign-key>
-    <foreign-key caption="Entities EntityRelations" from="EntityRelations" name="FK_EntityRelations_Entities_entity_key2" to="Entities">
-      <foreign-key-column from="ref_entity_child" to="entity_key"/>
-    </foreign-key>
     <foreign-key caption="Plugins AttributeSetPlugins" from="AttributeSetPlugins" inverse-alias="plugin" name="FK_AttributeSetPlugins_Plugins_plugin_key" owning-alias="attributeSets" to="Plugins">
       <foreign-key-column from="ref_plugin" to="plugin_key"/>
     </foreign-key>
     <foreign-key caption="AttributeSets AttributeSetPlugins" from="AttributeSetPlugins" inverse-alias="attributeSet" name="FK_AttributeSetPlugins_AttributeSets_attribute_set_key" owning-alias="plugins" to="AttributeSets">
       <foreign-key-column from="ref_attribute_set" to="attribute_set_key"/>
     </foreign-key>
+    <foreign-key caption="Entities EntityRelations" from="EntityRelations" inverse-alias="parent" name="FK_EntityRelations_Entities_entity_key" owning-alias="inverseRelations" to="Entities">
+      <foreign-key-column from="ref_entity_parent" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="Entities EntityRelations" from="EntityRelations" inverse-alias="child" name="FK_EntityRelations_Entities_entity_key2" owning-alias="relations" to="Entities">
+      <foreign-key-column from="ref_entity_child" to="entity_key"/>
+    </foreign-key>
     <many-to-many-relation mn-table="AttributeSetRelations">
       <many-to-many-foreign-key foreign-key="FK_AttributeSetRelations_AttributeSets_attribute_set_key" relation-alias=""/>
       <many-to-many-foreign-key foreign-key="FK_AttributeSetRelations_AttributeSets_attribute_set_key2" relation-alias="relations"/>
-    </many-to-many-relation>
-    <many-to-many-relation mn-table="EntityRelations">
-      <many-to-many-foreign-key foreign-key="FK_EntityRelations_Entities_entity_key" relation-alias=""/>
-      <many-to-many-foreign-key foreign-key="FK_EntityRelations_Entities_entity_key2" relation-alias="relations"/>
     </many-to-many-relation>
   </module>
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <orm-designer version="1.4.7.499">
 
-  <project code-name="Attachments" framework="Without Framework" name="Attachments" orm="Doctrine2" visSizeX="0" visSizeX2="2017" visSizeY="0" visSizeY2="1007">
-    <module-position name="Entities" visPositionX="800" visPositionY="50"/>
+  <project code-name="Stuki" framework="Without Framework" name="Stuki" orm="Doctrine2" visSizeX="0" visSizeX2="2017" visSizeY="0" visSizeY2="1007">
+    <module-position name="Entities" visPositionX="262" visPositionY="12"/>
   </project>
 
 </orm-designer>

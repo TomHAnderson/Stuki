@@ -102,7 +102,7 @@ class Attributes extends Entity
     }
 
     public function setLabel($value) {
-        $this->label = $name;
+        $this->name = $value;
     }
 
     /**
@@ -129,7 +129,7 @@ class Attributes extends Entity
     protected $options;
 
     public function getOptions() {
-        return array_combine($this->options, $this->options);
+        return array_combine((array)$this->options, (array)$this->options);
     }
 
 

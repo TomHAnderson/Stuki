@@ -131,4 +131,28 @@ class EntitiesController extends ActionController
 
         return $this->plugin('redirect')->toUrl('/entities/view?entity_key=' . $parent->getKey());
     }
+
+    public function insertrelationAction() {
+        $request = $this->getRequest();
+
+        $modelEntities = $this->getLocator()->get('modelEntities');
+        $modelEntityRelations = $this->getLocator()->get('modelEntityRelations');
+
+        if (!$parent_key = $request->post()->get('parent_key'))
+            throw new \Stuki\Exception('A parent entity key is required');
+
+        if (!$child_key = $request->post()->get('child_key'))
+            throw new \Stuki\Exception('A child entity key is required');
+
+        if (!$parent = $modelEntities->find((int)$parent_key))
+            throw new \Stuki\Exception('Parent entity not found');
+
+        if (!$child = $modelEntities->find((int)$child_key))
+            throw new \Stuki\Exception('Child entity not found');
+
+        $modelEntityRelations->insert($parent, $child);
+
+        return $this->plugin('redirect')->toUrl('/entities/view?entity_key=' . $parent->getKey());
+
+    }
 }

@@ -40,7 +40,11 @@ if (sizeof($plugins = $attributeSet->getPlugins())) {
     foreach ($plugins as $plugin) {
     ?>
         <tr>
-            <td><a href="/"><img src="/images/icons/application_edit.png"></a></td>
+            <td>
+                <a href="/plugins/updatexref?attribute_set_plugin_key=<?php echo $plugin->getKey(); ?>">
+                    <img src="/images/icons/application_edit.png">
+                </a>
+            </td>
             <td>
                 <?php
                 if ($plugin->getPlugin()->getClassObject() instanceof \Stuki\Plugin\Parameters) {

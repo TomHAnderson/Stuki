@@ -1,0 +1,35 @@
+
+<h4><?php echo $pluginXref->getAlias(); ?></h4>
+
+<form method="post" action="/entities/insertrelation">
+    <input type="hidden" name="parent_key" value="<?php echo $entity->getKey(); ?>">
+
+    <select name="child_key">
+        <option value=""></option>
+        <?php
+        foreach ($referenceEntities as $e) {
+        ?>
+            <option value="<?php echo $e->getKey(); ?>">
+                <?php echo $e->getTitle(); ?>
+            </option>
+        <?php
+        }
+        ?>
+    </select>
+
+    <input type="submit" value="Add Relation">
+
+</form>
+
+Referenced Entities:<br>
+<?php
+
+foreach ($relations as $e) {
+?>
+    <a href="/entities/view?entity_key=<?php echo $e->getChild()->getKey(); ?>">
+        <?php echo $e->getChild()->getTitle(); ?>
+    </a>
+
+    <br>
+<?php
+}

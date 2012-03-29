@@ -14,27 +14,41 @@ class Many2Many implements Plugin, Parameters {
     /**
      * This is the only function from the implementation
      */
-    public function run(\Entities\Entities $entity) {
+    public function run(\Entities\AttributeSetPlugins $pluginXref, \Entities\Entities $entity) {
+        $this->setParameters($pluginXref->getParameters());
+
         $locator = \Zend\Registry::get('locator');
 
-        $modelAttachments = $locator->get('modelAttachments');
+        $modelEntityRelations = $locator->get('modelEntityRelations');
+        $modelAttributeSets = $locator->get('modelAttributeSets');
+        $modelEntities = $locator->get('modelEntities');
         $view = $locator->get('view');
 
-        $view->plugin('headScript')->appendFile('/assets/Attachments/js/upload.js');
-        $view->plugin('headLink')->appendStylesheet('/assets/Attachments/css/upload.css');
+        $attributeSet = $modelAttributeSets->find((int)$this->parameters['attribute_set_key']);
+
+        // Pull existing relations
+        $relations = $modelEntityRelations->findByAttributeSet($attributeSet, array(
+            'parent' => $entity
+        ));
+
+        // Pull all possible relations
+        # FIXME:  it may be better to dynamically pull relations when the user wishes to add
+        # a new relation
+        $referenceEntities = $modelEntities->findBy(array(
+            'attributeSet' => $attributeSet
+        ));
+
 
         $view->setVars(
             array(
-                'attachments' => $modelAttachments->findBy(
-                    array(
-                        'entity' => $entity
-                    )
-                ),
-                'entity' => $entity
+                'pluginXref' => $pluginXref,
+                'relations' => $relations,
+                'referenceEntities' => $referenceEntities,
+                'entity' => $entity,
             )
         );
 
-        return $view->render('attachments/view.phtml');
+        return $view->render('many2many/view.phtml');
     }
 
     public function getParametersForm() {

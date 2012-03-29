@@ -1,6 +1,6 @@
 <?php
 if (!sizeof($entity->getAttributeSet()->getPlugins())) {
-	return;
+    return;
 }
 ?>
 
@@ -8,7 +8,7 @@ if (!sizeof($entity->getAttributeSet()->getPlugins())) {
 
 <?php
 foreach ($entity->getAttributeSet()->getPlugins() as $pluginRef) {
-    echo $pluginRef->getPlugin()->getClassObject()->run($entity);
+    echo $pluginRef->getPlugin()->getClassObject()->run($pluginRef, $entity);
 }
 
 ?>
