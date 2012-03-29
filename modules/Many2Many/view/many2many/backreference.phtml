@@ -1,0 +1,15 @@
+
+<h4><?php echo $pluginXref->getAlias(); ?></h4>
+
+<?php
+
+foreach ($relations as $e) {
+?>
+    <?php echo $e->getParent()->getAttributeSet()->getName(); ?>:
+    <a href="/entities/view?entity_key=<?php echo $e->getParent()->getKey(); ?>">
+        <?php echo $e->getParent()->getTitle(); ?>
+    </a>
+
+    <br>
+<?php
+}
