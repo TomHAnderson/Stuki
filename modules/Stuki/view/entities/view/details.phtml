@@ -33,7 +33,6 @@ if (!$entity->getValues()) return;
                     $renderer = $value->getAttribute()->getRenderer()->getClassObject('view');
                     if ($renderer instanceof \Stuki\Renderer\Parameters)
                         $renderer->setParameters($value->getAttribute()->getParameters());
-
                     echo $renderer->formatValue($value->getValue());
                 ?>
             </dd>

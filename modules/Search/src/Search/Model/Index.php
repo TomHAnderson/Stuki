@@ -135,6 +135,7 @@ class Index extends Model
                 case 'datetime':
                 case 'decimal':
                 case 'integer':
+                case 'reference':
                 case 'varchar':
                     $field = Document\Field::Unstored(
                         $value->getAttribute()->getCode(),

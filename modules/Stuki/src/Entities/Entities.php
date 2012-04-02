@@ -22,7 +22,8 @@ class Entities extends Entity
         'Entities\ValuesDecimal',
         'Entities\ValuesInteger',
         'Entities\ValuesText',
-        'Entities\ValuesVarchar'
+        'Entities\ValuesVarchar',
+        'Entities\ValuesReference',
     );
 
 
@@ -87,6 +88,12 @@ class Entities extends Entity
 
     public function getChildren() {
         return $this->children;
+    }
+
+    protected $references;
+
+    public function getReferences() {
+        return $this->references;
     }
 
     /**

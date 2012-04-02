@@ -19,6 +19,7 @@ class Values extends StukiModel {
         $res = array_merge($res, $this->getEm()->getRepository('Entities\ValuesInteger')->findBy($search));
         $res = array_merge($res, $this->getEm()->getRepository('Entities\ValuesText')->findBy($search));
         $res = array_merge($res, $this->getEm()->getRepository('Entities\ValuesVarchar')->findBy($search));
+        $res = array_merge($res, $this->getEm()->getRepository('Entities\ValuesReference')->findBy($search));
 
         uasort($res, array($this, 'sortValues'));
 

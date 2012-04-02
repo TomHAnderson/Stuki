@@ -11,7 +11,7 @@ use Stuki\Renderer\Renderer as Renderer,
 
 class AttributeSetSelectList extends ElementSelect implements Renderer, RendererParameters, RendererSelect, RendererForeignKey
 {
-    public $datatype = 'integer';
+    public $datatype = 'reference';
     private $parameters;
 
     public function getDataType() {
@@ -22,22 +22,17 @@ class AttributeSetSelectList extends ElementSelect implements Renderer, Renderer
         $this->addValidator('Int');
     }
 
-    public function formatValue($value) {
-        $locator = \Zend\Registry::get('locator');
-        $modelEntities = $locator->get('modelEntities');
-        $entity = $modelEntities->find((int)$value);
+    public function formatValue($entity) {
         return '<a href="/entities/view?entity_key=' . $entity->getKey() . '">' . $entity->getTitle() . '</a>' ;
     }
 
     // Preformat value when editing such as date times > dates
     public function formatEditValue($value) {
-        return $value;
+        return $value->getKey();
     }
 
     public function formatSearchValue($value) {
-        $locator = \Zend\Registry::get('locator');
-        $modelEntities = $locator->get('modelEntities');
-        return $modelEntities->find((int)$value)->getTitle();
+        return $value->getTitle();
     }
 
     /**

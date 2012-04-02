@@ -123,6 +123,15 @@
         <attribute name="table">values_integer</attribute>
       </orm-properties>
     </table>
+    <table name="ValuesReference" visPositionX="753" visPositionY="750" visSizeX="0" visSizeX2="116" visSizeY="0" visSizeY2="73">
+      <column auto-increment="true" name="value_key" primary="true" type="integer"/>
+      <column name="ref_attribute" required="true" type="integer"/>
+      <column name="ref_entity" required="true" type="integer"/>
+      <column name="value" type="integer"/>
+      <orm-properties>
+        <attribute name="table">values_reference</attribute>
+      </orm-properties>
+    </table>
     <table name="ValuesText" visPositionX="421" visPositionY="617" visSizeX="0" visSizeX2="116" visSizeY="0" visSizeY2="73">
       <column auto-increment="true" name="value_key" primary="true" type="integer"/>
       <column name="ref_attribute" required="true" type="integer"/>
@@ -225,6 +234,15 @@
     </foreign-key>
     <foreign-key caption="" from="ValuesInteger" inverse-alias="entity" name="FK_ValuesArray_Entities_entity_key4" owning-alias="" to="Entities">
       <foreign-key-column from="ref_entity" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesReference" inverse-alias="attribute" name="FK_ValuesArray_Attributes_attribute_key7" owning-alias="" to="Attributes">
+      <foreign-key-column from="ref_attribute" to="attribute_key"/>
+    </foreign-key>
+    <foreign-key caption="" from="ValuesReference" inverse-alias="entity" name="FK_ValuesArray_Entities_entity_key7" owning-alias="" to="Entities">
+      <foreign-key-column from="ref_entity" to="entity_key"/>
+    </foreign-key>
+    <foreign-key caption="Entities ValuesReference" from="ValuesReference" inverse-alias="value" name="FK_ValuesReference_Entities_entity_key" to="Entities">
+      <foreign-key-column from="value" to="entity_key"/>
     </foreign-key>
     <foreign-key caption="" from="ValuesText" inverse-alias="attribute" name="FK_ValuesArray_Attributes_attribute_key5" owning-alias="" to="Attributes">
       <foreign-key-column from="ref_attribute" to="attribute_key"/>
